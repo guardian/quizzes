@@ -20,9 +20,11 @@
 }
 
 .quiz__answer--correct {
-    background-color: #ccffcc;
+    background-color: #4a7801; /* success */
+    color: #ffffff;
 }
 
 .quiz__answer--incorrect {
-    background-color: #ffcccc;
+    background-color: #d61d00; /* error */
+    color: #ffffff;
 }
