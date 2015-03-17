@@ -1,11 +1,14 @@
 import React from 'react';
+import {countWhere} from './utils';
 import find from 'lodash-node/modern/collection/find';
+import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
         return <div 
+            data-link-name={"answer " + this.props.index}
             className={classnames({
                 'quiz__answer': true,
                 'quiz__answer--correct': this.props.isAnswered() && this.props.answer.correct,
@@ -17,23 +20,45 @@ export class Answer extends React.Component {
     }
 }
 
+function isAnswered(question) {
+    return any(question.multiChoiceAnswers, (a) => a.isChosen);
+}
+
+function isCorrect(question) {
+    return any(question.multiChoiceAnswers, (a) => a.isChosen && a.correct);
+}
+
 export class Question extends React.Component {
     isAnswered() {
-        return !!find(this.props.question.multiChoiceAnswers, (a) => a.isChosen);
+        return isAnswered(this.props.question);
+    }
+
+    isCorrect() {
+        return isCorrect(this.props.question);
     }
 
     render() {
         var question = this.props.question,
             answers = question.multiChoiceAnswers;
 
-        return <div className={classnames({isAnswered: this.isAnswered()})}>
-            <h4>{question.question}</h4>
+        return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
+            <h4 className="quiz__question-text">{question.question}</h4>
             <div>{
                 map(
                     answers,
                     (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered.bind(this)} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} key={i} />
                 )                
             }</div>
+        </div>
+    }
+}
+
+export class EndMessage extends React.Component {
+    render() {
+        return <div className="quiz__end-message">
+            <div className="quiz__score">{this.props.score}/{this.props.length}</div>
+
+            <p>{this.props.message}</p>
         </div>
     }
 }
@@ -50,15 +75,55 @@ export class Quiz extends React.Component {
         this.forceUpdate();
     }
 
+    length() {
+        return this.state.questions.length;
+    }
+
+    isFinished() {
+        return this.progress() === this.length();
+    }
+
+    progress() {
+        return countWhere(this.state.questions, isAnswered);
+    }
+
+    score() {
+        return countWhere(this.state.questions, isCorrect);
+    }
+
+    endMessage() {
+        const minScore = (g) => g.minScore === undefined ? Number.NEGATIVE_INFINITY : g.minScore,
+              maxScore = (g) => g.maxScore === undefined ? Number.POSITIVE_INFINITY : g.maxScore,
+              score = this.score(),
+              message = find(
+                  this.props.resultGroups,
+                  (group) => score >= minScore(group) && score <= maxScore(group)
+              );
+
+        return message ? message.title : "Well done!";
+    }
+
     render() {
-        return <div>
-            <h2>{this.props.header.titleText}</h2>
+        let endMessage;
+
+        if (this.isFinished()) {
+            endMessage = <EndMessage score={this.score()}
+                                     message={this.endMessage()}
+                                     length={this.length()} 
+                                     key="end_message" />
+        }
+        
+        return <div data-link-name="quiz" className="quiz">
+            <h2 className="quiz__title">{this.props.header.titleText}</h2>
             <p>{this.props.header.trailText}</p>
             {
                 map(
                     this.state.questions,
-                    (question, i) => <Question question={question} chooseAnswer={this.chooseAnswer.bind(this)} key={i} />
+                    (question, i) => <Question question={question} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
                 )
+            }
+            {
+                endMessage
             }
         </div>
     }
