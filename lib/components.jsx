@@ -44,9 +44,9 @@ export class Question extends React.Component {
               answers = question.multiChoiceAnswers;
 
         return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
-            <h4 className="quiz__question-text">
+            <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
-                {question.question}
+                <span className="quiz__question-text">{question.question}</span>
             </h4>
             <div>{
                 map(
