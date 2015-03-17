@@ -15,6 +15,7 @@ export class Answer extends React.Component {
                 'quiz__answer--incorrect': this.props.isAnswered() && this.props.answer.isChosen && !this.props.answer.correct
             })}            
             onClick={this.props.isAnswered() ? null : this.props.chooseAnswer}>
+            <span className={'quiz__answer__icon'} >{this.props.answer.isChosen ? this.props.answer.correct ? <span>&#10004;</span> : <span>&#10007;</span> : ''}</span>
             {this.props.answer.answer}
         </div>
     }
