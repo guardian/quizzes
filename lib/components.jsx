@@ -32,7 +32,7 @@ export class Question extends React.Component {
         } else {
             answersShown = map(
                 answers,
-                (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} key={i} />
+                (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
             )
         }
 
