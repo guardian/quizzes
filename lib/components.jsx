@@ -2,28 +2,36 @@ import React from 'react';
 import map from 'lodash-node/modern/collection/map';
 
 export class Answer extends React.Component {
-    handleAnswer() {
-        console.log(answer);
-    }
-    
     render() {
         return <div className="quiz-answer">
-                <li onClick={this.handleAnswer}>{this.props.answer.answer}</li>
+                <li onClick={this.props.handleAnswer}>{this.props.answer.answer}</li>
             </div>
     }
-
 }
 
 export class Question extends React.Component {
+    constructor() {
+        this.state = {isAnswered: false};
+    }
+    handleAnswer(answer) {
+        this.setState({isAnswered: answer});
+    }
     render() {
-        return <div className="quiz-question">
-            <h4>{this.props.question.question}</h4>
-            <ol>{
-                map(
-                    this.props.question.multiChoiceAnswers,
-                    (answer, i) => <Answer answer={answer} key={i} />
-                )
-            }</ol>
+        var question = this.props.question,
+            answers = question.multiChoiceAnswers,
+            answersShown;
+
+        if (this.state.isAnswered) {
+            answersShown = <li>{this.state.isAnswered.answer}</li>;
+        } else {
+            answersShown = map(answers,
+                (answer, i) => <Answer answer={answer} handleAnswer={this.handleAnswer.bind(this, answer)} key={i} />
+            )
+        }
+
+        return <div className={this.state.isAnswered ? 'isAnswered' : ''}>
+            <h4>{question.question}</h4>
+            <ul>{answersShown}</ul>
         </div>
     }
 }
