@@ -32,7 +32,7 @@ export class Question extends React.Component {
 
         return <div className={classnames({isAnswered: this.state.isAnswered})}>
             <h4>{question.question}</h4>
-            <ul>{answersShown}</ul>
+            <ul className="quiz__answers">{answersShown}</ul>
         </div>
     }
 }
