@@ -1,3 +1,14 @@
 body {
     font-family: "Guardian Egyptian Web","Guardian Text Egyptian Web",Georgia,serif;
 }
+
+.quiz__answer {
+    cursor: pointer;
+    padding: 10px;
+    color: #333333; /* neutral-1 */
+    background-color: #eaeaea; /* neutral-6 */
+    margin: 1px;
+}
+
+
+
