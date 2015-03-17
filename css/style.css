@@ -2,13 +2,7 @@ body {
     font-family: "Guardian Egyptian Web","Guardian Text Egyptian Web",Georgia,serif;
 }
 
-.quiz__answers {
-    padding: 0;
-}
-
 .quiz__answer {
-    display: block;
-    list-style-type: none;
     cursor: pointer;
     padding: 10px;
     background-color: grey;
