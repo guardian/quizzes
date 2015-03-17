@@ -1,5 +1,6 @@
 import React from 'react';
 import {countWhere} from './utils';
+import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import classnames from 'classnames';
@@ -61,7 +62,7 @@ export class EndMessage extends React.Component {
         return <div className="quiz__end-message">
             <div className="quiz__score">{this.props.score}/{this.props.length}</div>
 
-            <p>Well done! ... some more stuff here</p>
+            <p>{this.props.message}</p>
         </div>
     }
 }
@@ -94,11 +95,26 @@ export class Quiz extends React.Component {
         return countWhere(this.state.questions, isCorrect);
     }
 
+    endMessage() {
+        const minScore = (g) => g.minScore === undefined ? Number.NEGATIVE_INFINITY : g.minScore,
+              maxScore = (g) => g.maxScore === undefined ? Number.POSITIVE_INFINITY : g.maxScore,
+              score = this.score(),
+              message = find(
+                  this.props.resultGroups,
+                  (group) => score >= minScore(group) && score <= maxScore(group)
+              );
+
+        return message ? message.title : "Well done!";
+    }
+
     render() {
         let endMessage;
 
         if (this.isFinished()) {
-            endMessage = <EndMessage score={this.score()} length={this.length()} key="end_message" />
+            endMessage = <EndMessage score={this.score()}
+                                     message={this.endMessage()}
+                                     length={this.length()} 
+                                     key="end_message" />
         }
         
         return <div data-link-name="quiz">
