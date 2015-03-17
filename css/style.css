@@ -1,3 +1,8 @@
+html {
+    /* Do not include these in the thing that's spat out; but check they are in frontend.css */
+    -webkit-tap-highlight-color: transparent;
+}
+
 .quiz {
     font-family: "Guardian Egyptian Web", "Guardian Text Egyptian Web", Georgia, serif;
     color: #767676;
