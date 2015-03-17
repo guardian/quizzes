@@ -5,8 +5,10 @@ body {
 .quiz__answer {
     cursor: pointer;
     padding: 10px;
-    background-color: grey;
+    color: #333333; /* neutral-1 */
+    background-color: #eaeaea; /* neutral-6 */
     margin: 1px;
-    color: white;
 }
+
+
 
