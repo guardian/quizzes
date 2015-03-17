@@ -3,9 +3,7 @@ import map from 'lodash-node/modern/collection/map';
 
 export class Answer extends React.Component {
     render() {
-        return <div className="quiz-answer">
-                <li onClick={this.props.handleAnswer}>{this.props.answer.answer}</li>
-            </div>
+        return <div className="quiz-answer" onClick={this.props.handleAnswer}>{this.props.answer.answer}</div>
     }
 }
 
@@ -22,16 +20,17 @@ export class Question extends React.Component {
             answersShown;
 
         if (this.state.isAnswered) {
-            answersShown = <li>{this.state.isAnswered.answer}</li>;
+            answersShown = <div>{this.state.isAnswered.answer}</div>;
         } else {
-            answersShown = map(answers,
+            answersShown = map(
+                answers,
                 (answer, i) => <Answer answer={answer} handleAnswer={this.handleAnswer.bind(this, answer)} key={i} />
             )
         }
 
         return <div className={this.state.isAnswered ? 'isAnswered' : ''}>
             <h4>{question.question}</h4>
-            <ul>{answersShown}</ul>
+            <div>{answersShown}</div>
         </div>
     }
 }
