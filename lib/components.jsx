@@ -8,7 +8,7 @@ import classnames from 'classnames';
 export class Answer extends React.Component {
     render() {
         return <div 
-            data-link-name={"answer " + this.props.index}
+            data-link-name={"answer " + (this.props.index + 1)}
             className={classnames({
                 'quiz__answer': true,
                 'quiz__answer--correct': this.props.isAnswered() && this.props.answer.correct,
@@ -43,7 +43,7 @@ export class Question extends React.Component {
         const question = this.props.question,
               answers = question.multiChoiceAnswers;
 
-        return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
+        return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({isAnswered: this.isAnswered()})}>
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>
@@ -51,7 +51,7 @@ export class Question extends React.Component {
             <div>{
                 map(
                     answers,
-                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered.bind(this)} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} key={i} />
+                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered.bind(this)} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
                 )                
             }</div>
         </div>
