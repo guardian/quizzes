@@ -58,8 +58,8 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
-        return <div class="quiz__end-message">
-            <div class="quiz__score">{this.props.score}/{this.props.length}</div>
+        return <div className="quiz__end-message">
+            <div className="quiz__score">{this.props.score}/{this.props.length}</div>
 
             <p>Well done! ... some more stuff here</p>
         </div>
