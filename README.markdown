@@ -1,3 +1,3 @@
-# Guardian quizes
+# Guardian quizzes
 
-Next-gen Guardian quizes
+Next-gen Guardian quizzes
