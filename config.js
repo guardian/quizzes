@@ -9,11 +9,7 @@ System.config({
 
 System.config({
   "map": {
-<<<<<<< HEAD
-    "ded/qwery": "github:ded/qwery@4.0.0",
-=======
     "classnames": "npm:classnames@1.1.4",
->>>>>>> 4b764a434da2e85812b4cd2f0e74d3b7dcc460c8
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
     "lodash-node": "npm:lodash-node@3.5.0",
     "qwery": "github:ded/qwery@4.0.0",
