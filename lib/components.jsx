@@ -15,7 +15,7 @@ export class Answer extends React.Component {
                 'quiz__answer--incorrect': this.props.isAnswered() && this.props.answer.isChosen && !this.props.answer.correct
             })}            
             onClick={this.props.isAnswered() ? null : this.props.chooseAnswer}>
-          <input type="checkbox" /> {this.props.answer.answer}
+            {this.props.answer.answer}
         </div>
     }
 }
