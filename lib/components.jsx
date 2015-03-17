@@ -21,7 +21,7 @@ export class Question extends React.Component {
             <ol>{
                 map(
                     this.props.question.multiChoiceAnswers,
-                    (answer) => <Answer answer={answer} />
+                    (answer, i) => <Answer answer={answer} key={i} />
                 )
             }</ol>
         </div>
@@ -36,7 +36,7 @@ export class Quiz extends React.Component {
             {
                 map(
                     this.props.questions,
-                    (question) => <Question question={question} />
+                    (question, i) => <Question question={question} key={i} />
                 )
             }
         </div>
