@@ -1,5 +1,6 @@
 import React from 'react';
-import find from 'lodash-node/modern/collection/find';
+import {countWhere} from './utils';
+import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import classnames from 'classnames';
 
@@ -11,9 +12,21 @@ export class Answer extends React.Component {
     }
 }
 
+function isAnswered(question) {
+    return any(question.multiChoiceAnswers, (a) => a.isChosen);
+}
+
+function isCorrect(question) {
+    return any(question.multiChoiceAnswers, (a) => a.isChosen && a.isCorrect);
+}
+
 export class Question extends React.Component {
     isAnswered() {
-        return !!find(this.props.multiChoiceAnswers, (a) => a.isChosen);
+        return isAnswered(this.props);
+    }
+
+    isCorrect() {
+        return isCorrect(this.props);
     }
 
     render() {
@@ -53,6 +66,22 @@ export class Quiz extends React.Component {
     chooseAnswer(answer) {
         answer.isChosen = true;
         this.forceUpdate();
+    }
+
+    length() {
+        return this.state.questions.length;
+    }
+
+    isFinished() {
+        return this.progress() === this.length();
+    }
+
+    progress() {
+        return countWhere(this.state.questions, isAnswered);
+    }
+
+    score() {
+        return countWhere(this.state.questions, isCorrect);
     }
 
     render() {
