@@ -102,7 +102,6 @@ export class Quiz extends React.Component {
         }
         
         return <div data-link-name="quiz">
-            <h2>{this.props.header.titleText}</h2>
             <p>{this.props.header.trailText}</p>
             {
                 map(
