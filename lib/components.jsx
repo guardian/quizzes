@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
-        return <div className="quiz__answer" onClick={this.props.chooseAnswer}>
+        return <div data-link-name={"answer " + this.props.index} className="quiz__answer" onClick={this.props.chooseAnswer}>
           <input type="checkbox" />{this.props.answer.answer}
         </div>
     }
@@ -36,7 +36,7 @@ export class Question extends React.Component {
             )
         }
 
-        return <div className={classnames({isAnswered: this.isAnswered()})}>
+        return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
             <h4>{question.question}</h4>
             <div>{answersShown}</div>
         </div>
@@ -56,13 +56,13 @@ export class Quiz extends React.Component {
     }
 
     render() {
-        return <div>
+        return <div data-link-name="quiz">
             <h2>{this.props.header.titleText}</h2>
             <p>{this.props.header.trailText}</p>
             {
                 map(
                     this.state.questions,
-                    (question, i) => <Question question={question} chooseAnswer={this.chooseAnswer.bind(this)} key={i} />
+                    (question, i) => <Question question={question} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
                 )
             }
         </div>
