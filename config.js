@@ -10,6 +10,7 @@ System.config({
 System.config({
   "map": {
     "classnames": "npm:classnames@1.1.4",
+    "ded/qwery": "github:ded/qwery@4.0.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
     "lodash-node": "npm:lodash-node@3.5.0",
     "qwery": "github:ded/qwery@4.0.0",
