@@ -1,4 +1,5 @@
 import React from 'react';
+import find from 'lodash-node/modern/collection/find';
 import map from 'lodash-node/modern/collection/map';
 
 export class Answer extends React.Component {
@@ -17,10 +18,19 @@ export class Question extends React.Component {
     render() {
         var question = this.props.question,
             answers = question.multiChoiceAnswers,
+            correctAnswer = find(answers, function(a) {return a.correct}),
+            answer = this.state.isAnswered,
+            isCorrect,
             answersShown;
 
-        if (this.state.isAnswered) {
-            answersShown = <div>{this.state.isAnswered.answer}</div>;
+        console.log(correctAnswer);
+
+        if (answer) {
+            isCorrect = answer.correct;
+            answersShown = <div className={isCorrect ? 'correct' : 'inCorrect'}>
+                <div>{isCorrect ? 'Correct' : 'Wrong'} : {answer.answer}</div>
+                {isCorrect ? '' : <div>The right answer is: {correctAnswer.answer}</div>}
+            </div>;
         } else {
             answersShown = map(
                 answers,
