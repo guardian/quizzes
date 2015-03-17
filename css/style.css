@@ -17,6 +17,7 @@
 }
 
 .quiz__answer {
+    position: relative;
     cursor: pointer;
     color: #767676; /* neutral-2 */
     background-color: #f6f6f6; /* neutral-8 */
@@ -32,4 +33,11 @@
 .quiz__answer--incorrect {
     background-color: #BB001A; /* ??? */
     color: #ffffff;
+}
+
+.quiz__answer__icon {
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    font-size: 21px;
 }
