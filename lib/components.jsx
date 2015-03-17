@@ -7,7 +7,7 @@ export class Answer extends React.Component {
     }
     
     render() {
-        return <div class="quiz-answer">
+        return <div className="quiz-answer">
                 <li onClick={this.handleAnswer}>{this.props.answer.answer}</li>
             </div>
     }
@@ -16,7 +16,7 @@ export class Answer extends React.Component {
 
 export class Question extends React.Component {
     render() {
-        return <div class="quiz-question">
+        return <div className="quiz-question">
             <h4>{this.props.question.question}</h4>
             <ol>{
                 map(
