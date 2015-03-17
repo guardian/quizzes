@@ -17,7 +17,7 @@ export class Answer extends React.Component {
                 'quiz__answer--incorrect-chosen': this.props.isAnswered() && this.props.answer.isChosen && !this.props.answer.correct
             })}            
             onClick={this.props.isAnswered() ? null : this.props.chooseAnswer}>
-            <span className={'quiz__answer__icon'} >{this.props.answer.isChosen ? this.props.answer.correct ? <span>&#10004;</span> : <span>&#10007;</span> : ''}</span>
+            <span className={'quiz__answer-icon'} >{this.props.answer.isChosen ? this.props.answer.correct ? <span>&#10004;</span> : <span>&#10007;</span> : ''}</span>
             {this.props.answer.answer}
         </div>
     }
@@ -62,9 +62,9 @@ export class Question extends React.Component {
 export class EndMessage extends React.Component {
     render() {
         return <div className="quiz__end-message">
-            <div className="quiz__score">{this.props.score}/{this.props.length}</div>
+            <div className="quiz__score-message">You got <span className="quiz__score">{this.props.score}/{this.props.length}</span></div>
 
-            <p>{this.props.message}</p>
+            <div className="quiz__bucket-message">{this.props.message}</div>
         </div>
     }
 }

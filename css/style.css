@@ -52,9 +52,30 @@
     color: #ffffff;
 }
 
-.quiz__answer__icon {
+.quiz__answer-icon {
     position: absolute;
     left: 6px;
     top: 5px;
     font-size: 26px;
+}
+
+.quiz__end-message {
+    border-top: 1px solid #aad8f1; /* news-support-1 */
+    background-color: #f6f6f6; /* neutral-8 */
+    padding: 30px 12px 10px 12px;
+}
+
+.quiz__score-message {
+    font-weight: 500;
+    color: #333333; /* neutral-1 */
+}
+
+.quiz__score {
+    font-size: 24px;
+    margin-left: 4px;
+}
+
+.quiz__bucket-message {
+    margin-top: 10px;
+    margin-bottom: 24px;
 }
