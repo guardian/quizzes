@@ -4,9 +4,9 @@ import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
-        return <li className="quiz__answer" onClick={this.props.handleAnswer}>{
+        return <div className="quiz__answer" onClick={this.props.handleAnswer}>{
             this.props.answer.answer
-        }</li>
+        }</div>
     }
 }
 
@@ -23,16 +23,17 @@ export class Question extends React.Component {
             answersShown;
 
         if (this.state.isAnswered) {
-            answersShown = <li>{this.state.isAnswered.answer}</li>;
+            answersShown = <div>{this.state.isAnswered.answer}</div>;
         } else {
-            answersShown = map(answers,
+            answersShown = map(
+                answers,
                 (answer, i) => <Answer answer={answer} handleAnswer={this.handleAnswer.bind(this, answer)} key={i} />
             )
         }
 
         return <div className={classnames({isAnswered: this.state.isAnswered})}>
             <h4>{question.question}</h4>
-            <ul className="quiz__answers">{answersShown}</ul>
+            <div>{answersShown}</div>
         </div>
     }
 }
