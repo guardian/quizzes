@@ -51,7 +51,7 @@ export class Question extends React.Component {
         }
 
         return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
-            <h4>{question.question}</h4>
+            <h4 className="quiz__question-text">{question.question}</h4>
             <div>{answersShown}</div>
         </div>
     }
@@ -117,8 +117,8 @@ export class Quiz extends React.Component {
                                      key="end_message" />
         }
         
-        return <div data-link-name="quiz">
-            <h2>{this.props.header.titleText}</h2>
+        return <div data-link-name="quiz" className="quiz">
+            <h2 className="quiz__title">{this.props.header.titleText}</h2>
             <p>{this.props.header.trailText}</p>
             {
                 map(
