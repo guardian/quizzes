@@ -17,7 +17,7 @@ function isAnswered(question) {
 }
 
 function isCorrect(question) {
-    return any(question.multiChoiceAnswers, (a) => a.isChosen && a.isCorrect);
+    return any(question.multiChoiceAnswers, (a) => a.isChosen && a.correct);
 }
 
 export class Question extends React.Component {
@@ -86,7 +86,7 @@ export class Quiz extends React.Component {
 
     render() {
         return <div data-link-name="quiz">
-            <h2>{this.props.header.titleText}</h2>
+            <h2>{this.props.header.titleText} ({this.score()}/{this.progress()})</h2>
             <p>{this.props.header.trailText}</p>
             {
                 map(
