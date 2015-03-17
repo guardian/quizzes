@@ -17,7 +17,7 @@ function isAnswered(question) {
 }
 
 function isCorrect(question) {
-    return any(question.multiChoiceAnswers, (a) => a.isChosen && a.isCorrect);
+    return any(question.multiChoiceAnswers, (a) => a.isChosen && a.correct);
 }
 
 export class Question extends React.Component {
@@ -56,6 +56,16 @@ export class Question extends React.Component {
     }
 }
 
+export class EndMessage extends React.Component {
+    render() {
+        return <div className="quiz__end-message">
+            <div className="quiz__score">{this.props.score}/{this.props.length}</div>
+
+            <p>Well done! ... some more stuff here</p>
+        </div>
+    }
+}
+
 export class Quiz extends React.Component {
     constructor(props) {
         this.state = {
@@ -85,6 +95,12 @@ export class Quiz extends React.Component {
     }
 
     render() {
+        let endMessage;
+
+        if (this.isFinished()) {
+            endMessage = <EndMessage score={this.score()} length={this.length()} key="end_message" />
+        }
+        
         return <div data-link-name="quiz">
             <h2>{this.props.header.titleText}</h2>
             <p>{this.props.header.trailText}</p>
@@ -93,6 +109,9 @@ export class Quiz extends React.Component {
                     this.state.questions,
                     (question, i) => <Question question={question} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
                 )
+            }
+            {
+                endMessage
             }
         </div>
     }
