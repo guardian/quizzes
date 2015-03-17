@@ -10,5 +10,11 @@ body {
     margin: 1px;
 }
 
+.quiz__answer--correct {
+    background-color: #ccffcc;
+}
 
+.quiz__answer--incorrect {
+    background-color: #ffcccc;
+}
 

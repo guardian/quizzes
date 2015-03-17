@@ -5,40 +5,35 @@ import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
-        return <div className="quiz__answer" onClick={this.props.chooseAnswer}>
-          <input type="checkbox" />{this.props.answer.answer}
+        return <div 
+            className={classnames({
+                'quiz__answer': true,
+                'quiz__answer--correct': this.props.isAnswered() && this.props.answer.correct,
+                'quiz__answer--incorrect': this.props.isAnswered() && this.props.answer.isChosen && !this.props.answer.correct
+            })}            
+            onClick={this.props.isAnswered() ? null : this.props.chooseAnswer}>
+          <input type="checkbox" /> {this.props.answer.answer}
         </div>
     }
 }
 
 export class Question extends React.Component {
     isAnswered() {
-        return !!find(this.props.multiChoiceAnswers, (a) => a.isChosen);
+        return !!find(this.props.question.multiChoiceAnswers, (a) => a.isChosen);
     }
 
     render() {
         var question = this.props.question,
-            answers = question.multiChoiceAnswers,
-            chosenAnswer = this.isAnswered(),
-            isCorrect,
-            answersShown;
-
-        if (chosenAnswer) {
-            isCorrect = chosenAnswer.correct;
-            answersShown = <div className={isCorrect ? 'correct' : 'inCorrect'}>
-                <div>{isCorrect ? 'Correct' : 'Wrong'} : {chosenAnswer.answer}</div>
-                {isCorrect ? '' : <div>The right answer is: {correctAnswer.answer}</div>}
-            </div>;
-        } else {
-            answersShown = map(
-                answers,
-                (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} key={i} />
-            )
-        }
+            answers = question.multiChoiceAnswers;
 
         return <div className={classnames({isAnswered: this.isAnswered()})}>
             <h4>{question.question}</h4>
-            <div>{answersShown}</div>
+            <div>{
+                map(
+                    answers,
+                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered.bind(this)} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} key={i} />
+                )                
+            }</div>
         </div>
     }
 }
