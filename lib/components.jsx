@@ -38,8 +38,8 @@ export class Question extends React.Component {
     }
 
     render() {
-        var question = this.props.question,
-            answers = question.multiChoiceAnswers;
+        const question = this.props.question,
+              answers = question.multiChoiceAnswers;
 
         return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
             <h4 className="quiz__question-text">{question.question}</h4>
