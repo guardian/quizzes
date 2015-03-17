@@ -4,9 +4,9 @@ import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
-        return <div className="quiz-answer">
-                <li onClick={this.props.handleAnswer}>{this.props.answer.answer}</li>
-            </div>
+        return <li className="quiz-answer" onClick={this.props.handleAnswer}>{
+            this.props.answer.answer
+        }</li>
     }
 }
 
