@@ -25,11 +25,11 @@
 }
 
 .quiz__answer--correct {
-    background-color: #4a7801; /* success */
+    background-color: #43B347; /* ??? */
     color: #ffffff;
 }
 
 .quiz__answer--incorrect {
-    background-color: #d61d00; /* error */
+    background-color: #BB001A; /* ??? */
     color: #ffffff;
 }
