@@ -1,5 +1,6 @@
 import React from 'react';
 import map from 'lodash-node/modern/collection/map';
+import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
@@ -29,7 +30,7 @@ export class Question extends React.Component {
             )
         }
 
-        return <div className={this.state.isAnswered ? 'isAnswered' : ''}>
+        return <div className={classNames({isAnswered: this.state.isAnswered})}>
             <h4>{question.question}</h4>
             <ul>{answersShown}</ul>
         </div>
