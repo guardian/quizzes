@@ -12,6 +12,7 @@ export class Answer extends React.Component {
             className={classnames({
                 'quiz__answer': true,
                 'quiz__answer--correct': this.props.isAnswered() && this.props.answer.correct,
+                'quiz__answer--correct-chosen': this.props.isAnswered() && this.props.answer.correct && this.props.answer.isChosen,
                 'quiz__answer--incorrect': this.props.isAnswered() && this.props.answer.isChosen && !this.props.answer.correct
             })}            
             onClick={this.props.isAnswered() ? null : this.props.chooseAnswer}>

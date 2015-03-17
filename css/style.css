@@ -26,12 +26,17 @@
 }
 
 .quiz__answer--correct {
-    background-color: #00BD65; /* ??? */
-    color: #ffffff;
+    color: #333;
+    background-color: #c6e8d0; /* ??? */
+}
+
+.quiz__answer--correct-chosen {
+    background-color: #43B347; /* ??? */
+    color: #ffffff;    
 }
 
 .quiz__answer--incorrect {
-    background-color: #C71F29; /* ??? */
+    background-color: #BB001A; /* ??? */
     color: #ffffff;
 }
 
