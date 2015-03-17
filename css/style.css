@@ -11,6 +11,11 @@
     color: #333333; /* neutral-1 */
 }
 
+.quiz__question-number {
+    margin-right: 12px;
+    font-size: 24px;
+}
+
 .quiz__answer {
     cursor: pointer;
     color: #767676; /* neutral-2 */
