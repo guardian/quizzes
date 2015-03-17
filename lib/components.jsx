@@ -1,9 +1,12 @@
 import React from 'react';
 import map from 'lodash-node/modern/collection/map';
+import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
-        return <div className="quiz-answer" onClick={this.props.handleAnswer}>{this.props.answer.answer}</div>
+        return <div className="quiz__answer" onClick={this.props.handleAnswer}>
+          <input type="checkbox" />{this.props.answer.answer}
+        </div>
     }
 }
 
@@ -28,7 +31,7 @@ export class Question extends React.Component {
             )
         }
 
-        return <div className={this.state.isAnswered ? 'isAnswered' : ''}>
+        return <div className={classnames({isAnswered: this.state.isAnswered})}>
             <h4>{question.question}</h4>
             <div>{answersShown}</div>
         </div>
