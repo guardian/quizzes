@@ -1,5 +1,6 @@
 System.config({
   "baseURL": "/",
+  "transpiler": "babel",
   "paths": {
     "*": "*.js",
     "github:*": "jspm_packages/github/*.js",
@@ -10,6 +11,7 @@ System.config({
 
 System.config({
   "map": {
+    "babel": "npm:babel@4.7.15",
     "classnames": "npm:classnames@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.6",
     "ded/qwery": "github:ded/qwery@4.0.0",
@@ -18,7 +20,6 @@ System.config({
     "qwery": "github:ded/qwery@4.0.0",
     "react": "npm:react@0.13.1",
     "reqwest": "github:ded/reqwest@1.1.5",
-    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.1"
     },
