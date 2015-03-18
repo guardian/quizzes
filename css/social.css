@@ -1,7 +1,19 @@
+.quiz__share__cta {
+    padding: 0.5em 0;
+    font-weight: 500;
+    font-size: 24px;
+}
 
 .social__action {
     display: inline-block;
     width: 50%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.social__action--nth {
+    padding-left: 0.5em;
 }
 
 .i-share-twitter--white {
