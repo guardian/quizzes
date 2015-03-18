@@ -13,7 +13,7 @@ export class Answer extends React.Component {
         let icon;
 
         if (isChosen) {
-            let symbol = correct ? <span>&#10004;</span> : <span>&#10007</span>;
+            let symbol = correct ? <span>&#10004;</span> : <span>&#10007;</span>;
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }
         
