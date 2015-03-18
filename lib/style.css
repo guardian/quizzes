@@ -7,6 +7,10 @@
     color: #333333; /* neutral-1 */
 }
 
+.quiz__question {
+    margin-bottom: 36px;
+}
+
 .quiz__question-header {
     color: #333333; /* neutral-1 */
     display: table;
@@ -38,8 +42,8 @@
 }
 
 .quiz__answer--correct {
+    background: #D5F2C2;
     color: #333;
-    background-color: #c6e8d0; /* ??? */
 }
 
 .quiz__answer--correct-chosen {
@@ -61,6 +65,7 @@
     left: 6px;
     top: 5px;
     font-size: 26px;
+    color: #ffffff;
 }
 
 .quiz__answer__more {

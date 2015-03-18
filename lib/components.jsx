@@ -21,8 +21,8 @@ export class Answer extends React.Component {
 
         let icon;
 
-        if (isChosen) {
-            let symbol = correct ? tick : cross;
+        if (answered && (isChosen || correct)) {
+            let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }
 
@@ -32,7 +32,7 @@ export class Answer extends React.Component {
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
             {this.props.answer.answer}
-            {answered && (correct || isChosen) ? <div className="quiz__answer__more">{more}</div> : ''}
+            {answered && more && (correct || isChosen) ? <div className="quiz__answer__more">{more}</div> : ''}
         </div>
     }
 }
@@ -58,7 +58,7 @@ export class Question extends React.Component {
         const question = this.props.question,
               answers = question.multiChoiceAnswers;
 
-        return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({isAnswered: this.isAnswered()})}>
+        return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>
