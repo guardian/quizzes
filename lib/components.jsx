@@ -93,11 +93,10 @@ export class EndMessage extends React.Component {
 
 export class ShareTwitter extends React.Component {
 
-    campaign() {'?CMP=share_result_tw' }
-
     render() {
+        let campaign = '?CMP=share_result_tw';
 
-        let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + this.campaign());
+        let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + campaign);
 
         let emphasis = "";
 
@@ -111,11 +110,10 @@ export class ShareTwitter extends React.Component {
 
 export class ShareFacebook extends React.Component {
 
-    campaign() {'?CMP=share_result_fb' }
-
     render() {
+        let campaign = '?CMP=share_result_fb';
 
-        let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + this.campaign()) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
+        let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + campaign) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
         // picture, description, caption
         // display=popup
 
