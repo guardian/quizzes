@@ -86,22 +86,52 @@ export class EndMessage extends React.Component {
     }
 }
 
+export class ShareTwitter extends React.Component {
+    render() {
+
+        let campaign = '?CMP=share_result_tw';
+        let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + campaign);
+
+        return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Twitter">
+        <span className="social-icon social-icon--twitter">
+        <i className="i-share-twitter--white i"></i>
+        </span>
+        </a>
+    }
+}
+
+export class ShareFacebook extends React.Component {
+    render() {
+
+        let campaign = '?CMP=share_result_fb';
+        let href = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(this.props.url + campaign);
+
+        return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Facebook">
+        <span className="social-icon social-icon--facebook">
+        <i className="i-share-facebook--white i"></i>
+        </span>
+        </a>
+    }
+}
+
 export class Share extends React.Component {
     render() {
         let message = this.props.message.replace(/_/, this.props.score).replace(/_/, this.props.length);
 
         let ourUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-        let twitterCampaign = '?CMP=share_result_tw';
-        let dataLinkName = 'social results';
-        let twitterHref = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(message) + '&url=' + encodeURIComponent(ourUrl + twitterCampaign)
+
+        let twitter = <ShareTwitter url={ourUrl}
+                        message={message}
+                        key="shareTwitter" />
+
+        let facebook = <ShareFacebook url={ourUrl}
+                        message={message}
+                        key="shareFacebook" />
 
         return <div className="quiz__share">
             <div>Challenge a friend</div>
-            <a className="social__action social-icon-wrapper" data-link-name={dataLinkName} href={twitterHref} target="_blank" title="Twitter">
-                <span className="rounded-icon social-icon social-icon--twitter">
-                    <i className="i-share-twitter--white i"></i>
-                </span>
-            </a>
+        {twitter}
+        {facebook}
 
         </div>
     }
