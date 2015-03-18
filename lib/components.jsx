@@ -3,6 +3,7 @@ import {countWhere} from './utils';
 import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
+import merge from 'lodash-node/modern/object/merge';
 import classnames from 'classnames';
 
 const tick = <svg className="quiz__answer-icon-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path fill="#fff" d="M23.895 3.215L10.643 16.467 5.235 11.06 1.7 14.594l5.407 5.407 3.182 3.183.353.353L27.43 6.75z"/></svg>;
@@ -12,7 +13,14 @@ const cross = <svg className="quiz__answer-icon-svg" xmlns="http://www.w3.org/20
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
-              {correct, isChosen} = this.props.answer;
+              {correct, more, isChosen} = this.props.answer,
+              classesNames = merge({'quiz__answer': true}, answered ? {
+                  'quiz__answer--answered': true,
+                  'quiz__answer--correct': correct,
+                  'quiz__answer--correct-chosen': correct && isChosen,
+                  'quiz__answer--incorrect-chosen': isChosen && !correct,    
+                  'quiz__answer--incorrect': !correct
+              } : null)
 
         let icon;
 
@@ -20,20 +28,14 @@ export class Answer extends React.Component {
             let symbol = correct ? tick : cross;
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }
-        
+
         return <div 
             data-link-name={"answer " + (this.props.index + 1)}
-            className={classnames({
-                'quiz__answer': true,
-                'quiz__answer--answered': answered,
-                'quiz__answer--correct': answered && correct,
-                'quiz__answer--correct-chosen': answered && correct && isChosen,
-                'quiz__answer--incorrect': answered && !correct,
-                'quiz__answer--incorrect-chosen': answered && isChosen && !correct
-            })}            
+            className={classnames(classesNames)}            
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
             {this.props.answer.answer}
+            {answered && (correct || isChosen) ? <div className="quiz__answer__more">{more}</div> : ''}
         </div>
     }
 }

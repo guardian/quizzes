@@ -63,6 +63,12 @@
     font-size: 26px;
 }
 
+.quiz__answer__more {
+    margin-top: 6px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
 .quiz__end-message {
     border-top: 1px solid #aad8f1; /* news-support-1 */
     background-color: #f6f6f6; /* neutral-8 */
