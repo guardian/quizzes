@@ -5,10 +5,7 @@ import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import merge from 'lodash-node/modern/object/merge';
 import classnames from 'classnames';
-
-const tick = <svg className="quiz__answer-icon-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path fill="#fff" d="M23.895 3.215L10.643 16.467 5.235 11.06 1.7 14.594l5.407 5.407 3.182 3.183.353.353L27.43 6.75z"/></svg>;
-
-const cross = <svg className="quiz__answer-icon-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path fill="#fff" d="M24.247 7.633l-3.535-3.535-6.626 6.626L7.46 4.098 3.925 7.633l6.626 6.626-6.624 6.624L7.46 24.42l6.626-6.626 6.626 6.626 3.535-3.535-6.626-6.626z"/></svg>;
+import {cross, tick} from './svgs.jsx!';
 
 export class Answer extends React.Component {
     render() {
@@ -35,7 +32,7 @@ export class Answer extends React.Component {
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
             {this.props.answer.answer}
-            {answered && (correct || isChosen) ? <div className="quiz__answer__more">{more}</div> : ''}
+            {answered && more && (correct || isChosen) ? <div className="quiz__answer__more">{more}</div> : ''}
         </div>
     }
 }
@@ -86,22 +83,52 @@ export class EndMessage extends React.Component {
     }
 }
 
+export class ShareTwitter extends React.Component {
+    render() {
+
+        let campaign = '?CMP=share_result_tw';
+        let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + campaign);
+
+        return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Twitter">
+        <span className="social-icon social-icon--twitter">
+        <i className="i-share-twitter--white i"></i>
+        </span>
+        </a>
+    }
+}
+
+export class ShareFacebook extends React.Component {
+    render() {
+
+        let campaign = '?CMP=share_result_fb';
+        let href = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(this.props.url + campaign);
+
+        return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Facebook">
+        <span className="social-icon social-icon--facebook">
+        <i className="i-share-facebook--white i"></i>
+        </span>
+        </a>
+    }
+}
+
 export class Share extends React.Component {
     render() {
         let message = this.props.message.replace(/_/, this.props.score).replace(/_/, this.props.length);
 
         let ourUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-        let twitterCampaign = '?CMP=share_result_tw';
-        let dataLinkName = 'social results';
-        let twitterHref = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(message) + '&url=' + encodeURIComponent(ourUrl + twitterCampaign)
+
+        let twitter = <ShareTwitter url={ourUrl}
+                        message={message}
+                        key="shareTwitter" />
+
+        let facebook = <ShareFacebook url={ourUrl}
+                        message={message}
+                        key="shareFacebook" />
 
         return <div className="quiz__share">
             <div>Challenge a friend</div>
-            <a className="social__action social-icon-wrapper" data-link-name={dataLinkName} href={twitterHref} target="_blank" title="Twitter">
-                <span className="rounded-icon social-icon social-icon--twitter">
-                    <i className="i-share-twitter--white i"></i>
-                </span>
-            </a>
+        {twitter}
+        {facebook}
 
         </div>
     }
