@@ -131,7 +131,6 @@ export class Quiz extends React.Component {
         }
         
         return <div data-link-name="quiz" className="quiz">
-            <p>{this.props.header.trailText}</p>
             {
                 map(
                     this.state.questions,
