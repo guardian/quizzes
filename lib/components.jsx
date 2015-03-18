@@ -7,16 +7,28 @@ import classnames from 'classnames';
 
 export class Answer extends React.Component {
     render() {
+        const answered = this.props.isAnswered,
+              correct = this.props.answer.correct,
+              isChosen = this.props.answer.isChosen;
+
+        let icon;
+
+        if (isChosen) {
+            icon = correct ? <span>&#10004;</span> : <span>&#10007;</span>;
+        }
+        
         return <div 
-            data-link-name={"answer " + this.props.index}
+            data-link-name={"answer " + (this.props.index + 1)}
             className={classnames({
                 'quiz__answer': true,
-                'quiz__answer--correct': this.props.isAnswered() && this.props.answer.correct,
-                'quiz__answer--correct-chosen': this.props.isAnswered() && this.props.answer.correct && this.props.answer.isChosen,
-                'quiz__answer--incorrect': this.props.isAnswered() && this.props.answer.isChosen && !this.props.answer.correct
+                'quiz__answer--answered': answered,
+                'quiz__answer--correct': answered && correct,
+                'quiz__answer--correct-chosen': answered && correct && isChosen,
+                'quiz__answer--incorrect': answered && !correct,
+                'quiz__answer--incorrect-chosen': answered && isChosen && !correct
             })}            
-            onClick={this.props.isAnswered() ? null : this.props.chooseAnswer}>
-            <span className={'quiz__answer__icon'} >{this.props.answer.isChosen ? this.props.answer.correct ? <span>&#10004;</span> : <span>&#10007;</span> : ''}</span>
+            onClick={answered ? null : this.props.chooseAnswer}>
+            <span className={'quiz__answer-icon'}>{icon}</span>
             {this.props.answer.answer}
         </div>
     }
@@ -43,7 +55,7 @@ export class Question extends React.Component {
         const question = this.props.question,
               answers = question.multiChoiceAnswers;
 
-        return <div data-link-name={"question " + this.props.index} className={classnames({isAnswered: this.isAnswered()})}>
+        return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({isAnswered: this.isAnswered()})}>
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>
@@ -51,7 +63,7 @@ export class Question extends React.Component {
             <div>{
                 map(
                     answers,
-                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered.bind(this)} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} key={i} />
+                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
                 )                
             }</div>
         </div>
@@ -61,9 +73,9 @@ export class Question extends React.Component {
 export class EndMessage extends React.Component {
     render() {
         return <div className="quiz__end-message">
-            <div className="quiz__score">{this.props.score}/{this.props.length}</div>
+            <div className="quiz__score-message">You got <span className="quiz__score">{this.props.score}/{this.props.length}</span></div>
 
-            <p>{this.props.message}</p>
+            <div className="quiz__bucket-message">{this.props.message}</div>
         </div>
     }
 }
