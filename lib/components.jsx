@@ -94,13 +94,19 @@ export class EndMessage extends React.Component {
 export class ShareTwitter extends React.Component {
 
     render() {
-        let campaign = '?CMP=share_result_tw';
+        let campaign = '?CMP=share_result_tw'
 
         let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + campaign);
 
-        let emphasis = "";
+        let classNames = {
+            'quiz__social__action': true,
+            'quiz__social__action--nth': true,
+            'quiz__social--normal': !this.props.source,
+            'quiz__social--major': this.props.source && this.props.source.startsWith(campaign),
+            'quiz__social--minor': this.props.source && !this.props.source.startsWith(campaign)
+        };
 
-        return <a className="quiz__social__action {emphasis}" data-link-name="social results" href={href} target="_blank" title="Twitter">
+        return <a className={classnames(classNames)} data-link-name="social results" href={href} target="_blank" title="Twitter">
         <span className="quiz__share__outline quiz__share-twitter__outline">
         <i className="quiz__share-twitter__svg quiz__share__svg"></i>
         </span>
@@ -111,15 +117,22 @@ export class ShareTwitter extends React.Component {
 export class ShareFacebook extends React.Component {
 
     render() {
-        let campaign = '?CMP=share_result_fb';
+        
+        let campaign = '?CMP=share_result_fb'
 
         let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + campaign) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
         // picture, description, caption
         // display=popup
 
-        let emphasis = "";
+        let classNames = {
+            'quiz__social__action': true,
+            'quiz__social__action--nth': true,
+            'quiz__social--normal': !this.props.source,
+            'quiz__social--major': this.props.source && this.props.source.startsWith(campaign),
+            'quiz__social--minor': this.props.source && !this.props.source.startsWith(campaign)
+        };
 
-        return <a className="quiz__social__action {emphasis} quiz__social__action--nth" data-link-name="social results" href={href} target="_blank" title="Facebook">
+        return <a className={classnames(classNames)} data-link-name="social results" href={href} target="_blank" title="Facebook">
         <span className="quiz__share__outline quiz__share-facebook__outline">
         <i className="quiz__share-facebook__svg quiz__share__svg"></i>
         </span>
@@ -145,10 +158,11 @@ export class Share extends React.Component {
                         source={source}
                         key="shareFacebook" />
 
+        let share = source && source.startsWith('?CMP=share_result_tw') ? [twitter,facebook] : [facebook, twitter]
+
         return <div className="quiz__share">
             <div className="quiz__share__cta">Challenge your friends</div>
-        {twitter}
-        {facebook}
+        {share}
 
         </div>
     }

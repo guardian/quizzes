@@ -4,9 +4,20 @@
     font-size: 24px;
 }
 
+.quiz__social--normal {
+    width: 50%;
+}
+
+.quiz__social--major {
+    width: 80%;
+}
+
+.quiz__social--minor {
+    width: 20%;
+}
+
 .quiz__social__action {
     display: inline-block;
-    width: 50%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
