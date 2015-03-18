@@ -21,8 +21,8 @@ export class Answer extends React.Component {
 
         let icon;
 
-        if (isChosen) {
-            let symbol = correct ? tick : cross;
+        if (answered && (isChosen || correct)) {
+            let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }
 
@@ -58,7 +58,7 @@ export class Question extends React.Component {
         const question = this.props.question,
               answers = question.multiChoiceAnswers;
 
-        return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({isAnswered: this.isAnswered()})}>
+        return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>
@@ -101,7 +101,9 @@ export class ShareFacebook extends React.Component {
     render() {
 
         let campaign = '?CMP=share_result_fb';
-        let href = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(this.props.url + campaign);
+        let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + campaign) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
+        // picture, description, caption
+        // display=popup
 
         return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Facebook">
         <span className="social-icon social-icon--facebook">
@@ -151,7 +153,7 @@ export class Quiz extends React.Component {
     }
 
     isFinished() {
-        return this.progress() === this.length();
+        return true;//this.progress() === this.length();
     }
 
     progress() {
