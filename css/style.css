@@ -33,6 +33,10 @@
     margin-bottom: 12px;
 }
 
+.quiz__answer--answered {
+    cursor: default;
+}
+
 .quiz__answer--correct {
     color: #333;
     background-color: #c6e8d0; /* ??? */
