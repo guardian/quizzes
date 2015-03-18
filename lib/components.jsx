@@ -4,6 +4,7 @@ import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import merge from 'lodash-node/modern/object/merge';
+import startsWith from 'lodash-node/modern/string/startsWith';
 import classnames from 'classnames';
 import {cross, tick} from './svgs.jsx!';
 
@@ -75,7 +76,6 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
-
         let shareButtons = <Share score={this.props.score}
             message={this.props.message.share}
             length={this.props.length}
@@ -102,8 +102,8 @@ export class ShareTwitter extends React.Component {
             'quiz__social__action': true,
             'quiz__social__action--nth': true,
             'quiz__social--normal': !this.props.source,
-            'quiz__social--major': this.props.source && this.props.source.startsWith(campaign),
-            'quiz__social--minor': this.props.source && !this.props.source.startsWith(campaign)
+            'quiz__social--major': this.props.source && startsWith(this.props.source, campaign),
+            'quiz__social--minor': this.props.source && !startsWith(this.props.source, campaign)
         };
 
         return <a className={classnames(classNames)} data-link-name="social results" href={href} target="_blank" title="Twitter">
@@ -128,8 +128,8 @@ export class ShareFacebook extends React.Component {
             'quiz__social__action': true,
             'quiz__social__action--nth': true,
             'quiz__social--normal': !this.props.source,
-            'quiz__social--major': this.props.source && this.props.source.startsWith(campaign),
-            'quiz__social--minor': this.props.source && !this.props.source.startsWith(campaign)
+            'quiz__social--major': this.props.source && startsWith(this.props.source, campaign),
+            'quiz__social--minor': this.props.source && !startsWith(this.props.source, campaign)
         };
 
         return <a className={classnames(classNames)} data-link-name="social results" href={href} target="_blank" title="Facebook">
@@ -158,7 +158,7 @@ export class Share extends React.Component {
                         source={source}
                         key="shareFacebook" />
 
-        let share = source && source.startsWith('?CMP=share_result_tw') ? [twitter,facebook] : [facebook, twitter]
+        let share = source && startsWith(source, '?CMP=share_result_tw') ? [twitter,facebook] : [facebook, twitter];
 
         return <div className="quiz__share">
             <div className="quiz__share__cta">Challenge your friends</div>
