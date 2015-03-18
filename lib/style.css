@@ -74,6 +74,21 @@
     opacity: 0.8;
 }
 
+.quiz__answer__more a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.quiz__answer--correct .quiz__answer__more a {
+    color: #333333;
+    text-decoration: underline;
+}
+
+.quiz__answer--correct-chosen .quiz__answer__more a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 .quiz__end-message {
     border-top: 1px solid #aad8f1; /* news-support-1 */
     background-color: #f6f6f6; /* neutral-8 */
