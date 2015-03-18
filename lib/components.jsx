@@ -69,6 +69,27 @@ export class EndMessage extends React.Component {
     }
 }
 
+export class Share extends React.Component {
+    render() {
+        let message = this.props.message.replace(/_/, this.props.score).replace(/_/, this.props.length);
+
+        let ourUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        let twitterCampaign = '?CMP=share_result_tw';
+        let dataLinkName = 'social results';
+        let twitterHref = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(message) + '&url=' + encodeURIComponent(ourUrl + twitterCampaign)
+
+        return <div className="quiz__share">
+            <div>Challenge a friend</div>
+            <a className="social__action social-icon-wrapper" data-link-name={dataLinkName} href={twitterHref} target="_blank" title="Twitter">
+                <span className="rounded-icon social-icon social-icon--twitter">
+                    <i className="i-share-twitter--white i"></i>
+                </span>
+            </a>
+
+        </div>
+    }
+}
+
 export class Quiz extends React.Component {
     constructor(props) {
         this.state = {
@@ -106,17 +127,23 @@ export class Quiz extends React.Component {
                   (group) => score >= minScore(group) && score <= maxScore(group)
               );
 
-        return message ? message.title : "Well done!";
+        return message ? message : "Well done!";
     }
 
     render() {
         let endMessage;
+        let shareButtons;
 
         if (this.isFinished()) {
             endMessage = <EndMessage score={this.score()}
-                                     message={this.endMessage()}
-                                     length={this.length()} 
+                                     message={this.endMessage().title}
+                                     length={this.length()}
                                      key="end_message" />
+            shareButtons = <Share score={this.score()}
+                                     message={this.endMessage().share}
+                                     length={this.length()}
+                                     key="share" />
+
         }
         
         return <div data-link-name="quiz" className="quiz">
@@ -130,6 +157,9 @@ export class Quiz extends React.Component {
             }
             {
                 endMessage
+            }
+            {
+                shareButtons
             }
         </div>
     }
