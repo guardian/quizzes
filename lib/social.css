@@ -1,6 +1,19 @@
+.quiz__share__cta {
+    padding: 0.5em 0;
+    font-weight: 500;
+    font-size: 24px;
+}
 
 .social__action {
     display: inline-block;
+    width: 50%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.social__action--nth {
+    padding-left: 0.5em;
 }
 
 .i-share-twitter--white {
@@ -19,20 +32,23 @@
     background-color: #3067a3;
 }
 
+.quiz__share {
+    width: 100%
+}
+
 .social-icon {
     display: block;
 
-    width: 80px;
+    width: 100%;
     height: 80px;
     padding: 0;
-    border-radius: 62.5rem;
 
 }
 
 i {
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
+    width: 80px;
+    height: 80px;
+    vertical-align: central;
     background-size: 88%;
     background-position: center;
     display: inline-block;

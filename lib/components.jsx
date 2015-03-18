@@ -75,10 +75,18 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
+
+        let shareButtons = <Share score={this.props.score}
+            message={this.props.message.share}
+            length={this.props.length}
+            key="share" />
+
         return <div className="quiz__end-message">
             <div className="quiz__score-message">You got <span className="quiz__score">{this.props.score}/{this.props.length}</span></div>
 
-            <div className="quiz__bucket-message">{this.props.message}</div>
+            <div className="quiz__bucket-message">{this.props.message.title}</div>
+
+            {shareButtons}
         </div>
     }
 }
@@ -101,9 +109,11 @@ export class ShareFacebook extends React.Component {
     render() {
 
         let campaign = '?CMP=share_result_fb';
-        let href = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(this.props.url + campaign);
+        let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + campaign) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
+        // picture, description, caption
+        // display=popup
 
-        return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Facebook">
+        return <a className="social__action social__action--nth" data-link-name="social results" href={href} target="_blank" title="Facebook">
         <span className="social-icon social-icon--facebook">
         <i className="i-share-facebook--white i"></i>
         </span>
@@ -126,7 +136,7 @@ export class Share extends React.Component {
                         key="shareFacebook" />
 
         return <div className="quiz__share">
-            <div>Challenge a friend</div>
+            <div className="quiz__share__cta">Challenge your friends</div>
         {twitter}
         {facebook}
 
@@ -176,17 +186,12 @@ export class Quiz extends React.Component {
 
     render() {
         let endMessage;
-        let shareButtons;
 
         if (this.isFinished()) {
             endMessage = <EndMessage score={this.score()}
-                                     message={this.endMessage().title}
+                                     message={this.endMessage()}
                                      length={this.length()}
                                      key="end_message" />
-            shareButtons = <Share score={this.score()}
-                                     message={this.endMessage().share}
-                                     length={this.length()}
-                                     key="share" />
 
         }
         
@@ -199,9 +204,6 @@ export class Quiz extends React.Component {
             }
             {
                 endMessage
-            }
-            {
-                shareButtons
             }
         </div>
     }
