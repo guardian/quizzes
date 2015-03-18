@@ -1,5 +1,5 @@
 .quiz {
-    font-family: "Guardian Egyptian Web", "Guardian Text Egyptian Web", Georgia, serif;
+    font-family: "Guardian Text Egyptian Web", "Guardian Egyptian Web", Georgia, serif;
     color: #767676;
 }
 
@@ -14,6 +14,7 @@
 .quiz__question-header {
     color: #333333; /* neutral-1 */
     display: table;
+    margin-bottom: 10px;
 }
 
 .quiz__question-text {
@@ -30,7 +31,11 @@
 
 .quiz__answer {
     position: relative;
-    cursor: pointer;
+    display: block;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
     color: #767676; /* neutral-2 */
     background-color: #f6f6f6; /* neutral-8 */
     padding: 12px 30px;
