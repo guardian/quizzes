@@ -75,6 +75,7 @@
 }
 
 .quiz__score {
+    color: #005689;
     font-size: 24px;
     margin-left: 4px;
 }
