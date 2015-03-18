@@ -4,7 +4,7 @@ System.config({
     "*": "*.js",
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js",
-    "css:*": "css/*.css"
+    "css": "css/*.css"
   }
 });
 
@@ -18,6 +18,7 @@ System.config({
     "qwery": "github:ded/qwery@4.0.0",
     "react": "npm:react@0.13.1",
     "reqwest": "github:ded/reqwest@1.1.5",
+    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.1"
     },

@@ -11,7 +11,8 @@
       "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
       "lodash-node": "npm:lodash-node@^3.5.0",
       "react": "npm:react@^0.13.1",
-      "reqwest": "github:ded/reqwest@^1.1.5"
+      "reqwest": "github:ded/reqwest@^1.1.5",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@^0.0.87"
     }
   }
 }
