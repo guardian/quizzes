@@ -14,6 +14,7 @@
 .quiz__question-header {
     color: #333333; /* neutral-1 */
     display: table;
+    margin-bottom: 10px;
 }
 
 .quiz__question-text {
