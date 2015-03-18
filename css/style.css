@@ -83,3 +83,8 @@
     margin-top: 10px;
     margin-bottom: 24px;
 }
+
+.quiz__answer-icon-svg {
+    width: 14px;
+    height: 14px;
+}
