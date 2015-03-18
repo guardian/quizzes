@@ -82,6 +82,6 @@ export styles = <style>
 
 .quiz__bucket-message {
     margin-top: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
 }
 </style>;
