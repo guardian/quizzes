@@ -92,30 +92,38 @@ export class EndMessage extends React.Component {
 }
 
 export class ShareTwitter extends React.Component {
+
+    campaign() {'?CMP=share_result_tw' }
+
     render() {
 
-        let campaign = '?CMP=share_result_tw';
-        let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + campaign);
+        let href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.props.message) + '&url=' + encodeURIComponent(this.props.url + this.campaign());
 
-        return <a className="social__action" data-link-name="social results" href={href} target="_blank" title="Twitter">
-        <span className="social-icon social-icon--twitter">
-        <i className="i-share-twitter--white i"></i>
+        let emphasis = "";
+
+        return <a className="quiz__social__action {emphasis}" data-link-name="social results" href={href} target="_blank" title="Twitter">
+        <span className="quiz__share__outline quiz__share-twitter__outline">
+        <i className="quiz__share-twitter__svg quiz__share__svg"></i>
         </span>
         </a>
     }
 }
 
 export class ShareFacebook extends React.Component {
+
+    campaign() {'?CMP=share_result_fb' }
+
     render() {
 
-        let campaign = '?CMP=share_result_fb';
-        let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + campaign) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
+        let href = 'https://www.facebook.com/dialog/feed?app_id=180444840287&link=' + encodeURIComponent(this.props.url + this.campaign()) + '&redirect_uri=' + encodeURIComponent(this.props.url) + '&name=' + encodeURIComponent(this.props.message);
         // picture, description, caption
         // display=popup
 
-        return <a className="social__action social__action--nth" data-link-name="social results" href={href} target="_blank" title="Facebook">
-        <span className="social-icon social-icon--facebook">
-        <i className="i-share-facebook--white i"></i>
+        let emphasis = "";
+
+        return <a className="quiz__social__action {emphasis} quiz__social__action--nth" data-link-name="social results" href={href} target="_blank" title="Facebook">
+        <span className="quiz__share__outline quiz__share-facebook__outline">
+        <i className="quiz__share-facebook__svg quiz__share__svg"></i>
         </span>
         </a>
     }
@@ -127,12 +135,16 @@ export class Share extends React.Component {
 
         let ourUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
 
+        let source = window.location.search
+
         let twitter = <ShareTwitter url={ourUrl}
                         message={message}
+                        source={source}
                         key="shareTwitter" />
 
         let facebook = <ShareFacebook url={ourUrl}
                         message={message}
+                        source={source}
                         key="shareFacebook" />
 
         return <div className="quiz__share">
