@@ -1,0 +1,282 @@
+{
+    "header": {
+        "titleImageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/10/1425997970093/Brain-005.jpg",
+        "titleText": "Charlie Higson's monthly pub quiz",
+        "trailText": "Clear the cobwebs of winter and spring-clean your brain with Charlie's latest set of pub quiz questions"
+    },
+    "questions": [
+        {
+            "question": "Ralph Baer, who died in December, was the inventor of the world’s first home games console. What was it called?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Magnavox Odyssey",
+                    "correct": true
+                },
+                {
+                    "answer": "Hometech Magibox",
+                    "correct": false
+                },
+                {
+                    "answer": "RBX Magic TV System",
+                    "correct": false
+                },
+                {
+                    "answer": "Electrobrain 700",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Karam and Kartari Chand claim to be the world’s oldest married couple. What is their combined age?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "175",
+                    "correct": false
+                },
+                {
+                    "answer": "186",
+                    "correct": false
+                },
+                {
+                    "answer": "211",
+                    "correct": true
+                },
+                {
+                    "answer": "2220",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/12/4/1259942042067/Worlds-Strongest-Man-Comp-004.jpg",
+            "question": "In December, Craig Beevers from Stockton-on-Tees became the first British winner for 21 years at what?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "World's strongest man",
+                    "correct": false
+                },
+                {
+                    "answer": "World crazy golf championship",
+                    "correct": false
+                },
+                {
+                    "answer": "World Scrabble championship",
+                    "correct": true
+                },
+                {
+                    "answer": "World spitting competition",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/About/General/2011/9/12/1315845030646/Frank-Sinatra-003.jpg",
+            "question": "What is the most popular song played at British funerals?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "My Way",
+                    "correct": false
+                },
+                {
+                    "answer": "Always Look on the Bright Side of Life",
+                    "correct": true
+                },
+                {
+                    "answer": "Another One Bites the Dust",
+                    "correct": false
+                },
+                {
+                    "answer": "Match Of The Day theme",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/About/General/2011/9/12/1315845030646/Frank-Sinatra-003.jpg",
+            "question": "A painting by which female artist sold at auction last year for the record sum of £28m – the highest price for a woman ever?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Georgia O’Keeffe",
+                    "correct": true
+                },
+                {
+                    "answer": "Frida Kahlo",
+                    "correct": false
+                },
+                {
+                    "answer": "Tracey Emin",
+                    "correct": false
+                },
+                {
+                    "answer": "Bridget Riley",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/3/26/1395865156693/809a4188-1818-4395-a7fb-249d9f79dc4f-140x84.jpeg",
+            "question": "What is the name of the anti-Barbie doll based on the measurements of the average American 19-year-old woman, which came out last year?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Eibrab",
+                    "correct": false
+                },
+                {
+                    "answer": "Verity",
+                    "correct": false
+                },
+                {
+                    "answer": "Little Miss Normal",
+                    "correct": false
+                },
+                {
+                    "answer": "Lammily",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "question": "Compared with the average female brain the average male brain is … ?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "10% smaller",
+                    "correct": false
+                },
+                {
+                    "answer": "The same size",
+                    "correct": false
+                },
+                {
+                    "answer": "10% bigger",
+                    "correct": true
+                },
+                {
+                    "answer": "Half the size",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Polish councillors recently banned which literary character from being used as the face of a children’s playground, claiming he was &quot;a half-naked hermaphrodite of dubious sexuality&quot;, and adding – &quot;when the author turned 60 he cut off (his character’s) testicles with a rusty razor blade because of his own identity issues&quot;?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Captain Underpants",
+                    "correct": false
+                },
+                {
+                    "answer": "The Cat In The Hat",
+                    "correct": false
+                },
+                {
+                    "answer": "Winnie the Pooh",
+                    "correct": true
+                },
+                {
+                    "answer": "Paddington",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/10/23/1414066438288/-Russell-Brands-book-Revo-003.jpg",
+            "question": "Who said – &quot;The single hardest thing for a practising politician to understand is that most people most of the time don’t give politics a thought all day long&quot;?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Russell Brand",
+                    "correct": false
+                },
+                {
+                    "answer": "Nigel Farage",
+                    "correct": false
+                },
+                {
+                    "answer": "Tony Blair",
+                    "correct": true
+                },
+                {
+                    "answer": "Jeremy Paxman",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "What is the name of the father of Rachel and Boris Johnson?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Samuel Johnson",
+                    "correct": false
+                },
+                {
+                    "answer": "Stanley Johnson",
+                    "correct": true
+                },
+                {
+                    "answer": "Sandy Johnson",
+                    "correct": false
+                },
+                {
+                    "answer": "Simon de Pfeffel",
+                    "correct": false
+                }
+            ]
+        }
+    ],
+    "resultGroups": [
+        {
+            "title": "Superbrain!",
+            "minScore": 10,
+            "maxScore": 10
+        },
+        {
+            "title": "Excellent score.",
+            "minScore": 9,
+            "maxScore": 9
+        },
+        {
+            "title": "Nearly there.",
+            "minScore": 8,
+            "maxScore": 8
+        },
+        {
+            "title": "Not a bad attempt.",
+            "minScore": 7,
+            "maxScore": 7
+        },
+        {
+            "title": "Brush up your general knowledge.",
+            "minScore": 5,
+            "maxScore": 6
+        },
+        {
+            "title": "Could do better.",
+            "minScore": 4,
+            "maxScore": 4
+        },
+        {
+            "title": "Could do better.",
+            "minScore": 3,
+            "maxScore": 3
+        },
+        {
+            "title": "See me after class.",
+            "minScore": 1,
+            "maxScore": 2
+        },
+        {
+            "title": "Disaster!",
+            "maxScore": 0
+        }
+    ],
+    "socialHints": [
+        {
+            "service": "twitter",
+            "message": "I scored %score% on Charlie Higson's Monthly Pub quiz at <a href='http://theguardian.com'>theguardian.com</a>",
+            "shareImg": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/10/1425997970093/Brain-005.jpg"
+        },
+        {
+            "service": "facebook",
+            "message": "Pub Quiz know-it-all? See if you can beat my score of %score% on Charlie Higson's Monthly Pub quiz at <a href='http://theguardian.com'>theguardian.com</a>",
+            "shareImg": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/10/1425997970093/Brain-005.jpg"
+        }
+    ]
+}
