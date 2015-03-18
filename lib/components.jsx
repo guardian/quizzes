@@ -8,8 +8,7 @@ import classnames from 'classnames';
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
-              correct = this.props.answer.correct,
-              isChosen = this.props.answer.isChosen;
+              {correct, isChosen} = this.props.answer;
 
         let icon;
 
