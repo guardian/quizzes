@@ -13,7 +13,7 @@ define([], function () {
     return {
         boot: function (el, context, config, mediator) {
             window._interactive_element = el;
-            addJS("http://interactive.guim.co.uk/2015/mar/north-korea-quiz/testing-2/app2.js");
+            addJS("http://interactive.guim.co.uk/2015/mar/north-korea-quiz/app.js");
         }
     };
 });
