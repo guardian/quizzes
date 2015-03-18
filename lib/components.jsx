@@ -24,7 +24,7 @@ export class Answer extends React.Component {
 
         let icon;
 
-        if (isChosen) {
+        if (answered && (isChosen || correct)) {
             let symbol = correct ? tick : cross;
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }

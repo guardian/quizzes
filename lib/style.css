@@ -39,7 +39,6 @@
 
 .quiz__answer--correct {
     color: #333;
-    background-color: #c6e8d0; /* ??? */
 }
 
 .quiz__answer--correct-chosen {
@@ -61,6 +60,11 @@
     left: 6px;
     top: 5px;
     font-size: 26px;
+    color: #ffffff;
+}
+
+.quiz__answer--answered.quiz__answer-icon {
+    color: #43B347; /* ??? */
 }
 
 .quiz__answer__more {
