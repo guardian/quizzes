@@ -8,13 +8,13 @@ import classnames from 'classnames';
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
-              correct = this.props.answer.correct,
-              isChosen = this.props.answer.isChosen;
+              {correct, isChosen} = this.props.answer;
 
         let icon;
 
         if (isChosen) {
-            icon = correct ? <span>&#10004;</span> : <span>&#10007;</span>;
+            let symbol = correct ? <span>&#10004;</span> : <span>&#10007</span>;
+            icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }
         
         return <div 
@@ -28,7 +28,7 @@ export class Answer extends React.Component {
                 'quiz__answer--incorrect-chosen': answered && isChosen && !correct
             })}            
             onClick={answered ? null : this.props.chooseAnswer}>
-            <span className={'quiz__answer-icon'}>{icon}</span>
+            {icon}
             {this.props.answer.answer}
         </div>
     }
