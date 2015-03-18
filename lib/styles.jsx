@@ -1,3 +1,4 @@
+export styles = <style>
 .quiz {
     font-family: "Guardian Egyptian Web", "Guardian Text Egyptian Web", Georgia, serif;
     color: #767676;
@@ -83,3 +84,4 @@
     margin-top: 10px;
     margin-bottom: 24px;
 }
+</style>;
