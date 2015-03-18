@@ -26,14 +26,14 @@ export class Answer extends React.Component {
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
         }
 
-        return <div 
+        return <button
             data-link-name={"answer " + (this.props.index + 1)}
             className={classnames(classesNames)}            
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
             {this.props.answer.answer}
             {answered && more && (correct || isChosen) ? <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} /> : ''}
-        </div>
+        </button>
     }
 }
 

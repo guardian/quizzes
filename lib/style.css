@@ -31,7 +31,11 @@
 
 .quiz__answer {
     position: relative;
-    cursor: pointer;
+    display: block;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
     color: #767676; /* neutral-2 */
     background-color: #f6f6f6; /* neutral-8 */
     padding: 12px 30px;
