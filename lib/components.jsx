@@ -136,7 +136,7 @@ export class Share extends React.Component {
                         key="shareFacebook" />
 
         return <div className="quiz__share">
-            <div className="quiz__share__cta">Challenge a friend</div>
+            <div className="quiz__share__cta">Challenge your friends</div>
         {twitter}
         {facebook}
 
@@ -161,7 +161,7 @@ export class Quiz extends React.Component {
     }
 
     isFinished() {
-        return true;//this.progress() === this.length();
+        return this.progress() === this.length();
     }
 
     progress() {
