@@ -47,8 +47,8 @@
 }
 
 .quiz__answer--correct {
-    background: #D5F2C2;
-    color: #333;
+    background: #aedfb8;
+    color: #505050;
 }
 
 .quiz__answer--correct-chosen {
