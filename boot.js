@@ -12,7 +12,13 @@ define([], function () {
     
     return {
         boot: function (el, context, config, mediator) {
-            window._interactive_element = el;
+            window._interactive_quiz_params = {
+                el: el,
+                context: context,
+                config: config,
+                mediator: mediator
+            };
+            
             addJS("http://interactive.guim.co.uk/2015/mar/poets-houses-quiz/app.js");
         }
     };
