@@ -1,5 +1,5 @@
 .quiz {
-    font-family: "Guardian Egyptian Web", "Guardian Text Egyptian Web", Georgia, serif;
+    font-family: "Guardian Text Egyptian Web", "Guardian Egyptian Web", Georgia, serif;
     color: #767676;
 }
 
@@ -7,9 +7,14 @@
     color: #333333; /* neutral-1 */
 }
 
+.quiz__question {
+    margin-bottom: 36px;
+}
+
 .quiz__question-header {
     color: #333333; /* neutral-1 */
     display: table;
+    margin-bottom: 10px;
 }
 
 .quiz__question-text {
@@ -26,7 +31,11 @@
 
 .quiz__answer {
     position: relative;
-    cursor: pointer;
+    display: block;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
     color: #767676; /* neutral-2 */
     background-color: #f6f6f6; /* neutral-8 */
     padding: 12px 30px;
@@ -38,8 +47,8 @@
 }
 
 .quiz__answer--correct {
+    background: #D5F2C2;
     color: #333;
-    background-color: #c6e8d0; /* ??? */
 }
 
 .quiz__answer--correct-chosen {
@@ -61,6 +70,28 @@
     left: 6px;
     top: 5px;
     font-size: 26px;
+    color: #ffffff;
+}
+
+.quiz__answer__more {
+    margin-top: 6px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.quiz__answer__more a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.quiz__answer--correct .quiz__answer__more a {
+    color: #333333;
+    text-decoration: underline;
+}
+
+.quiz__answer--correct-chosen .quiz__answer__more a {
+    color: #ffffff;
+    text-decoration: underline;
 }
 
 .quiz__end-message {
@@ -75,11 +106,26 @@
 }
 
 .quiz__score {
+    color: #005689;
     font-size: 24px;
     margin-left: 4px;
 }
 
 .quiz__bucket-message {
     margin-top: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+}
+
+.quiz__answer-icon-svg {
+    width: 14px;
+    height: 14px;
+    margin-left: 3px;
+}
+
+.quiz__share__outline {
+    text-align: center;
+}
+
+.quiz__question__img {
+    width: 100%;
 }

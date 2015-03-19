@@ -3,10 +3,14 @@
 <head>
   <title>Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
   <link rel="stylesheet" href="css/normalize.css"></style>
   <link rel="stylesheet" href="css/develop.css"></style>
   <link rel="stylesheet" href="css/fonts.css"></style>
-  <link rel="stylesheet" href="css/style.css"></style>
+
+    <meta property="og:type" content="quiz">
+    <meta property="og:title" content="Guardian North Korea Quiz" >
+    <meta property="og:description" content="How much do you know about North Korea? Find out by completing this quiz." >
 </head>
 <body>
 
@@ -15,7 +19,9 @@
 <script src="jspm_packages/system.js"></script>
 <script src="config.js"></script>
 <script>
-  System.import('lib/bootstrap');
+  System.import('lib/bootstrap').then(function (module) {
+      module.boot(document.querySelector('.js-quiz-placeholder'));
+  });
 </script>
 </body>
 </html>
