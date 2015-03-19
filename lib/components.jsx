@@ -7,6 +7,7 @@ import merge from 'lodash-node/modern/object/merge';
 import startsWith from 'lodash-node/modern/string/startsWith';
 import classnames from 'classnames';
 import {cross, tick} from './svgs.jsx!';
+import {saveResults, getResults} from './scores';
 
 export class Answer extends React.Component {
     render() {
@@ -177,6 +178,11 @@ export class Quiz extends React.Component {
 
     chooseAnswer(answer) {
         answer.isChosen = true;
+
+        if (this.isFinished()) {
+            saveResults(this.results());
+        }
+        
         this.forceUpdate();
     }
 
@@ -208,6 +214,15 @@ export class Quiz extends React.Component {
         return message ? message : "Well done!";
     }
 
+    results() {
+        let summary = map(this.state.questions, (question) => isCorrect(question) ? 1 : 0);
+
+        return {
+            summary: summary,
+            score: this.score()
+        };
+    }
+
     render() {
         let endMessage;
 
@@ -216,7 +231,6 @@ export class Quiz extends React.Component {
                                      message={this.endMessage()}
                                      length={this.length()}
                                      key="end_message" />
-
         }
         
         return <div data-link-name="quiz" className="quiz">
