@@ -238,48 +238,24 @@
     ],
     "resultGroups": [
         {
-            "title": "Superbrain!",
+            "title": "Your knowledge of poets' houses is worthy of a sonnet",
             "minScore": 10,
             "maxScore": 10
         },
         {
-            "title": "Excellent score.",
-            "minScore": 9,
+            "title": "You're as familiar with poets' houses as Wordsworth was with the Lake District",
+            "minScore": 7,
             "maxScore": 9
         },
         {
-            "title": "Nearly there.",
-            "minScore": 8,
-            "maxScore": 8
-        },
-        {
-            "title": "Not a bad attempt.",
-            "minScore": 7,
-            "maxScore": 7
-        },
-        {
-            "title": "Brush up your general knowledge.",
-            "minScore": 5,
+            "title": "Your knowledge of poets' houses is more lost than Odysseus",
+            "minScore": 4,
             "maxScore": 6
         },
         {
-            "title": "Could do better.",
-            "minScore": 4,
-            "maxScore": 4
-        },
-        {
-            "title": "Could do better.",
-            "minScore": 3,
+            "title": "Your knowledge of poets' houses isn't worth a limerick",
+            "minScore": 0,
             "maxScore": 3
-        },
-        {
-            "title": "See me after class.",
-            "minScore": 1,
-            "maxScore": 2
-        },
-        {
-            "title": "Disaster!",
-            "maxScore": 0
         }
     ],
     "socialHints":[
