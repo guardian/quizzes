@@ -19,7 +19,7 @@ define([], function () {
                 mediator: mediator
             };
             
-            addJS("http://interactive.guim.co.uk/2015/mar/poets-houses-quiz/app.js");
+            addJS("http://interactive.guim.co.uk/2015/03/what-happens-next/app.js");
         }
     };
 });

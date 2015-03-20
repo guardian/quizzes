@@ -79,6 +79,11 @@
     color:#D9F0DA;
 }
 
+.quiz__answer__more img {
+    width:100%;
+    max-width:320px;
+}
+
 .quiz__answer--answered .quiz__answer__more {
     color:#333;
 }
