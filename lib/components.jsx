@@ -56,6 +56,18 @@ function genSrcset(src) {
     return map(widths, function(width) {return templ.replace(/{width}/g, width); }).join(', ');
 }
 
+function imageElement(url) {
+    if (url === undefined) return;
+
+    let className = "quiz__question__img"
+
+    if(url.match(/\.gif$/)) {
+        return <img className={className + " quiz__question__img__gif"} src={url} />
+    }
+
+    return <img className={className} sizes="100%" srcSet={genSrcset(url)} />
+}
+
 export class Question extends React.Component {
     isAnswered() {
         return isAnswered(this.props.question);
@@ -69,17 +81,8 @@ export class Question extends React.Component {
         const question = this.props.question,
               answers = question.multiChoiceAnswers;
 
-        let image;
-
-        if (question.imageUrl) {
-            image = <img className="quiz__question__img" sizes="100%" srcSet={genSrcset(question.imageUrl)} />
-        }
-        if (question.imageUrl && question.imageUrl.match(/\.gif$/)) {
-            image = <img className="quiz__question__img" src={question.imageUrl} />
-        }
-
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
-            { image }
+            { imageElement(question.imageUrl) }
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>
