@@ -52,6 +52,7 @@ function genSrcset(src) {
           srcId = src.replace(/^.*\/\/media.guim.co.uk\//, '');
           templ = '//i.guim.co.uk/media/w-{width}/h--/q-95/' + srcId + ' {width}w';
 
+
     return map(widths, function(width) {return templ.replace(/{width}/g, width); }).join(', ');
 }
 
@@ -68,8 +69,17 @@ export class Question extends React.Component {
         const question = this.props.question,
               answers = question.multiChoiceAnswers;
 
+        let image;
+
+        if (question.imageUrl) {
+            image = <img className="quiz__question__img" sizes="100%" srcSet={genSrcset(question.imageUrl)} />
+        }
+        if (question.imageUrl && question.imageUrl.match(/\.gif$/)) {
+            image = <img className="quiz__question__img" src={question.imageUrl} />
+        }
+
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
-            {question.imageUrl ? <img className="quiz__question__img" sizes="100%" srcSet={genSrcset(question.imageUrl)} /> : null}
+            { image }
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>

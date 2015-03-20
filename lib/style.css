@@ -76,7 +76,11 @@
 .quiz__answer__more {
     margin-top: 6px;
     font-size: 15px;
-    opacity: 0.8;
+    color:#D9F0DA;
+}
+
+.quiz__answer--answered .quiz__answer__more {
+    color:#333;
 }
 
 .quiz__answer__more a {
