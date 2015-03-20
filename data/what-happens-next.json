@@ -1,0 +1,89 @@
+{
+    "header": {
+        "titleImageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/10/1425997970093/Brain-005.jpg",
+        "titleText": "Match the house to the poet",
+        "trailText": "To mark World Poetry Day, tap on your literary intuition (or perhaps your real estate instinct) to guess where some of the world’s greatest poets lived. All the following houses belonged to poets at one point in their lives – can you figure out who lived in which?"
+    },
+    "questions": [
+        {
+            "imageUrl": "/pulp_fic_cut_0.gif",
+            "imageCredit": "Photograph: Alamy",
+            "question": "What happens next in this classic from '94?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "The red dot cross fades to a sun rising over the desert",
+                    "correct": false
+                },
+                {
+                    "answer": "Nervous lady goes to get cereal",
+                    "correct": false
+                },
+                {
+                    "answer": "The dot gets an adrenaline shot",
+                    "correct": true,
+                    "more": "That's some vintage Travolta.<br /><br /><img src='/pulp_fic_reveal_0.gif' />"
+                }
+            ]
+        },
+        {
+            "imageUrl": "/b2tf_0.gif",
+            "imageCredit": "Photograph: RIA Novosti / Alamy",
+            "question": "How about this family favourite?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "They crash into a 50's diner",
+                    "correct": false
+                },
+                {
+                    "answer": "They crash into a horse drawn cart",
+                    "correct": false
+                },
+                {
+                    "answer": "They crash into a truck full of manure",
+                    "correct": true,
+                    "more": "Ew. Gross.<br /><br /><img src='/b2tf_reveal_0.gif' />"
+                }
+            ],
+        },
+        {
+            "imageCredit": "Photograph: RIA Novosti / Alamy",
+            "question": "Lorem ipsum",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Lorem ipsum",
+                    "correct": true
+                },
+                {
+                    "answer": "Lorem ipsum",
+                    "correct": false
+                },
+            ],
+        }
+    ],
+    "resultGroups": [
+        {
+            "title": "Your knowledge of poets' houses is worthy of a sonnet",
+            "message": "My knowledge of poets' houses is worthy of a sonnet. I got _/_ on the Guardian quiz",
+            "minScore": 10,
+            "maxScore": 10
+        },
+        {
+            "title": "You're as familiar with poets' houses as Wordsworth was with the Lake District",
+            "share": "I'm as familiar with poets' houses as Wordsworth was with the Lake District. I got _/_ on the Guardian quiz",
+            "minScore": 7,
+            "maxScore": 9
+        },
+        {
+            "title": "Your knowledge of poets' houses is more lost than Odysseus",
+            "share": "My knowledge of poets' houses is more lost than Odysseus. I got _/_ on the Guardian quiz",
+            "minScore": 4,
+            "maxScore": 6
+        },
+        {
+            "title": "Your knowledge of poets' houses isn't worth a limerick",
+            "share": "My knowledge of poets' houses isn't worth a limerick. I got _/_ on the Guardian quiz",
+            "minScore": 0,
+            "maxScore": 3
+        }
+    ]
+}
