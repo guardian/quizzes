@@ -70,7 +70,7 @@ export class Question extends React.Component {
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             {question.imageUrl ? <img className="quiz__question__img" sizes="100%" srcSet={genSrcset(question.imageUrl)} /> : null}
-        {question.imageCredit ? <figcaption class="caption caption--main caption--img" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
+        {question.imageCredit ? <figcaption className="caption caption--main caption--img quiz__image-caption" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}.</span>
                 <span className="quiz__question-text">{question.question}</span>
