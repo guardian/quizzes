@@ -221,7 +221,10 @@ export class Quiz extends React.Component {
                   (group) => score >= minScore(group) && score <= maxScore(group)
               );
 
-        return message ? message : "Well done!";
+        return message ? message : {
+            "title": "Well done",
+            "share": "I got _/_ on the Guardian quiz."
+        };
     }
 
     results() {
@@ -242,7 +245,7 @@ export class Quiz extends React.Component {
                                      length={this.length()}
                                      key="end_message" />
         }
-        
+
         return <div data-link-name="quiz" className="quiz">
             {
                 map(
