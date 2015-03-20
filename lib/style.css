@@ -128,5 +128,12 @@
 
 .quiz__question__img {
     width: 100%;
-    margin-bottom: 12px;
+}
+
+.quiz__image-caption {
+    padding-bottom: 0;
+}
+
+.quiz__image-caption::before {
+    margin-right: 3px;
 }
