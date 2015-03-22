@@ -56,7 +56,7 @@ function genSrcset(src) {
 }
 
 function genSrc620(src) {
-    return '//i.guim.co.uk/media/w-620/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
+    return 'http://i.guim.co.uk/media/w-620/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
 }
 
 export class Question extends React.Component {
