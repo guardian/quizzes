@@ -7,7 +7,7 @@
     "questions": [
         {
             "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426859035160/b2tf0.gif",
-            "question": "What happens next in this family favourite?",
+            "question": "What happens next in this time-twisting family favourite?",
             "multiChoiceAnswers": [
                 {
                     "answer": "They crash into a 50's diner",
@@ -26,67 +26,122 @@
         },
         {
             "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426860777906/pulpficcropcut2.gif",
-            "question": "How about this classic black comedy from '94?",
+            "question": "How about this 90's masterpiece with John Travolta and Samuel L. Jackson?",
             "multiChoiceAnswers": [
                 {
                     "answer": "Excitable lady calms down with a nice wholesome bowl of cereal",
                     "correct": false
                 },
                 {
-                    "answer": "The red dot cross fades to a sun rising over the desert. You know, Lawrence of Arabia style.",
+                    "answer": "The red dot cross fades to a sun rising over the desert. You know, Lawrence of Arabia style",
                     "correct": false
                 },
                 {
-                    "answer": "Some harrowing stuff with a needle.",
+                    "answer": "Some harrowing stuff with a needle",
                     "correct": true,
-                    "more": "That's some vintage Travolta.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426861036148/pulpficrevealcropcut2.gif' />"
+                    "more": "Don't do drugs kids.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426861036148/pulpficrevealcropcut2.gif' />"
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427119471146/mateaser0.gif",
+            "question": "Try this touching moment from Tim Burton's all-star sci-fi romp.",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "The dove lands on Tom Jones' shoulder",
+                    "correct": false
+                },
+                {
+                    "answer": "There's an unfortunate encounter with a passing light aircraft",
+                    "correct": false
+                },
+                {
+                    "answer": "The dove provokes intergalactic war",
+                    "correct": true,
+                    "more": "Ouch.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427119167439/mareveal0.gif' />"
                 }
             ]
         },
         {
             "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426867192863/magteaser1.gif",
-            "question": "What could possibly befall John C. Reilly here?",
+            "question": "What Biblical woe is about to befall John C. Reilly here in Paul Thomas Anderson’s enduring masterpiece?",
             "multiChoiceAnswers": [
                 {
-                    "answer": "A mysterious alien spacecraft descends",
+                    "answer": "A plague of locusts descends (Ex. 10:1–20)",
                     "correct": false
                 },
                 {
-                    "answer": "Lightning strikes",
-                    "correct": false
-                },
-                {
-                    "answer": "It starts raining frogs",
+                    "answer": "It starts raining frogs (Ex. 7:25–8:11)",
                     "correct": true,
                     "more": "No, we're not sure why either.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426867192316/magreveal0.gif' />"
+                },
+                {
+                    "answer": "There's a thunderstorm of hail and fire (Ex. 9:13–35)",
+                    "correct": false
                 }
             ],
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427120804591/lobteaser0.gif",
+            "question": "OK, how's your Monty Python then?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "The Lord comes down from on high to cup Brian in his hand",
+                    "correct": false
+                },
+                {
+                    "answer": "A blast from Terry Gilliam's trumpet blows him back onto the ledge",
+                    "correct": false
+                },
+                {
+                    "answer": "A passing spaceship happens to pick him up",
+                    "correct": true,
+                    "more": "How terribly Douglas Adams.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427120804303/lobreveal0.gif' />"
+                }
+            ]
+        },
+        {
+            "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427121703839/trteaser0.gif",
+            "question": "Last one. Which action hero emerges from this women's head?",
+            "multiChoiceAnswers": [
+                {
+                    "answer": "Steven Seagal",
+                    "correct": false
+                },
+                {
+                    "answer": "Liam Neeson",
+                    "correct": false
+                },
+                {
+                    "answer": "Jean-Claude Van Damme",
+                    "correct": false
+                },
+                {
+                    "answer": "Arnold Schwarzenegger",
+                    "correct": true,
+                    "more": "Here's... Arny.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427121703512/trreveal0.gif' />"
+                }
+            ]
         }
     ],
     "resultGroups": [
         {
-            "title": "Your knowledge of poets' houses is worthy of a sonnet",
-            "message": "My knowledge of poets' houses is worthy of a sonnet. I got _/_ on the Guardian quiz",
-            "minScore": 10,
-            "maxScore": 10
-        },
-        {
-            "title": "You're as familiar with poets' houses as Wordsworth was with the Lake District",
-            "share": "I'm as familiar with poets' houses as Wordsworth was with the Lake District. I got _/_ on the Guardian quiz",
-            "minScore": 7,
-            "maxScore": 9
-        },
-        {
-            "title": "Your knowledge of poets' houses is more lost than Odysseus",
-            "share": "My knowledge of poets' houses is more lost than Odysseus. I got _/_ on the Guardian quiz",
-            "minScore": 4,
-            "maxScore": 6
-        },
-        {
-            "title": "Your knowledge of poets' houses isn't worth a limerick",
-            "share": "My knowledge of poets' houses isn't worth a limerick. I got _/_ on the Guardian quiz",
+            "title": "You are clearly spending way too much time working.",
+            "message": "Clearly I'm not slacking off enough. I got _/_ on the Guardian film quiz",
             "minScore": 0,
-            "maxScore": 3
+            "maxScore": 2
+        },
+        {
+            "title": "Popcorn is clearly a key component of your diet.",
+            "share": "Mmm, popcorn. I got _/_ on the Guardian film quiz",
+            "minScore": 3,
+            "maxScore": 5
+        },
+        {
+            "title": "Holy film knowledge Batman, you even got the Magnolia one!",
+            "share": "I got _/_ on the Guardian film quiz #humblebrag",
+            "minScore": 6,
+            "maxScore": 6
         }
     ]
 }
