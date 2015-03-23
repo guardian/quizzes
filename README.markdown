@@ -25,7 +25,7 @@ Then navigate to `http://localhost:8000`
 * make sure you have an s3 key for the interactives bucket
 
 ## to deploy a quiz
-* make a new page in composer with the interactive in (somehow)
+* make a new interactive page in composer and point at the boot.js URL on interactive.guim.co.uk
 * run build.sh for peace of mind/testing
 * run sh deploy.sh (as many times as you like)
 
