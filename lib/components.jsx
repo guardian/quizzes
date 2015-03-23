@@ -159,8 +159,9 @@ export class Quiz extends React.Component {
         let summary = map(this.state.questions, (question) => isCorrect(question) ? 1 : 0);
 
         return {
-            summary: summary,
-            score: this.score()
+            quizId: 'disney-villains',
+            results: summary,
+            timeTaken: 0
         };
     }
 
