@@ -175,7 +175,8 @@ export class Quiz extends React.Component {
                                      key="end_message" />
         }
 
-        return <div data-link-name="quiz" className="quiz">
+        let html = <div data-link-name="quiz" className="quiz">
+            <img style={{'max-width': '600px', width: '100%'}} src="http://media.guim.co.uk/9bf7b0a1aadf97c0e4c378c87eccf2c7520a61e6/0_0_1186_711/1000.jpg"/>
             {
                 map(
                     this.state.questions,
@@ -185,6 +186,10 @@ export class Quiz extends React.Component {
             {
                 endMessage
             }
-        </div>
+        </div>;
+
+        document.getElementsByClassName('element-embed')[0].style.display = 'none';
+
+        return html
     }
 }
