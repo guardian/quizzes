@@ -60,7 +60,7 @@ export class Share extends React.Component {
     render() {
         let message = this.props.message.replace(/_/, this.props.score).replace(/_/, this.props.length);
 
-        let ourUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        let ourUrl = 'http://www.theguardian.com' + window.location.pathname;
 
         let source = window.location.search
 
