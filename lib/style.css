@@ -21,6 +21,13 @@
     display: table-cell;
 }
 
+.quiz__question-aggregate {
+    display: block;
+    font-size: 12px;
+    padding-left: 5em;
+    font-style: italic;
+}
+
 .quiz__question-number {
     display: table-cell;
     font-size: 18px;

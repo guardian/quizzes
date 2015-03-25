@@ -1,10 +1,13 @@
 import React from 'react';
 import {countWhere} from './utils';
+
+import zip from 'lodash-node/modern/array/zip';
 import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import merge from 'lodash-node/modern/object/merge';
 import startsWith from 'lodash-node/modern/string/startsWith';
+
 import classnames from 'classnames';
 import {cross, tick} from './svgs.jsx!';
 import {saveResults, getResults} from './scores';
@@ -71,6 +74,9 @@ export class Question extends React.Component {
 
     render() {
         const question = this.props.question,
+              aggWrong = this.props.aggregate ? this.props.aggregate[0] : undefined,
+              aggRight = this.props.aggregate ? (this.props.aggregate[1] ? this.props.aggregate[1] : 0) : undefined,
+              pctRight = this.props.aggregate ? (aggRight * 100) / (aggWrong + aggRight) : undefined,
               answers = question.multiChoiceAnswers;
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
@@ -80,6 +86,10 @@ export class Question extends React.Component {
                 <span className="quiz__question-number">{this.props.index + 1}</span>
                 <span className="quiz__question-text">{question.question}</span>
             </h4>
+            {(typeof pctRight !== 'undefined') ? <div className="quiz__question-aggregate">
+                { pctRight < 50 ? <span>Hard question! More people got this question wrong than right!</span> : null }
+                { pctRight > 80 ? <span>This one's easy - {pctRight}% of people knew this</span> : null }
+            </div> : null }
             <div>{
                 map(
                     answers,
@@ -109,9 +119,15 @@ export class EndMessage extends React.Component {
 
 export class Quiz extends React.Component {
     constructor(props) {
+        var quiz = this;
         this.state = {
             questions: props.questions
         };
+        this.quizId = 'disney-villains';
+        getResults(this.quizId).then(function (resp) {
+            quiz.aggregate = JSON.parse(resp);
+            quiz.forceUpdate();
+        });
     }
 
     chooseAnswer(answer) {
@@ -159,7 +175,7 @@ export class Quiz extends React.Component {
         let summary = map(this.state.questions, (question) => isCorrect(question) ? 1 : 0);
 
         return {
-            quizId: 'disney-villains',
+            quizId: this.quizId,
             results: summary,
             timeTaken: 0
         };
@@ -178,8 +194,8 @@ export class Quiz extends React.Component {
         let html = <div data-link-name="quiz" className="quiz">
             {
                 map(
-                    this.state.questions,
-                    (question, i) => <Question question={question} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
+                    zip(this.state.questions, this.aggregate ? this.aggregate.results : []),
+                    (question, i) => <Question question={question[0]} aggregate={question[1]} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
                 )
             }
             {
