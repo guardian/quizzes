@@ -7,7 +7,7 @@
     "questions": [
         {
             "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426859035160/b2tf0.gif",
-            "question": "What happens next in this time-twisting family favourite?",
+            "question": "What happens next in time-twisting family favourite Back to the Future?",
             "multiChoiceAnswers": [
                 {
                     "answer": "They crash into a 50's diner",
@@ -26,10 +26,10 @@
         },
         {
             "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426860777906/pulpficcropcut2.gif",
-            "question": "How about this 90's masterpiece with John Travolta and Samuel L. Jackson?",
+            "question": "How about 90s masterpiece Pulp Fiction?",
             "multiChoiceAnswers": [
                 {
-                    "answer": "Excitable lady calms down with a nice wholesome bowl of cereal",
+                    "answer": "Everyone calms down with a nice wholesome bowl of cereal",
                     "correct": false
                 },
                 {
@@ -39,7 +39,7 @@
                 {
                     "answer": "Some harrowing stuff with a needle",
                     "correct": true,
-                    "more": "Don't do drugs kids.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426861036148/pulpficrevealcropcut2.gif' />"
+                    "more": "Don't do drugs, kids.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426861036148/pulpficrevealcropcut2.gif' />"
                 }
             ]
         },
@@ -48,7 +48,7 @@
             "question": "Try this touching moment from Tim Burton's all-star sci-fi romp.",
             "multiChoiceAnswers": [
                 {
-                    "answer": "The dove lands on Tom Jones' shoulder",
+                    "answer": "The dove lands on Tom Jones's shoulder",
                     "correct": false
                 },
                 {
@@ -58,13 +58,13 @@
                 {
                     "answer": "The dove provokes intergalactic war",
                     "correct": true,
-                    "more": "Ouch.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427119167439/mareveal0.gif' />"
+                    "more": "Ouch. Mars Attacks!<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427119167439/mareveal0.gif' />"
                 }
             ]
         },
         {
             "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/20/1426867192863/magteaser1.gif",
-            "question": "What Biblical woe is about to befall John C. Reilly here in Paul Thomas Anderson’s enduring masterpiece?",
+            "question": "What Biblical woe are we about to witness in Paul Thomas Anderson’s masterpiece Magnolia?",
             "multiChoiceAnswers": [
                 {
                     "answer": "A plague of locusts descends (Ex. 10:1–20)",
@@ -96,7 +96,7 @@
                 {
                     "answer": "A passing spaceship happens to pick him up",
                     "correct": true,
-                    "more": "How terribly Douglas Adams.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427120804303/lobreveal0.gif' />"
+                    "more": "Good timing.<br /><br /><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/3/23/1427120804303/lobreveal0.gif' />"
                 }
             ]
         },
