@@ -1,10 +1,12 @@
 import React from 'react';
 import {countWhere} from './utils';
 
+import slice from 'lodash-node/modern/array/slice';
 import zip from 'lodash-node/modern/array/zip';
 import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
+import sum from 'lodash-node/modern/collection/sum';
 import merge from 'lodash-node/modern/object/merge';
 import startsWith from 'lodash-node/modern/string/startsWith';
 
@@ -105,7 +107,7 @@ export class Question extends React.Component {
         const question = this.props.question,
               aggWrong = this.props.aggregate ? this.props.aggregate[0] : undefined,
               aggRight = this.props.aggregate ? (this.props.aggregate[1] ? this.props.aggregate[1] : 0) : undefined,
-              pctRight = this.props.aggregate ? (aggRight * 100) / (aggWrong + aggRight) : undefined,
+              pctRight = this.props.aggregate ? Math.round((aggRight * 100) / (aggWrong + aggRight)) : undefined,
               answers = question.multiChoiceAnswers;
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
@@ -127,15 +129,28 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
-        let shareButtons = <Share score={this.props.score}
+        const histogram = this.props.histogram,
+              score = this.props.score;
+
+        let shareButtons = <Share score={score}
             message={this.props.message.share}
             length={this.props.length}
             key="share" />
 
+        let comparison = null;
+        if (histogram) {
+            let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
+            comparison = <div><div>How did you do?</div>
+                <div>I beat <span>{beat}%</span> of others.</div>
+                </div>
+        }
+
         return <div className="quiz__end-message">
-            <div className="quiz__score-message">You got <span className="quiz__score">{this.props.score}/{this.props.length}</span></div>
+            <div className="quiz__score-message">You got <span className="quiz__score">{score}/{this.props.length}</span></div>
 
             <div className="quiz__bucket-message">{this.props.message.title}</div>
+
+            {comparison}
 
             {shareButtons}
         </div>
@@ -202,6 +217,7 @@ export class Quiz extends React.Component {
         return {
             quizId: this.quizId,
             results: summary,
+            score: this.score(),
             timeTaken: 0
         };
     }
@@ -213,7 +229,8 @@ export class Quiz extends React.Component {
             endMessage = <EndMessage score={this.score()}
                                      message={this.endMessage()}
                                      length={this.length()}
-                                     key="end_message" />
+                                     key="end_message"
+                                     histogram={this.aggregate.scoreHistogram} />
         }
 
         let html = <div data-link-name="quiz" className="quiz">
