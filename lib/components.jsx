@@ -141,7 +141,7 @@ export class EndMessage extends React.Component {
         if (histogram) {
             let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
             comparison = <div><div>How did you do?</div>
-                <div>I beat <span>{beat}%</span> of others.</div>
+                <div>I beat <span className="quiz__end-message__beat">{beat}%</span> of others.</div>
                 </div>
         }
 

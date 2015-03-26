@@ -24,8 +24,7 @@
 .quiz__answer-aggregate {
     display: block;
     font-size: 12px;
-    padding: 0.5em 1em;
-    font-style: italic;
+    padding: 0.5em 0em;
 }
 
 .quiz__question-number {
@@ -113,6 +112,12 @@
 }
 
 .quiz__score {
+    color: #005689;
+    font-size: 48px;
+    margin-left: 4px;
+}
+
+.quiz__end-message__beat {
     color: #005689;
     font-size: 48px;
     margin-left: 4px;
