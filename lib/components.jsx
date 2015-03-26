@@ -16,7 +16,7 @@ import {Share} from './social.jsx!'
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
-              {correct, more, isChosen} = this.props.answer,
+            {correct, more, isChosen} = this.props.answer,
               classesNames = merge({'quiz__answer': true}, answered ? {
                   'quiz__answer--answered': true,
                   'quiz__answer--correct': correct,
@@ -37,6 +37,7 @@ export class Answer extends React.Component {
             className={classnames(classesNames)}            
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
+            {this.props.answer.imageUrl ? <img className="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /> : null}
             {this.props.answer.answer}
             {answered && more && (correct || isChosen) ? <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} /> : ''}
         </button>
@@ -61,6 +62,10 @@ function genSrcset(src) {
 
 function genSrc620(src) {
     return 'http://i.guim.co.uk/media/w-620/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
+}
+
+function genSrc(src, width) {
+    return 'http://i.guim.co.uk/media/w-' + width + '/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
 }
 
 export class Question extends React.Component {
