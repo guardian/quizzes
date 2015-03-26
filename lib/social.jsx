@@ -16,13 +16,12 @@ export class ShareTwitter extends React.Component {
 
         let classNames = {
             'quiz__social__action': true,
-            'quiz__social__action--nth': true,
             'quiz__social--normal': !this.props.source,
             'quiz__social--major': this.props.source && startsWith(this.props.source, campaign),
             'quiz__social--minor': this.props.source && !startsWith(this.props.source, campaign)
         };
 
-        return <a className={classnames(classNames)} data-link-name="social results" href={href} target="_blank" title="Twitter">
+        return <a className={classnames(classNames)} data-link-name="social results : twitter" href={href} target="_blank" title="Twitter">
             <span className="quiz__share__outline quiz__share-twitter__outline">
                 <i className="quiz__share-twitter__svg quiz__share__svg"></i>
             </span>
@@ -42,13 +41,12 @@ export class ShareFacebook extends React.Component {
 
         let classNames = {
             'quiz__social__action': true,
-            'quiz__social__action--nth': true,
             'quiz__social--normal': !this.props.source,
             'quiz__social--major': this.props.source && startsWith(this.props.source, campaign),
             'quiz__social--minor': this.props.source && !startsWith(this.props.source, campaign)
         };
 
-        return <a className={classnames(classNames)} data-link-name="social results" href={href} target="_blank" title="Facebook">
+        return <a className={classnames(classNames)} data-link-name="social results : facebook" href={href} target="_blank" title="Facebook">
             <span className="quiz__share__outline quiz__share-facebook__outline">
                 <i className="quiz__share-facebook__svg quiz__share__svg"></i>
             </span>
@@ -69,12 +67,14 @@ export class Share extends React.Component {
             source={source}
             key="shareTwitter" />
 
+        let gap = <div className="quiz__social__gap" />
+
         let facebook = <ShareFacebook url={ourUrl}
             message={message}
             source={source}
             key="shareFacebook" />
 
-        let share = source && startsWith(source, '?CMP=share_result_tw') ? [twitter,facebook] : [facebook, twitter];
+        let share = source && startsWith(source, '?CMP=share_result_tw') ? [twitter, gap ,facebook] : [facebook, gap, twitter];
 
         return <div className="quiz__share">
             <div className="quiz__share__cta">Challenge your friends</div>

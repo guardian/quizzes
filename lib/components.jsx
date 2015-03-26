@@ -230,7 +230,7 @@ export class Quiz extends React.Component {
                                      message={this.endMessage()}
                                      length={this.length()}
                                      key="end_message"
-                                     histogram={this.aggregate.scoreHistogram} />
+                                     histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined} />
         }
 
         let html = <div data-link-name="quiz" className="quiz">
