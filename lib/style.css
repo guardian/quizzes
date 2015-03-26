@@ -21,10 +21,10 @@
     display: table-cell;
 }
 
-.quiz__question-aggregate {
+.quiz__answer-aggregate {
     display: block;
     font-size: 12px;
-    padding-left: 5em;
+    padding: 0.5em 1em;
     font-style: italic;
 }
 
@@ -114,7 +114,7 @@
 
 .quiz__score {
     color: #005689;
-    font-size: 24px;
+    font-size: 48px;
     margin-left: 4px;
 }
 

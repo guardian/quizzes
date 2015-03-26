@@ -13,6 +13,29 @@ import {cross, tick} from './svgs.jsx!';
 import {saveResults, getResults} from './scores';
 import {Share} from './social.jsx!'
 
+export class Aggregate extends React.Component {
+    render() {
+        const pctRight = this.props.pctRight,
+            correct = this.props.correct;
+
+        let info = null;
+        if (typeof pctRight !== 'undefined') {
+            let phrase;
+            if (pctRight < 50) {
+                phrase = <span>{correct ? "Good job!" : "Don't worry."} More people got this question wrong than right!</span>
+            } else if (pctRight > 80) {
+                phrase = <span>{correct ? "This one's easy" : "Oh dear" } - {pctRight}% of people knew this</span>
+            }
+            if (phrase) {
+                info = <div className="quiz__answer-aggregate">
+                    { phrase }
+                </div>
+            }
+        }
+        return info;
+    }
+}
+
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
@@ -23,13 +46,18 @@ export class Answer extends React.Component {
                   'quiz__answer--correct-chosen': correct && isChosen,
                   'quiz__answer--incorrect-chosen': isChosen && !correct,    
                   'quiz__answer--incorrect': !correct
-              } : null)
+              } : null),
+              pctRight = this.props.pctRight;
 
-        let icon;
+        let icon,
+            aggregate;
 
         if (answered && (isChosen || correct)) {
             let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
             icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
+        }
+        if (answered && isChosen) {
+            aggregate = <Aggregate correct={correct} pctRight={pctRight} />
         }
 
         return <button
@@ -38,6 +66,7 @@ export class Answer extends React.Component {
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
             {this.props.answer.answer}
+            {aggregate}
             {answered && more && (correct || isChosen) ? <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} /> : ''}
         </button>
     }
@@ -86,14 +115,10 @@ export class Question extends React.Component {
                 <span className="quiz__question-number">{this.props.index + 1}</span>
                 <span className="quiz__question-text">{question.question}</span>
             </h4>
-            {(typeof pctRight !== 'undefined') ? <div className="quiz__question-aggregate">
-                { pctRight < 50 ? <span>Hard question! More people got this question wrong than right!</span> : null }
-                { pctRight > 80 ? <span>This one's easy - {pctRight}% of people knew this</span> : null }
-            </div> : null }
             <div>{
                 map(
                     answers,
-                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
+                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} pctRight={pctRight} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
                 )                
             }</div>
         </div>
