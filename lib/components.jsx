@@ -53,10 +53,10 @@ function isCorrect(question) {
 }
 
 function genSrcset(src) {
+
     const widths = [320, 460, 620],
           srcId = src.replace(/^.*\/\/media.guim.co.uk\//, '');
           templ = '//i.guim.co.uk/media/w-{width}/h--/q-95/' + srcId + ' {width}w';
-
     return map(widths, function(width) {return templ.replace(/{width}/g, width); }).join(', ');
 }
 
