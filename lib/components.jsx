@@ -52,24 +52,38 @@ export class Answer extends React.Component {
               pctRight = this.props.pctRight;
 
         let icon,
-            aggregate;
+            aggregate,
+            renderedMore = null,
+            share = null;
 
-        if (answered && (isChosen || correct)) {
-            let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
-            icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
-        }
-        if (answered && isChosen) {
-            aggregate = <Aggregate correct={correct} pctRight={pctRight} />
+        if (answered) {
+            if (isChosen || correct) {
+                let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
+                icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
+                if (more) {
+                    renderedMore = <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} />;
+                }
+            }
+            if (isChosen) {
+                aggregate = <Aggregate correct={correct} pctRight={pctRight} />
+            }
+            if (correct) {
+                share = <Share question={this.props.index + 1}
+                    key="share"
+                    message={this.props.answer.share ? this.props.answer.share : this.props.questionText }
+                />
+            }
         }
 
         return <button
             data-link-name={"answer " + (this.props.index + 1)}
             className={classnames(classesNames)}            
             onClick={answered ? null : this.props.chooseAnswer}>
+            {share}
             {icon}
             {this.props.answer.answer}
             {aggregate}
-            {answered && more && (correct || isChosen) ? <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} /> : ''}
+            {renderedMore}
         </button>
     }
 }
@@ -120,7 +134,16 @@ export class Question extends React.Component {
             <div>{
                 map(
                     answers,
-                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} pctRight={pctRight} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
+                    (answer, i) =>
+                        <Answer
+                            answer={answer}
+                            isAnswered={this.isAnswered()}
+                            pctRight={pctRight}
+                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
+                            index={i}
+                            key={i}
+                            questionText={question.question}
+                        />
                 )                
             }</div>
         </div>
@@ -132,10 +155,11 @@ export class EndMessage extends React.Component {
         const histogram = this.props.histogram,
               score = this.props.score;
 
-        let shareButtons = <Share score={score}
-            message={this.props.message.share}
-            length={this.props.length}
-            key="share" />
+        let shareButtons =
+            <Share score={score}
+                message={this.props.message.share}
+                length={this.props.length}
+                key="share" />
 
         let comparison = null;
         if (histogram) {
