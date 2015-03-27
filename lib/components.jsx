@@ -49,7 +49,8 @@ export class Answer extends React.Component {
                   'quiz__answer--incorrect-chosen': isChosen && !correct,    
                   'quiz__answer--incorrect': !correct
               } : null),
-              pctRight = this.props.pctRight;
+              pctRight = this.props.pctRight,
+              questionNo = this.props.questionNo;
 
         let icon,
             aggregate,
@@ -68,7 +69,7 @@ export class Answer extends React.Component {
                 aggregate = <Aggregate correct={correct} pctRight={pctRight} />
             }
             if (correct) {
-                share = <Share question={this.props.index + 1}
+                share = <Share question={questionNo}
                     key="share"
                     message={this.props.answer.share ? this.props.answer.share : this.props.questionText }
                 />
@@ -142,6 +143,7 @@ export class Question extends React.Component {
                             chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
                             index={i}
                             key={i}
+                            questionNo={this.props.index + 1}
                             questionText={question.question}
                         />
                 )                
