@@ -66,9 +66,6 @@ export class Answer extends React.Component {
             if (isChosen || correct) {
                 let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
                 icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
-                if (more) {
-                    renderedMore = <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} />;
-                }
             }
             if (isChosen) {
                 aggregate = <Aggregate correct={correct} pctRight={pctRight} />
@@ -90,7 +87,6 @@ export class Answer extends React.Component {
             {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img class="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
             {this.props.answer.answer}
             {aggregate}
-            {renderedMore}
         </button>
     }
 }
@@ -101,6 +97,10 @@ function isAnswered(question) {
 
 function isCorrect(question) {
     return any(question.multiChoiceAnswers, (a) => a.isChosen && a.correct);
+}
+
+function more(question) {
+    return any(question.multiChoiceAnswers, (a) => a.more);
 }
 
 function genSrcset(src) {
@@ -134,7 +134,8 @@ export class Question extends React.Component {
               aggRight = this.props.aggregate ? (this.props.aggregate[1] ? this.props.aggregate[1] : 0) : undefined,
               pctRight = this.props.aggregate ? Math.round((aggRight * 100) / (aggWrong + aggRight)) : undefined,
               answers = question.multiChoiceAnswers,
-              defaultColumns = this.props.defaultColumns;
+              defaultColumns = this.props.defaultColumns,
+              moreText = question.more;
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             {question.imageUrl ? <img className="quiz__question__img" src={genSrc620(question.imageUrl)} /> : null}
@@ -161,11 +162,14 @@ export class Question extends React.Component {
                                             questionNo={this.props.index + 1}
                                             questionText={question.question}
                                             type={this.props.type}
-                                            />
+                                        />
                                 )
                             }
                         </div>
                 )
+            }</div>
+        <div>{
+            this.isAnswered() ? (moreText ? moreText : null) : null
             }</div>
         </div>
     }
