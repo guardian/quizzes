@@ -78,16 +78,15 @@ export class Answer extends React.Component {
             }
         }
 
-        return <button
+        return <a
             data-link-name={"answer " + (this.props.index + 1)}
-            className={classnames(classesNames)}            
+            className={classnames(classesNames)}
             onClick={answered ? null : this.props.chooseAnswer}>
-            {share}
             {icon}
             {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img class="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
-            {this.props.answer.answer}
+            {this.props.answer.answer ? this.props.answer.answer : null}
             {aggregate}
-        </button>
+        </a>
     }
 }
 
@@ -148,7 +147,7 @@ export class Question extends React.Component {
                 map(
                     chunk(answers, defaultColumns),
                     (thisChunk, chunkI) =>
-                        <div>
+                        <div className="quiz__question__answer-row">
                             {
                                 map(thisChunk,
                                     (answer, answerI) =>
@@ -168,9 +167,9 @@ export class Question extends React.Component {
                         </div>
                 )
             }</div>
-        <div>{
-            this.isAnswered() ? (moreText ? moreText : null) : null
-            }</div>
+        {
+            this.isAnswered() ? (moreText ? <div className="quiz__question__more">{moreText}</div> : null) : null
+            }
         </div>
     }
 }
