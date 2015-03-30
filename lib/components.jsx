@@ -1,10 +1,12 @@
 import React from 'react';
 import {countWhere} from './utils';
 
+import slice from 'lodash-node/modern/array/slice';
 import zip from 'lodash-node/modern/array/zip';
 import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
+import sum from 'lodash-node/modern/collection/sum';
 import merge from 'lodash-node/modern/object/merge';
 import startsWith from 'lodash-node/modern/string/startsWith';
 
@@ -12,6 +14,29 @@ import classnames from 'classnames';
 import {cross, tick} from './svgs.jsx!';
 import {saveResults, getResults} from './scores';
 import {Share} from './social.jsx!'
+
+export class Aggregate extends React.Component {
+    render() {
+        const pctRight = this.props.pctRight,
+            correct = this.props.correct;
+
+        let info = null;
+        if (typeof pctRight !== 'undefined') {
+            let phrase;
+            if (pctRight < 50) {
+                phrase = <span>{correct ? "Good job!" : "Don't worry."} More people got this question wrong than right!</span>
+            } else if (pctRight > 80) {
+                phrase = <span>{correct ? "This one's easy" : "Oh dear" } - {pctRight}% of people knew this</span>
+            }
+            if (phrase) {
+                info = <div className="quiz__answer-aggregate">
+                    { phrase }
+                </div>
+            }
+        }
+        return info;
+    }
+}
 
 export class Answer extends React.Component {
     render() {
@@ -23,23 +48,44 @@ export class Answer extends React.Component {
                   'quiz__answer--correct-chosen': correct && isChosen,
                   'quiz__answer--incorrect-chosen': isChosen && !correct,    
                   'quiz__answer--incorrect': !correct
-              } : null)
+              } : null),
+              pctRight = this.props.pctRight,
+              questionNo = this.props.questionNo;
 
-        let icon;
+        let icon,
+            aggregate,
+            renderedMore = null,
+            share = null;
 
-        if (answered && (isChosen || correct)) {
-            let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
-            icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
+        if (answered) {
+            if (isChosen || correct) {
+                let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
+                icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
+                if (more) {
+                    renderedMore = <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} />;
+                }
+            }
+            if (isChosen) {
+                aggregate = <Aggregate correct={correct} pctRight={pctRight} />
+            }
+            if (correct) {
+                share = <Share question={questionNo}
+                    key="share"
+                    message={this.props.answer.share ? this.props.answer.share : this.props.questionText }
+                />
+            }
         }
 
         return <button
             data-link-name={"answer " + (this.props.index + 1)}
             className={classnames(classesNames)}            
             onClick={answered ? null : this.props.chooseAnswer}>
+            {share}
             {icon}
             {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
             {this.props.answer.answer}
-            {answered && more && (correct || isChosen) ? <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} /> : ''}
+            {aggregate}
+            {renderedMore}
         </button>
     }
 }
@@ -81,7 +127,7 @@ export class Question extends React.Component {
         const question = this.props.question,
               aggWrong = this.props.aggregate ? this.props.aggregate[0] : undefined,
               aggRight = this.props.aggregate ? (this.props.aggregate[1] ? this.props.aggregate[1] : 0) : undefined,
-              pctRight = this.props.aggregate ? (aggRight * 100) / (aggWrong + aggRight) : undefined,
+              pctRight = this.props.aggregate ? Math.round((aggRight * 100) / (aggWrong + aggRight)) : undefined,
               answers = question.multiChoiceAnswers;
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
@@ -91,14 +137,20 @@ export class Question extends React.Component {
                 <span className="quiz__question-number">{this.props.index + 1}</span>
                 <span className="quiz__question-text">{question.question}</span>
             </h4>
-            {(typeof pctRight !== 'undefined') ? <div className="quiz__question-aggregate">
-                { pctRight < 50 ? <span>Hard question! More people got this question wrong than right!</span> : null }
-                { pctRight > 80 ? <span>This one's easy - {pctRight}% of people knew this</span> : null }
-            </div> : null }
             <div>{
                 map(
                     answers,
-                    (answer, i) => <Answer answer={answer} isAnswered={this.isAnswered()} chooseAnswer={this.props.chooseAnswer.bind(null, answer)} index={i} key={i} />
+                    (answer, i) =>
+                        <Answer
+                            answer={answer}
+                            isAnswered={this.isAnswered()}
+                            pctRight={pctRight}
+                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
+                            index={i}
+                            key={i}
+                            questionNo={this.props.index + 1}
+                            questionText={question.question}
+                        />
                 )                
             }</div>
         </div>
@@ -107,15 +159,29 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
-        let shareButtons = <Share score={this.props.score}
-            message={this.props.message.share}
-            length={this.props.length}
-            key="share" />
+        const histogram = this.props.histogram,
+              score = this.props.score;
+
+        let shareButtons =
+            <Share score={score}
+                message={this.props.message.share}
+                length={this.props.length}
+                key="share" />
+
+        let comparison = null;
+        if (histogram) {
+            let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
+            comparison = <div><div>How did you do?</div>
+                <div>I beat <span className="quiz__end-message__beat">{beat}%</span> of others.</div>
+                </div>
+        }
 
         return <div className="quiz__end-message">
-            <div className="quiz__score-message">You got <span className="quiz__score">{this.props.score}/{this.props.length}</span></div>
+            <div className="quiz__score-message">You got <span className="quiz__score">{score}/{this.props.length}</span></div>
 
             <div className="quiz__bucket-message">{this.props.message.title}</div>
+
+            {comparison}
 
             {shareButtons}
         </div>
@@ -182,6 +248,7 @@ export class Quiz extends React.Component {
         return {
             quizId: this.quizId,
             results: summary,
+            score: this.score(),
             timeTaken: 0
         };
     }
@@ -193,7 +260,8 @@ export class Quiz extends React.Component {
             endMessage = <EndMessage score={this.score()}
                                      message={this.endMessage()}
                                      length={this.length()}
-                                     key="end_message" />
+                                     key="end_message"
+                                     histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined} />
         }
 
         let html = <div data-link-name="quiz" className="quiz">

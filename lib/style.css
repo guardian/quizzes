@@ -21,11 +21,10 @@
     display: table-cell;
 }
 
-.quiz__question-aggregate {
+.quiz__answer-aggregate {
     display: block;
     font-size: 12px;
-    padding-left: 5em;
-    font-style: italic;
+    padding: 0.5em 0em;
 }
 
 .quiz__question-number {
@@ -45,7 +44,7 @@
     outline: none;
     color: #767676; /* neutral-2 */
     background-color: #f6f6f6; /* neutral-8 */
-    padding: 12px 30px;
+    padding: 12px 120px 12px 30px;
     margin-bottom: 12px;
 }
 
@@ -114,7 +113,13 @@
 
 .quiz__score {
     color: #005689;
-    font-size: 24px;
+    font-size: 48px;
+    margin-left: 4px;
+}
+
+.quiz__end-message__beat {
+    color: #005689;
+    font-size: 48px;
     margin-left: 4px;
 }
 
