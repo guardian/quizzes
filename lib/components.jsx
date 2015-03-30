@@ -37,7 +37,7 @@ export class Answer extends React.Component {
             className={classnames(classesNames)}            
             onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
-            {this.props.answer.imageUrl ? <img className="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /> : null}
+            {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
             {this.props.answer.answer}
             {answered && more && (correct || isChosen) ? <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} /> : ''}
         </button>
