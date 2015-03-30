@@ -151,7 +151,7 @@ export class Question extends React.Component {
                             questionNo={this.props.index + 1}
                             questionText={question.question}
                         />
-                )                
+                )
             }</div>
         </div>
     }
@@ -194,7 +194,7 @@ export class Quiz extends React.Component {
         this.state = {
             questions: props.questions
         };
-        this.quizId = 'disney-villains';
+        this.quizId = props.quizIdentity;
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
             quiz.forceUpdate();
