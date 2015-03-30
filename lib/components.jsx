@@ -1,6 +1,7 @@
 import React from 'react';
 import {countWhere} from './utils';
 
+import chunk from 'lodash-node/modern/array/chunk';
 import slice from 'lodash-node/modern/array/slice';
 import zip from 'lodash-node/modern/array/zip';
 import find from 'lodash-node/modern/collection/find';
@@ -42,7 +43,11 @@ export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
             {correct, more, isChosen} = this.props.answer,
-              classesNames = merge({'quiz__answer': true}, answered ? {
+              classesNames = merge({
+                  'quiz__answer': true,
+                  'quiz__answer--list': this.props.type === 'list',
+                  'quiz__answer--pairs': this.props.type === 'pairs'
+              }, answered ? {
                   'quiz__answer--answered': true,
                   'quiz__answer--correct': correct,
                   'quiz__answer--correct-chosen': correct && isChosen,
@@ -82,7 +87,7 @@ export class Answer extends React.Component {
             onClick={answered ? null : this.props.chooseAnswer}>
             {share}
             {icon}
-            {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
+            {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img class="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
             {this.props.answer.answer}
             {aggregate}
             {renderedMore}
@@ -128,7 +133,8 @@ export class Question extends React.Component {
               aggWrong = this.props.aggregate ? this.props.aggregate[0] : undefined,
               aggRight = this.props.aggregate ? (this.props.aggregate[1] ? this.props.aggregate[1] : 0) : undefined,
               pctRight = this.props.aggregate ? Math.round((aggRight * 100) / (aggWrong + aggRight)) : undefined,
-              answers = question.multiChoiceAnswers;
+              answers = question.multiChoiceAnswers,
+              defaultColumns = this.props.defaultColumns;
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             {question.imageUrl ? <img className="quiz__question__img" src={genSrc620(question.imageUrl)} /> : null}
@@ -139,18 +145,26 @@ export class Question extends React.Component {
             </h4>
             <div>{
                 map(
-                    answers,
-                    (answer, i) =>
-                        <Answer
-                            answer={answer}
-                            isAnswered={this.isAnswered()}
-                            pctRight={pctRight}
-                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
-                            index={i}
-                            key={i}
-                            questionNo={this.props.index + 1}
-                            questionText={question.question}
-                        />
+                    chunk(answers, defaultColumns),
+                    (thisChunk, chunkI) =>
+                        <div>
+                            {
+                                map(thisChunk,
+                                    (answer, answerI) =>
+                                        <Answer
+                                            answer={answer}
+                                            isAnswered={this.isAnswered()}
+                                            pctRight={pctRight}
+                                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
+                                            index={chunkI * 2 + answerI}
+                                            key={chunkI * 2 + answerI}
+                                            questionNo={this.props.index + 1}
+                                            questionText={question.question}
+                                            type={this.props.type}
+                                            />
+                                )
+                            }
+                        </div>
                 )
             }</div>
         </div>
@@ -194,6 +208,7 @@ export class Quiz extends React.Component {
         this.state = {
             questions: props.questions
         };
+        this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
         this.quizId = props.quizIdentity;
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
@@ -268,7 +283,15 @@ export class Quiz extends React.Component {
             {
                 map(
                     zip(this.state.questions, this.aggregate ? this.aggregate.results : []),
-                    (question, i) => <Question question={question[0]} aggregate={question[1]} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
+                    (question, i) => <Question
+                        question={question[0]}
+                        aggregate={question[1]}
+                        chooseAnswer={this.chooseAnswer.bind(this)}
+                        index={i}
+                        key={i}
+                        type={this.props.type}
+                        defaultColumns={this.defaultColumns}
+                        />
                 )
             }
             {
