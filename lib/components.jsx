@@ -1,6 +1,7 @@
 import React from 'react';
 import {countWhere} from './utils';
 
+import chunk from 'lodash-node/modern/array/chunk';
 import slice from 'lodash-node/modern/array/slice';
 import zip from 'lodash-node/modern/array/zip';
 import find from 'lodash-node/modern/collection/find';
@@ -41,8 +42,12 @@ export class Aggregate extends React.Component {
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
-              {correct, more, isChosen} = this.props.answer,
-              classesNames = merge({'quiz__answer': true}, answered ? {
+            {correct, more, isChosen} = this.props.answer,
+              classesNames = merge({
+                  'quiz__answer': true,
+                  'quiz__answer--list': this.props.type === 'list',
+                  'quiz__answer--pairs': this.props.type === 'pairs'
+              }, answered ? {
                   'quiz__answer--answered': true,
                   'quiz__answer--correct': correct,
                   'quiz__answer--correct-chosen': correct && isChosen,
@@ -61,9 +66,6 @@ export class Answer extends React.Component {
             if (isChosen || correct) {
                 let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
                 icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
-                if (more) {
-                    renderedMore = <div className="quiz__answer__more" dangerouslySetInnerHTML={{__html: more}} />;
-                }
             }
             if (isChosen) {
                 aggregate = <Aggregate correct={correct} pctRight={pctRight} />
@@ -76,16 +78,15 @@ export class Answer extends React.Component {
             }
         }
 
-        return <button
+        return <a
             data-link-name={"answer " + (this.props.index + 1)}
-            className={classnames(classesNames)}            
+            className={classnames(classesNames)}
             onClick={answered ? null : this.props.chooseAnswer}>
-            {share}
             {icon}
-            {this.props.answer.answer}
+            {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img class="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
+            {this.props.answer.answer ? this.props.answer.answer : null}
             {aggregate}
-            {renderedMore}
-        </button>
+        </a>
     }
 }
 
@@ -97,16 +98,24 @@ function isCorrect(question) {
     return any(question.multiChoiceAnswers, (a) => a.isChosen && a.correct);
 }
 
+function more(question) {
+    return any(question.multiChoiceAnswers, (a) => a.more);
+}
+
 function genSrcset(src) {
+
     const widths = [320, 460, 620],
           srcId = src.replace(/^.*\/\/media.guim.co.uk\//, '');
           templ = '//i.guim.co.uk/media/w-{width}/h--/q-95/' + srcId + ' {width}w';
-
     return map(widths, function(width) {return templ.replace(/{width}/g, width); }).join(', ');
 }
 
 function genSrc620(src) {
     return 'http://i.guim.co.uk/media/w-620/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
+}
+
+function genSrc(src, width) {
+    return 'http://i.guim.co.uk/media/w-' + width + '/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
 }
 
 export class Question extends React.Component {
@@ -123,7 +132,9 @@ export class Question extends React.Component {
               aggWrong = this.props.aggregate ? this.props.aggregate[0] : undefined,
               aggRight = this.props.aggregate ? (this.props.aggregate[1] ? this.props.aggregate[1] : 0) : undefined,
               pctRight = this.props.aggregate ? Math.round((aggRight * 100) / (aggWrong + aggRight)) : undefined,
-              answers = question.multiChoiceAnswers;
+              answers = question.multiChoiceAnswers,
+              defaultColumns = this.props.defaultColumns,
+              moreText = question.more;
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             {question.imageUrl ? <img className="quiz__question__img" src={genSrc620(question.imageUrl)} /> : null}
@@ -134,20 +145,31 @@ export class Question extends React.Component {
             </h4>
             <div>{
                 map(
-                    answers,
-                    (answer, i) =>
-                        <Answer
-                            answer={answer}
-                            isAnswered={this.isAnswered()}
-                            pctRight={pctRight}
-                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
-                            index={i}
-                            key={i}
-                            questionNo={this.props.index + 1}
-                            questionText={question.question}
-                        />
-                )                
+                    chunk(answers, defaultColumns),
+                    (thisChunk, chunkI) =>
+                        <div className="quiz__question__answer-row">
+                            {
+                                map(thisChunk,
+                                    (answer, answerI) =>
+                                        <Answer
+                                            answer={answer}
+                                            isAnswered={this.isAnswered()}
+                                            pctRight={pctRight}
+                                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
+                                            index={chunkI * 2 + answerI}
+                                            key={chunkI * 2 + answerI}
+                                            questionNo={this.props.index + 1}
+                                            questionText={question.question}
+                                            type={this.props.type}
+                                        />
+                                )
+                            }
+                        </div>
+                )
             }</div>
+        {
+            this.isAnswered() ? (moreText ? <div className="quiz__question__more">{moreText}</div> : null) : null
+            }
         </div>
     }
 }
@@ -164,10 +186,10 @@ export class EndMessage extends React.Component {
                 key="share" />
 
         let comparison = null;
-        if (histogram) {
+        if (score > 0 && histogram) {
             let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
             comparison = <div><div>How did you do?</div>
-                <div>I beat <span className="quiz__end-message__beat">{beat}%</span> of others.</div>
+                <div>I beat <span className="quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
                 </div>
         }
 
@@ -189,7 +211,8 @@ export class Quiz extends React.Component {
         this.state = {
             questions: props.questions
         };
-        this.quizId = 'disney-villains';
+        this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
+        this.quizId = props.quizIdentity;
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
             quiz.forceUpdate();
@@ -263,7 +286,15 @@ export class Quiz extends React.Component {
             {
                 map(
                     zip(this.state.questions, this.aggregate ? this.aggregate.results : []),
-                    (question, i) => <Question question={question[0]} aggregate={question[1]} chooseAnswer={this.chooseAnswer.bind(this)} index={i} key={i} />
+                    (question, i) => <Question
+                        question={question[0]}
+                        aggregate={question[1]}
+                        chooseAnswer={this.chooseAnswer.bind(this)}
+                        index={i}
+                        key={i}
+                        type={this.props.type}
+                        defaultColumns={this.defaultColumns}
+                        />
                 )
             }
             {

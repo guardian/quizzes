@@ -19,7 +19,6 @@ Then navigate to `http://localhost:8000`
 * tag the master branch
 * replace lib/quizSpec.js
 * edit deploy.sh and boot.js to have a new name
-* update quizId in component.jsx so the stats go to the right place
 
 ## To make sure you can deploy a quiz
 * make sure you have brew install s3cmd

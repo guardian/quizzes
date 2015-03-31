@@ -35,26 +35,54 @@
     text-align: right;
 }
 
+.quiz__question__answer-row {
+    display: flex;
+}
+
 .quiz__answer {
     position: relative;
-    display: block;
-    width: 100%;
+    display: inline-block;
     border: none;
     text-align: left;
     outline: none;
     color: #767676; /* neutral-2 */
     background-color: #f6f6f6; /* neutral-8 */
-    padding: 12px 120px 12px 30px;
-    margin-bottom: 12px;
+    padding: 12px 12px 12px 30px;
+    margin: 3px;
+    flex: 1 1 50%;
+}
+
+.quiz__answer__content {
+    vertical-align: top;
+}
+
+.quiz__answer__image {
+    width: 100%
+}
+
+.quiz__answer__image > img {
+    width: 100%
+}
+
+.quiz__answer--list {
+    width: 100%;
+}
+
+.quiz__answer--pairs {
+    width: 50%;
 }
 
 .quiz__answer--answered {
     cursor: default;
 }
 
-.quiz__answer--correct {
+.quiz__answer--correct, .quiz__question__more {
     background: #aedfb8;
     color: #505050;
+}
+
+.quiz__question__more {
+    padding: 12px;
 }
 
 .quiz__answer--correct-chosen {
