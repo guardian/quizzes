@@ -186,10 +186,10 @@ export class EndMessage extends React.Component {
                 key="share" />
 
         let comparison = null;
-        if (histogram) {
+        if (score > 0 && histogram) {
             let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
             comparison = <div><div>How did you do?</div>
-                <div>I beat <span className="quiz__end-message__beat">{beat}%</span> of others.</div>
+                <div>I beat <span className="quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
                 </div>
         }
 
