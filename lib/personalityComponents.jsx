@@ -42,8 +42,10 @@ export class Aggregate extends React.Component {
 
 export class Answer extends React.Component {
     render() {
+        let questionNumber = null;
+
         const answered = this.props.isAnswered,
-            {num, value, more, isChosen} = this.props.answer,
+            {value, more, isChosen} = this.props.answer,
               classesNames = merge({
                   'quiz__answer': true,
                   'quiz__answer--list': this.props.type === 'list',
@@ -52,8 +54,11 @@ export class Answer extends React.Component {
                   'quiz__answer--answered': true,
                   'quiz__answer--chosen': isChosen
               } : null),
-              pctRight = this.props.pctRight,
-              questionNo = this.props.questionNo;
+              pctRight = this.props.pctRight
+
+        questionNumber = this.props.questionNo;
+
+        console.log("??? ", questionNumber);
 
         let icon,
             aggregate,
@@ -211,11 +216,11 @@ export class Quiz extends React.Component {
         };
         this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
         this.quizId = props.quizIdentity;
+        this.quizData = props.data;
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
             quiz.forceUpdate();
         });
-        this.data = props.data;
     }
 
     chooseAnswer(answer) {
@@ -259,33 +264,175 @@ export class Quiz extends React.Component {
     }
 
     results() {
-        let answers = map(this.state.questions, (question) => getChosenAnswer(question));
-        let data = null;
+        var data = this.quizData;
+        const primes = [2,3,5,7,11,13,17,19,23,29,31,37];
 
-        map( answers, (answer) =>
-            newData = if (answer.index) == 1 && answer.value == 0) {
-                data.filter(age > 6 && age < 9)
+        map(this.state.questions, (question) => {
+            console.log("Q#", question.number);
+            var answer = getChosenAnswer(question);
+            switch (question.number) {
+                case 1: {
+                    console.log("A#", answer[0].value);
+                    switch (answer[0].value) {
+                        case 0: {
+                            data = filter(data, function(d) {
+                                return d.odds < 10
+                            });
+                            break;
+                        }
+                        case 1: {
+                            data = filter(data, function(d) {
+                                return d.odds >= 15 && d.odds <= 25
+                            });
+                            break;
+                        }
+                        case 2: {
+                            data = filter(data, function(d) {
+                                return d.odds > 25 && d.odds <= 65
+                            });
+                            break;
+                        }
+                        case 3: {
+                            data = filter(data, function(d) {
+                                return d.odds > 65
+                            });
+                            break;
+                        }
+                    }
+                    console.log("D>", data.length);
+                    map(data, (record) => console.log(" R>", record));
+                    break;
+                }
+                case 2: {
+                    console.log("A#", answer[0].value);
+                    switch (answer[0].value) {
+                        case 0: {
+                            data = filter(data, function (d) {
+                                return d.age <= 7
+                            });
+                            break;
+                        }
+                        case 1: {
+                            data = filter(data, function(d) {
+                                return d.age >= 8 && d.age <= 9
+                            });
+                            break;
+                        }
+                        case 2: {
+                            data = filter(data, function(d) {
+                                return d.age == 10
+                            });
+                            break;
+                        }
+                        case 3: {
+                            data = filter(data, function(d) {
+                                return d.age >= 11
+                            });
+                            break;
+                        }
+                    }
+                    console.log("D> ", data.length);
+                    map(data, (record) => console.log(" R>", record));
+                    break;
+                }
+                case 3: {
+                    console.log("A#", answer[0].value);
+                    switch (answer[0].value) {
+                        case 0: {
+                            data = filter(data, function (d) {
+                                return d.silks == "wild"
+                            });
+                            break;
+                        }
+                        case 1: {
+                            data = filter(data, function(d) {
+                                return d.silks == "unique"
+                            });
+                            break;
+                        }
+                        case 2: {
+                            data = filter(data, function(d) {
+                                return d.silks == "simple"
+                            });
+                            break;
+                        }
+                    }
+                    console.log("D> ", data.length);
+                    map(data, (record) => console.log(" R>", record));
+                    break;
+                }
+                case 4: {
+                    console.log("A#", answer[0].value);
+                    switch (answer[0].value) {
+                        case 0: {
+                            data = filter(data, function (d) {
+                                return d.number % 2 != 0
+                            });
+                            break;
+                        }
+                        case 1: {
+                            data = filter(data, function(d) {
+                                return d.number % 2 == 0
+                            });
+                            break;
+                        }
+                        case 2: {
+                            data = filter(data, function(d) {
+                                return primes.indexOf(d.number) >= 0
+                            });
+                            break;
+                        }
+                    }
+                    console.log("D> ", data.length);
+                    map(data, (record) => console.log(" R>", record));
+                    break;
+                }
+                case 5: {
+                    console.log("A#", answer[0].value);
+                    switch (answer[0].value) {
+                        case 0: {
+                            data = filter(data, function (d) {
+                                return d.earnings == "rich"
+                            });
+                            break;
+                        }
+                        case 1: {
+                            data = filter(data, function(d) {
+                                return d.earnings == "average"
+                            });
+                            break;
+                        }
+                        case 2: {
+                            data = filter(data, function(d) {
+                                return d.earnings == "poor"
+                            });
+                            break;
+                        }
+                    }
+                    console.log("D> ", data.length);
+                    map(data, (record) => console.log(" R>", record));
+                    break;
+                }
             }
-            newData = if (answer.index) == 2 && answer.value == 3) {
-                data.filter(odds > 75)
-            }
-
-        );
+        });
 
         return {
             quizId: this.quizId,
-            results: summary,
+            results: data,
             score: this.score(),
             timeTaken: 0
         };
+
     }
 
     render() {
         let endMessage,
             res;
-        res = this.results();
 
         if (this.isFinished()) {
+            res = this.results();
+            console.log("### " + res + " ###");
+
             endMessage = <EndMessage score={this.score()}
                                      message={this.endMessage()}
                                      length={this.length()}
