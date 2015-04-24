@@ -1,4 +1,4 @@
-export const quizSpec = {
+{
     "quizIdentity": "football-quiz-1",
     "header": {
         "titleText": "How well do you know football?"
@@ -295,4 +295,4 @@ export const quizSpec = {
             "maxScore": 0
         }
     ]
-};
+}
