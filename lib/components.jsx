@@ -4,17 +4,27 @@ import {countWhere} from './utils';
 import chunk from 'lodash-node/modern/array/chunk';
 import slice from 'lodash-node/modern/array/slice';
 import zip from 'lodash-node/modern/array/zip';
+import includes from 'lodash-node/modern/collection/includes';
 import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
+import reduce from 'lodash-node/modern/collection/reduce';
+import forEach from 'lodash-node/modern/collection/forEach';
 import sum from 'lodash-node/modern/collection/sum';
+import compact from 'lodash-node/modern/array/compact';
+import take from 'lodash-node/modern/array/take';
 import merge from 'lodash-node/modern/object/merge';
+import last from 'lodash-node/modern/array/last';
+import sortBy from 'lodash-node/modern/collection/sortBy';
+import pairs from 'lodash-node/modern/object/pairs';
 import startsWith from 'lodash-node/modern/string/startsWith';
 
 import classnames from 'classnames';
 import {cross, tick} from './svgs.jsx!';
 import {saveResults, getResults} from './scores';
 import {Share} from './social.jsx!'
+
+const quizTypes = ['knowledge', 'personality'];
 
 export class Aggregate extends React.Component {
     render() {
@@ -42,27 +52,37 @@ export class Aggregate extends React.Component {
 export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
-            {correct, more, isChosen} = this.props.answer,
-              classesNames = merge({
-                  'quiz__answer': true,
-                  'quiz__answer--list': this.props.type === 'list',
-                  'quiz__answer--pairs': this.props.type === 'pairs'
-              }, answered ? {
-                  'quiz__answer--answered': true,
-                  'quiz__answer--correct': correct,
-                  'quiz__answer--correct-chosen': correct && isChosen,
-                  'quiz__answer--incorrect-chosen': isChosen && !correct,    
-                  'quiz__answer--incorrect': !correct
-              } : null),
-              pctRight = this.props.pctRight,
-              questionNo = this.props.questionNo;
+            {correct, buckets, more, isChosen} = this.props.answer,
+            quizType = this.props.quizType,
+            classesNames = merge({
+                    'quiz__answer': true
+                }, 
+                answered ? {
+                    'quiz__answer--answered': true
+                } : null,
+                answered && quizType === 'personality' ? {
+                    'quiz__answer--chosen': isChosen,
+                } : null,
+                answered && quizType === 'knowledge' ? {
+                    'quiz__answer--correct': correct,
+                    'quiz__answer--correct-chosen': correct && isChosen,
+                    'quiz__answer--incorrect-chosen': isChosen && !correct,    
+                    'quiz__answer--incorrect': !correct
+                } : null
+            ),
+            pctRight = this.props.pctRight,
+            questionNo = this.props.questionNo;
 
         let icon,
             aggregate,
             renderedMore = null,
             share = null;
 
-        if (answered) {
+        if (answered && quizType === 'personality' && isChosen) {
+            icon = <span className={'quiz__answer-icon'}>{tick()}</span>;
+        }
+
+        if (answered && quizType === 'knowledge') {
             if (isChosen || correct) {
                 let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
                 icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
@@ -92,6 +112,10 @@ export class Answer extends React.Component {
 
 function isAnswered(question) {
     return any(question.multiChoiceAnswers, (a) => a.isChosen);
+}
+
+function getChosenAnswer(question) {
+    return find(question.multiChoiceAnswers, (a) => a.isChosen);
 }
 
 function isCorrect(question) {
@@ -138,7 +162,7 @@ export class Question extends React.Component {
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             {question.imageUrl ? <img className="quiz__question__img" src={genSrc620(question.imageUrl)} /> : null}
-        {question.imageCredit ? <figcaption className="caption caption--main caption--img quiz__image-caption" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
+            {question.imageCredit ? <figcaption className="caption caption--main caption--img quiz__image-caption" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}</span>
                 <span className="quiz__question-text">{question.question}</span>
@@ -160,7 +184,7 @@ export class Question extends React.Component {
                                             key={chunkI * 2 + answerI}
                                             questionNo={this.props.index + 1}
                                             questionText={question.question}
-                                            type={this.props.type}
+                                            quizType={this.props.quizType}
                                         />
                                 )
                             }
@@ -213,6 +237,7 @@ export class Quiz extends React.Component {
         };
         this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
         this.quizId = props.quizIdentity;
+        this.quizType = props.quizType,
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
             quiz.forceUpdate();
@@ -245,6 +270,18 @@ export class Quiz extends React.Component {
         return countWhere(this.state.questions, isCorrect);
     }
 
+    bucket() {
+        var tally = reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
+            forEach(answer.buckets, (bucket) => {
+                 acc[bucket] = (acc[bucket] || 0) + 1;
+            })
+            return acc; 
+        }, {});
+
+        tally = last(sortBy(pairs(tally), 1))[0];
+        console.log('You are: ' + tally);
+    }
+
     endMessage() {
         const minScore = (g) => g.minScore === undefined ? Number.NEGATIVE_INFINITY : g.minScore,
               maxScore = (g) => g.maxScore === undefined ? Number.POSITIVE_INFINITY : g.maxScore,
@@ -267,12 +304,14 @@ export class Quiz extends React.Component {
             quizId: this.quizId,
             results: summary,
             score: this.score(),
+            bucket: this.bucket(),
             timeTaken: 0
         };
     }
 
     render() {
-        let endMessage;
+        let html,
+            endMessage;
 
         if (this.isFinished()) {
             endMessage = <EndMessage score={this.score()}
@@ -282,25 +321,29 @@ export class Quiz extends React.Component {
                                      histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined} />
         }
 
-        let html = <div data-link-name="quiz" className="quiz">
-            {
-                map(
-                    zip(this.state.questions, this.aggregate ? this.aggregate.results : []),
-                    (question, i) => <Question
-                        question={question[0]}
-                        aggregate={question[1]}
-                        chooseAnswer={this.chooseAnswer.bind(this)}
-                        index={i}
-                        key={i}
-                        type={this.props.type}
-                        defaultColumns={this.defaultColumns}
-                        />
-                )
-            }
-            {
-                endMessage
-            }
-        </div>;
+        if (includes(quizTypes, this.quizType)) {
+            html = <div data-link-name="quiz" className="quiz">
+                {
+                    map(
+                        zip(this.state.questions, this.aggregate ? take(this.aggregate.results, this.state.questions.length) : []),
+                        (question, i) => <Question
+                            question={question[0]}
+                            aggregate={question[1]}
+                            chooseAnswer={this.chooseAnswer.bind(this)}
+                            index={i}
+                            key={i}
+                            quizType={this.quizType}
+                            defaultColumns={this.defaultColumns}
+                            />
+                    )
+                }
+                {
+                    endMessage
+                }
+            </div>;
+        } else {
+            html = <div>Unknown or unspecified quizType. Shoud be one of: {quizTypes.join(', ')}.</div>
+        }
 
         document.getElementsByClassName('element-embed')[0].style.display = 'none';
 

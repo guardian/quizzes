@@ -64,14 +64,6 @@
     width: 100%
 }
 
-.quiz__answer--list {
-    width: 100%;
-}
-
-.quiz__answer--pairs {
-    width: 50%;
-}
-
 .quiz__answer--answered {
     cursor: default;
 }
@@ -85,6 +77,7 @@
     padding: 12px;
 }
 
+.quiz__answer--chosen,
 .quiz__answer--correct-chosen {
     background-color: #43B347; /* ??? */
     color: #ffffff;    
