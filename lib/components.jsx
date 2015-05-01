@@ -240,7 +240,7 @@ export class EndMessage extends React.Component {
                         <a href={personality.href} className="quiz__score">{personality.title}</a>
                         : <span className="quiz__score">{personality.title}</span>}
                     {personality.youtubeId ? 
-                        <p><iframe width="320" height="180" src={"https://www.youtube.com/embed/" + personality.youtubeId} frameborder="0" allowfullscreen></iframe></p>
+                        <p><iframe width="320" height="180" src={"https://www.youtube.com/embed/" + personality.youtubeId} frameBorder="0"  allowfullscreen></iframe></p>
                         : null}
                 </div>
             </div>            
