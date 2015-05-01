@@ -57,47 +57,51 @@ export class Answer extends React.Component {
             {correct, buckets, more, isChosen} = this.props.answer,
             isTypeKnowledge = this.props.isTypeKnowledge,
             isTypePersonality = this.props.isTypePersonality,
-            classesNames = merge({
-                    'quiz__answer': true
-                }, 
-                answered ? {
+            pctRight = this.props.pctRight,
+            questionNo = this.props.questionNo;
+
+        let classesNames = {
+                'quiz__answer': true
+            },
+            icon,
+            aggregate,
+            renderedMore = null,
+            share = null;
+
+        if (answered) {
+            classesNames = merge(classesNames, 
+                {
                     'quiz__answer--answered': true
-                } : null,
-                answered && isTypePersonality ? {
+                },
+                isTypePersonality ? {
                     'quiz__answer--chosen': isChosen,
                 } : null,
-                answered && isTypeKnowledge ? {
+                isTypeKnowledge ? {
                     'quiz__answer--correct': correct,
                     'quiz__answer--correct-chosen': correct && isChosen,
                     'quiz__answer--incorrect-chosen': isChosen && !correct,    
                     'quiz__answer--incorrect': !correct
                 } : null
-            ),
-            pctRight = this.props.pctRight,
-            questionNo = this.props.questionNo;
+            );
 
-        let icon,
-            aggregate,
-            renderedMore = null,
-            share = null;
-
-        if (answered && isTypePersonality && isChosen) {
-            icon = <span className={'quiz__answer-icon'}>{tick()}</span>;
-        }
-
-        if (answered && isTypeKnowledge) {
-            if (isChosen || correct) {
-                let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
-                icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
+            if (isTypePersonality && isChosen) {
+                icon = <span className={'quiz__answer-icon'}>{tick()}</span>;
             }
-            if (isChosen) {
-                aggregate = <Aggregate correct={correct} pctRight={pctRight} />
-            }
-            if (correct) {
-                share = <Share question={questionNo}
-                    key="share"
-                    message={this.props.answer.share ? this.props.answer.share : this.props.questionText }
-                />
+
+            if (isTypeKnowledge) {
+                if (isChosen || correct) {
+                    let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
+                    icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
+                }
+                if (isChosen) {
+                    aggregate = <Aggregate correct={correct} pctRight={pctRight} />
+                }
+                if (correct) {
+                    share = <Share question={questionNo}
+                        key="share"
+                        message={this.props.answer.share ? this.props.answer.share : this.props.questionText }
+                    />
+                }
             }
         }
 
