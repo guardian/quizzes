@@ -6,42 +6,40 @@
     },
     "questions": [
         {
-            "question": "How does the new quiz format make you feel?",
-            "more" : "There is no right response; all emotions are self-legitimising",
+            "question": "How does Javascript make you feel?",
             "multiChoiceAnswers": [
                 {
-                    "answer" : "Very happy",
-                    "buckets": ["John"]
+                    "answer" : "Elated",
+                    "buckets": ["Fabio", "Patrick"]
+                },
+                {
+                    "answer" : "Benign",
+                    "buckets": ["Alex", "Stephan"]
                 },
                 {
                     "answer" : "Furious",
-                    "buckets": ["Francis"]
-                },
-                {
-                    "answer" : "Hysterical",
                     "buckets": ["Rob"]
                 },
                 {
-                    "answer" : "Mildly disdainful",
-                    "buckets": ["Alex", "Stephan"]
+                    "answer" : "Hysterical",
+                    "buckets": ["Francis", "Grant"]
                 }
             ]
         },
         {
-            "question": "How mature to you think you are?",
-            "more" : "OK, but FYI, you're in no position to judge of your own maturity.",
+            "question": "How mature do you think you are?",
             "multiChoiceAnswers": [
                 {
-                    "answer" : "Deludedly high",
-                    "buckets": ["Stephan"]
-                },
-                {
                     "answer" : "Reasonably high",
-                    "buckets": ["John"]
+                    "buckets": ["John", "Fabio", "Patrick"]
                 },
                 {
                     "answer" : "Appropriate for my age",
                     "buckets": ["Francis", "Alex"]
+                },
+                {
+                    "answer" : "Disappointingly low, given my age",
+                    "buckets": ["Stephan"]
                 },
                 {
                     "answer" : "Barely toddler-level",

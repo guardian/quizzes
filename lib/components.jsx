@@ -9,6 +9,7 @@ import find from 'lodash-node/modern/collection/find';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import reduce from 'lodash-node/modern/collection/reduce';
+import filter from 'lodash-node/modern/collection/filter';
 import forEach from 'lodash-node/modern/collection/forEach';
 import sum from 'lodash-node/modern/collection/sum';
 import compact from 'lodash-node/modern/array/compact';
@@ -18,6 +19,7 @@ import last from 'lodash-node/modern/array/last';
 import sortBy from 'lodash-node/modern/collection/sortBy';
 import pairs from 'lodash-node/modern/object/pairs';
 import startsWith from 'lodash-node/modern/string/startsWith';
+import random from 'lodash-node/modern/number/random';
 
 import classnames from 'classnames';
 import {cross, tick} from './svgs.jsx!';
@@ -200,32 +202,44 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
-        const histogram = this.props.histogram,
-              score = this.props.score;
+        const quizType = this.props.quizType,
+              histogram = this.props.histogram,
+              score = this.props.score,
+              bucket = this.props.bucket;
 
-        let shareButtons =
-            <Share score={score}
-                message={this.props.message.share}
-                length={this.props.length}
-                key="share" />
+        console.log('You are ' + bucket + ' in ' + quizType);
 
-        let comparison = null;
-        if (score > 0 && histogram) {
-            let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
-            comparison = <div><div>How did you do?</div>
-                <div>I beat <span className="quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
-                </div>
+        if (quizType === 'knowledge') {
+            let shareButtons =
+                <Share score={score}
+                    message={this.props.message.share}
+                    length={this.props.length}
+                    key="share" />
+
+            let comparison = null;
+            if (score > 0 && histogram) {
+                let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
+                comparison = <div><div>How did you do?</div>
+                    <div>I beat <span className="quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
+                    </div>
+            }
+
+            return <div className="quiz__end-message">
+                <div className="quiz__score-message">You got <span className="quiz__score">{score}/{this.props.length}</span></div>
+
+                <div className="quiz__bucket-message">{this.props.message.title}</div>
+
+                {comparison}
+
+                {shareButtons}
+            </div>            
         }
 
-        return <div className="quiz__end-message">
-            <div className="quiz__score-message">You got <span className="quiz__score">{score}/{this.props.length}</span></div>
-
-            <div className="quiz__bucket-message">{this.props.message.title}</div>
-
-            {comparison}
-
-            {shareButtons}
-        </div>
+        if (quizType === 'personality') {
+            return <div className="quiz__end-message">
+                <div className="quiz__score-message">You are <span className="quiz__score">{bucket}</span></div>
+            </div>            
+        }
     }
 }
 
@@ -271,15 +285,16 @@ export class Quiz extends React.Component {
     }
 
     bucket() {
-        var tally = reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
-            forEach(answer.buckets, (bucket) => {
-                 acc[bucket] = (acc[bucket] || 0) + 1;
-            })
-            return acc; 
-        }, {});
+        let tally = pairs(reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
+                forEach(answer.buckets, (bucket) => {
+                     acc[bucket] = (acc[bucket] || 0) + 1;
+                })
+                return acc; 
+            }, {})),
+            highScore = last(sortBy(tally, 1))[1],
+            highScorers = map(filter(tally, (t) => t[1] === highScore), (t) => t[0]);
 
-        tally = last(sortBy(pairs(tally), 1))[0];
-        console.log('You are: ' + tally);
+        return highScorers[random(0, highScorers.length - 1)]; 
     }
 
     endMessage() {
@@ -314,7 +329,9 @@ export class Quiz extends React.Component {
             endMessage;
 
         if (this.isFinished()) {
-            endMessage = <EndMessage score={this.score()}
+            endMessage = <EndMessage quizType = {this.quizType}
+                                     score={this.score()}
+                                     bucket={this.bucket()}
                                      message={this.endMessage()}
                                      length={this.length()}
                                      key="end_message"
