@@ -55,17 +55,18 @@ export class Answer extends React.Component {
     render() {
         const answered = this.props.isAnswered,
             {correct, buckets, more, isChosen} = this.props.answer,
-            quizType = this.props.quizType,
+            isTypeKnowledge = this.props.isTypeKnowledge,
+            isTypePersonality = this.props.isTypePersonality,
             classesNames = merge({
                     'quiz__answer': true
                 }, 
                 answered ? {
                     'quiz__answer--answered': true
                 } : null,
-                answered && quizType === 'personality' ? {
+                answered && isTypePersonality ? {
                     'quiz__answer--chosen': isChosen,
                 } : null,
-                answered && quizType === 'knowledge' ? {
+                answered && isTypeKnowledge ? {
                     'quiz__answer--correct': correct,
                     'quiz__answer--correct-chosen': correct && isChosen,
                     'quiz__answer--incorrect-chosen': isChosen && !correct,    
@@ -80,11 +81,11 @@ export class Answer extends React.Component {
             renderedMore = null,
             share = null;
 
-        if (answered && quizType === 'personality' && isChosen) {
+        if (answered && isTypePersonality && isChosen) {
             icon = <span className={'quiz__answer-icon'}>{tick()}</span>;
         }
 
-        if (answered && quizType === 'knowledge') {
+        if (answered && isTypeKnowledge) {
             if (isChosen || correct) {
                 let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
                 icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
@@ -186,7 +187,8 @@ export class Question extends React.Component {
                                             key={chunkI * 2 + answerI}
                                             questionNo={this.props.index + 1}
                                             questionText={question.question}
-                                            quizType={this.props.quizType}
+                                            isTypeKnowledge={this.props.isTypeKnowledge}
+                                            isTypePersonality={this.props.isTypePersonality}
                                         />
                                 )
                             }
@@ -202,12 +204,13 @@ export class Question extends React.Component {
 
 export class EndMessage extends React.Component {
     render() {
-        const quizType = this.props.quizType,
+        const isTypeKnowledge = this.props.isTypeKnowledge,
+              isTypePersonality = this.props.isTypePersonality,
               histogram = this.props.histogram,
               score = this.props.score,
               personality = this.props.personality;
 
-        if (quizType === 'knowledge') {
+        if (isTypeKnowledge) {
             let shareButtons =
                 <Share score={score}
                     message={this.props.message.share}
@@ -233,7 +236,7 @@ export class EndMessage extends React.Component {
             </div>            
         }
 
-        if (quizType === 'personality') {
+        if (isTypePersonality) {
             return <div className="quiz__end-message">
                 <div className="quiz__score-message">
                     {personality.href ?
@@ -256,7 +259,8 @@ export class Quiz extends React.Component {
         };
         this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
         this.quizId = props.quizIdentity;
-        this.quizType = props.quizType,
+        this.isTypeKnowledge = props.quizType === 'knowledge',
+        this.isTypePersonality = props.quizType === 'personality',
         this.resultBuckets = props.resultBuckets,
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
@@ -326,7 +330,6 @@ export class Quiz extends React.Component {
             quizId: this.quizId,
             results: summary,
             score: this.score(),
-            personality: this.personality(),
             timeTaken: 0
         };
     }
@@ -337,16 +340,17 @@ export class Quiz extends React.Component {
 
         if (this.isFinished()) {
             endMessage = <EndMessage
-                quizType = {this.quizType}
-                score={this.score()}
-                personality={this.personality()}
+                isTypePersonality = {this.isTypePersonality}
+                isTypeKnowledge = {this.isTypeKnowledge}
+                score={this.isTypeKnowledge ? this.score() : null}
+                personality={this.isTypePersonality ? this.personality() : null}
                 message={this.endMessage()}
                 length={this.length()}
                 key="end_message"
                 histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined} />
         }
 
-        if (includes(quizTypes, this.quizType)) {
+        if (this.isTypeKnowledge || this.isTypePersonality) {
             html = <div data-link-name="quiz" className="quiz">
                 {
                     map(
@@ -357,8 +361,9 @@ export class Quiz extends React.Component {
                             chooseAnswer={this.chooseAnswer.bind(this)}
                             index={i}
                             key={i}
-                            quizType={this.quizType}
-                            defaultColumns={this.defaultColumns}
+                            isTypePersonality = {this.isTypePersonality}
+                            isTypeKnowledge = {this.isTypeKnowledge}
+                            defaultColumns = {this.defaultColumns}
                             />
                     )
                 }
@@ -367,7 +372,7 @@ export class Quiz extends React.Component {
                 }
             </div>;
         } else {
-            html = <div>Unknown or unspecified quizType. Shoud be one of: {quizTypes.join(', ')}.</div>
+            html = <div>Unknown or unspecified "quizType" property. Shoud be one of: {quizTypes.join(', ')}.</div>
         }
 
         document.getElementsByClassName('element-embed')[0].style.display = 'none';
