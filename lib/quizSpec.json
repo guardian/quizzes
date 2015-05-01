@@ -18,7 +18,7 @@
                 },
                 {
                     "answer" : "Furious",
-                    "buckets": ["Rob"]
+                    "buckets": ["Rob", "John"]
                 },
                 {
                     "answer" : "Hysterical",
@@ -39,11 +39,32 @@
                 },
                 {
                     "answer" : "Disappointingly low, given my age",
-                    "buckets": ["Stephan"]
+                    "buckets": ["Stephan", "Grant"]
                 },
                 {
                     "answer" : "Barely toddler-level",
                     "buckets": ["Rob"]
+                }
+            ]
+        },
+        {
+            "question": "T-Shirts... how many conference freebie or \"hilarious\" ones do you own?",
+            "multiChoiceAnswers": [
+                {
+                    "answer" : "They're all I've got in life",
+                    "buckets": ["Patrick", "Grant"]
+                },
+                {
+                    "answer" : "A few",
+                    "buckets": ["Rob", "Fabio", "John"]
+                },
+                {
+                    "answer" : "None",
+                    "buckets": ["Francis", "Alex"]
+                },
+                {
+                    "answer" : "I disdain them utterly",
+                    "buckets": ["Stephan"]
                 }
             ]
         }
@@ -68,6 +89,18 @@
         {
             "title": "Stephan",
             "share": "I'm a Stephan"
+        },
+        {
+            "title": "Patrick",
+            "share": "I'm a Patrick"
+        },
+        {
+            "title": "Grant",
+            "share": "I'm a Grant"
+        },
+        {
+            "title": "Fabio",
+            "share": "I'm a Fabio"
         }
     ]
 }
