@@ -205,7 +205,7 @@ export class EndMessage extends React.Component {
         const quizType = this.props.quizType,
               histogram = this.props.histogram,
               score = this.props.score,
-              bucket = this.props.bucket;
+              personality = this.props.personality;
 
         if (quizType === 'knowledge') {
             let shareButtons =
@@ -235,7 +235,14 @@ export class EndMessage extends React.Component {
 
         if (quizType === 'personality') {
             return <div className="quiz__end-message">
-                <div className="quiz__score-message"><span className="quiz__score">{bucket.title}</span></div>
+                <div className="quiz__score-message">
+                    {personality.href ?
+                        <a href={personality.href} className="quiz__score">{personality.title}</a>
+                        : <span className="quiz__score">{personality.title}</span>}
+                    {personality.youtubeId ? 
+                        <p><iframe width="320" height="180" src={"https://www.youtube.com/embed/" + personality.youtubeId} frameborder="0" allowfullscreen></iframe></p>
+                        : null}
+                </div>
             </div>            
         }
     }
@@ -283,10 +290,10 @@ export class Quiz extends React.Component {
         return countWhere(this.state.questions, isCorrect);
     }
 
-    bucket() {
-        let tallies = pairs(reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
-                forEach(answer.buckets, (bucket) => {
-                     acc[bucket] = (acc[bucket] || 0) + 1;
+    personality() {
+        const tallies = pairs(reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
+                forEach(answer.buckets, (personality) => {
+                     acc[personality] = (acc[personality] || 0) + 1;
                 })
                 return acc; 
             }, {})),
@@ -319,7 +326,7 @@ export class Quiz extends React.Component {
             quizId: this.quizId,
             results: summary,
             score: this.score(),
-            bucket: this.bucket(),
+            personality: this.personality(),
             timeTaken: 0
         };
     }
@@ -329,13 +336,14 @@ export class Quiz extends React.Component {
             endMessage;
 
         if (this.isFinished()) {
-            endMessage = <EndMessage quizType = {this.quizType}
-                                     score={this.score()}
-                                     bucket={this.bucket()}
-                                     message={this.endMessage()}
-                                     length={this.length()}
-                                     key="end_message"
-                                     histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined} />
+            endMessage = <EndMessage
+                quizType = {this.quizType}
+                score={this.score()}
+                personality={this.personality()}
+                message={this.endMessage()}
+                length={this.length()}
+                key="end_message"
+                histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined} />
         }
 
         if (includes(quizTypes, this.quizType)) {
