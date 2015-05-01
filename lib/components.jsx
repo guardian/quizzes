@@ -207,8 +207,6 @@ export class EndMessage extends React.Component {
               score = this.props.score,
               bucket = this.props.bucket;
 
-        console.log('You are ' + bucket + ' in ' + quizType);
-
         if (quizType === 'knowledge') {
             let shareButtons =
                 <Share score={score}
@@ -237,7 +235,7 @@ export class EndMessage extends React.Component {
 
         if (quizType === 'personality') {
             return <div className="quiz__end-message">
-                <div className="quiz__score-message">You are <span className="quiz__score">{bucket}</span></div>
+                <div className="quiz__score-message"><span className="quiz__score">{bucket.title}</span></div>
             </div>            
         }
     }
@@ -252,6 +250,7 @@ export class Quiz extends React.Component {
         this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
         this.quizId = props.quizIdentity;
         this.quizType = props.quizType,
+        this.resultBuckets = props.resultBuckets,
         getResults(this.quizId).then(function (resp) {
             quiz.aggregate = JSON.parse(resp);
             quiz.forceUpdate();
@@ -285,16 +284,17 @@ export class Quiz extends React.Component {
     }
 
     bucket() {
-        let tally = pairs(reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
+        let tallies = pairs(reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
                 forEach(answer.buckets, (bucket) => {
                      acc[bucket] = (acc[bucket] || 0) + 1;
                 })
                 return acc; 
             }, {})),
-            highScore = last(sortBy(tally, 1))[1],
-            highScorers = map(filter(tally, (t) => t[1] === highScore), (t) => t[0]);
+            highScore = last(sortBy(tallies, 1))[1],
+            highScorers = map(filter(tallies, (t) => t[1] === highScore), (t) => t[0]),
+            highScorer = highScorers[random(0, highScorers.length - 1)];
 
-        return highScorers[random(0, highScorers.length - 1)]; 
+        return find(this.resultBuckets, {id: highScorer}) || {}; 
     }
 
     endMessage() {
