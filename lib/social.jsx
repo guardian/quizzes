@@ -20,12 +20,12 @@ export class ShareTwitter extends React.Component {
 
 function shareAbstract(site, campaign, question, href, source) {
     let classNames = {
-        'quiz__social__action': true,
-        'quiz__social--normal': !question && !source,
-        'quiz__social--major': !question && source && startsWith(source, campaign),
-        'quiz__social--minor': !question && source && !startsWith(source, campaign),
-        'quiz__social--question': question
-    },
+            'quiz__social__action': true,
+            'quiz__social--normal': !question && !source,
+            'quiz__social--major': !question && source && startsWith(source, campaign),
+            'quiz__social--minor': !question && source && !startsWith(source, campaign),
+            'quiz__social--question': question
+        },
         cssClass = question ? "question" : "results";
 
     return <a className={classnames(classNames)} data-link-name={"social " + (question ? "question " + question : "results") + " : "+site} href={href} target="_blank" title={site}>
