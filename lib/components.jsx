@@ -43,7 +43,7 @@ export class Aggregate extends React.Component {
                 phrase = <span>{correct ? "This one's easy" : "Oh dear" } - {pctRight}% of people knew this</span>
             }
             if (phrase) {
-                info = <div className = "quiz__answer-aggregate">
+                info = <div className="quiz__answer-aggregate">
                     { phrase }
                 </div>
             }
@@ -85,32 +85,32 @@ export class Answer extends React.Component {
             );
 
             if (isTypePersonality && isChosen) {
-                icon = <span className = {'quiz__answer-icon'}>{tick()}</span>;
+                icon = <span className={'quiz__answer-icon'}>{tick()}</span>;
             }
 
             if (isTypeKnowledge) {
                 if (isChosen || correct) {
                     let symbol = correct ? tick(isChosen ? null : '#43B347') : cross();
-                    icon = <span className = {'quiz__answer-icon'}>{symbol}</span>;
+                    icon = <span className={'quiz__answer-icon'}>{symbol}</span>;
                 }
                 if (isChosen) {
-                    aggregate = <Aggregate correct = {correct} pctRight = {pctRight} />
+                    aggregate = <Aggregate correct={correct} pctRight={pctRight} />
                 }
                 if (correct) {
-                    share = <Share question = {questionNo}
-                        key = "share"
-                        message = {this.props.answer.share ? this.props.answer.share : this.props.questionText }
+                    share = <Share question={questionNo}
+                        key="share"
+                        message={this.props.answer.share ? this.props.answer.share : this.props.questionText }
                     />
                 }
             }
         }
 
         return <a
-            data-link-name = {"answer " + (this.props.index + 1)}
-            className = {classnames(classesNames)}
-            onClick = {answered ? null : this.props.chooseAnswer}>
+            data-link-name={"answer " + (this.props.index + 1)}
+            className={classnames(classesNames)}
+            onClick={answered ? null : this.props.chooseAnswer}>
             {icon}
-            {this.props.answer.imageUrl ? <div className = "quiz__answer__image"><img class = "quiz__answer__img" src = {genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
+            {this.props.answer.imageUrl ? <div className="quiz__answer__image"><img class="quiz__answer__img" src={genSrc(this.props.answer.imageUrl, 160)} /></div> : null}
             {this.props.answer.answer ? this.props.answer.answer : null}
             {aggregate}
         </a>
@@ -167,38 +167,41 @@ export class Question extends React.Component {
               defaultColumns = this.props.defaultColumns,
               moreText = question.more;
 
-        return <div data-link-name = {"question " + (this.props.index + 1)} className = {classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
-            {question.imageUrl ? <img className = "quiz__question__img" src = {genSrc620(question.imageUrl)} /> : null}
-            {question.imageCredit ? <figcaption className = "caption caption--main caption--img quiz__image-caption" itemprop = "description" dangerouslySetInnerHTML = {{__html: question.imageCredit}} /> : null}
-            <h4 className = "quiz__question-header">
-                <span className = "quiz__question-number">{this.props.index + 1}</span>
-                <span className = "quiz__question-text">{question.question}</span>
+        return <div
+                data-link-name={"question " + (this.props.index + 1)}
+                className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
+
+            {question.imageUrl ? <img className="quiz__question__img" src={genSrc620(question.imageUrl)} /> : null}
+            {question.imageCredit ? <figcaption className="caption caption--main caption--img quiz__image-caption" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
+            <h4 className="quiz__question-header">
+                <span className="quiz__question-number">{this.props.index + 1}</span>
+                <span className="quiz__question-text">{question.question}</span>
             </h4>
             <div>
                 {map(
                     chunk(answers, defaultColumns),
                     (thisChunk, chunkI) =>
-                        <div className = "quiz__question__answer-row">
+                        <div className="quiz__question__answer-row">
                             {
                                 map(thisChunk,
                                     (answer, answerI) =>
                                         <Answer
-                                            answer = {answer}
-                                            isAnswered = {this.isAnswered()}
-                                            pctRight = {pctRight}
-                                            chooseAnswer = {this.props.chooseAnswer.bind(null, answer)}
-                                            index = {chunkI * 2 + answerI}
-                                            key = {chunkI * 2 + answerI}
-                                            questionNo = {this.props.index + 1}
-                                            questionText = {question.question}
-                                            isTypeKnowledge = {this.props.isTypeKnowledge}
-                                            isTypePersonality = {this.props.isTypePersonality}
+                                            answer={answer}
+                                            isAnswered={this.isAnswered()}
+                                            pctRight={pctRight}
+                                            chooseAnswer={this.props.chooseAnswer.bind(null, answer)}
+                                            index={chunkI * 2 + answerI}
+                                            key={chunkI * 2 + answerI}
+                                            questionNo={this.props.index + 1}
+                                            questionText={question.question}
+                                            isTypeKnowledge={this.props.isTypeKnowledge}
+                                            isTypePersonality={this.props.isTypePersonality}
                                         />
                                 )
                             }
                         </div>)}
             </div>
-            {this.isAnswered() ? (moreText ? <div className = "quiz__question__more">{moreText}</div> : null) : null}
+            {this.isAnswered() ? (moreText ? <div className="quiz__question__more">{moreText}</div> : null) : null}
         </div>
     }
 }
@@ -213,18 +216,19 @@ export class EndMessageKnowledge extends React.Component {
             let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
             comparison = <div>
                 <div>How did you do?</div>
-                <div>You beat <span className = "quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
+                <div>You beat <span className="quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
             </div>
         }
 
-        return <div className = "quiz__end-message">
-            <div className = "quiz__score-message">You got <span className = "quiz__score">{score}/{this.props.length}</span></div>
-            <div className = "quiz__bucket-message">{this.props.message.title}</div>
+        return <div className="quiz__end-message">
+            <div className="quiz__score-message">You got <span className="quiz__score">{score}/{this.props.length}</span></div>
+            <div className="quiz__bucket-message">{this.props.message.title}</div>
             {comparison}
-            <Share score = {score}
-                message = {this.props.message.share}
-                length = {this.props.length}
-                key = "share" />;
+            <Share
+                score={score}
+                message={this.props.message.share}
+                length={this.props.length}
+                key="share" />;
         </div>
     }
 }
@@ -233,16 +237,16 @@ export class EndMessagePersonality extends React.Component {
     render() {
         let personality = this.props.personality;
 
-        return <div className = "quiz__end-message">
-            <div className = "quiz__score-message">
+        return <div className="quiz__end-message">
+            <div className="quiz__score-message">
                 {personality.href ?
-                    <a href = {personality.href} className = "quiz__score">{personality.title}</a>
-                    : <span className = "quiz__score">{personality.title}</span>}
+                    <a href={personality.href} className="quiz__score">{personality.title}</a>
+                    : <span className="quiz__score">{personality.title}</span>}
                 <Share 
-                    message = {personality.share}
-                    key = "share" />                
+                    message={personality.share}
+                    key="share" />
                 {personality.youtubeId ?
-                    <p><iframe width = "320" height = "180" src = {"https://www.youtube.com/embed/" + personality.youtubeId} frameBorder = "0"  allowfullscreen></iframe></p>
+                    <p><iframe width="320" height="180" src={"https://www.youtube.com/embed/" + personality.youtubeId} frameBorder="0"  allowfullscreen></iframe></p>
                     : null}
             </div>
         </div>
@@ -349,31 +353,31 @@ export class Quiz extends React.Component {
         document.getElementsByClassName('element-embed')[0].style.display = 'none';
 
         if (this.isTypeKnowledge || this.isTypePersonality) {
-            return <div data-link-name = "quiz" className = "quiz">
+            return <div data-link-name="quiz" className="quiz">
                 {map(
                     zip(this.state.questions, this.aggregate ? take(this.aggregate.results, this.state.questions.length) : []),
                     (question, i) => <Question
-                        question = {question[0]}
-                        aggregate = {question[1]}
-                        chooseAnswer = {this.chooseAnswer.bind(this)}
-                        index = {i}
-                        key = {i}
-                        isTypePersonality = {this.isTypePersonality}
-                        isTypeKnowledge = {this.isTypeKnowledge}
-                        defaultColumns = {this.defaultColumns} />)}
+                        question={question[0]}
+                        aggregate={question[1]}
+                        chooseAnswer={this.chooseAnswer.bind(this)}
+                        index={i}
+                        key={i}
+                        isTypePersonality={this.isTypePersonality}
+                        isTypeKnowledge={this.isTypeKnowledge}
+                        defaultColumns={this.defaultColumns} />)}
 
                 {this.isFinished() && this.isTypeKnowledge ?
                     <EndMessageKnowledge
-                        message = {this.endMessageKnowledge()}
-                        score = {this.scoreKnowledge()}
-                        length = {this.length()}
-                        histogram = {this.aggregate ? this.aggregate.scoreHistogram : undefined}
-                        key = "end_message" /> : null}
+                        message={this.endMessageKnowledge()}
+                        score={this.scoreKnowledge()}
+                        length={this.length()}
+                        histogram={this.aggregate ? this.aggregate.scoreHistogram : undefined}
+                        key="end_message" /> : null}
 
                 {this.isFinished() && this.isTypePersonality ?
                     <EndMessagePersonality
-                        personality = {this.isTypePersonality ? this.getPersonality() : null}
-                        key = "end_message" /> : null}
+                        personality={this.isTypePersonality ? this.getPersonality() : null}
+                        key="end_message" /> : null}
             </div>;
         } else {
             return <div>Unknown or unspecified "quizType" property. Shoud be one of: {quizTypes.join(', ')}.</div>
