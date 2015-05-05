@@ -307,7 +307,7 @@ export class Quiz extends React.Component {
             highScorer = highScorers[random(0, highScorers.length - 1)],
             bucket = find(this.resultBuckets, {id: highScorer}) || {};
 
-        this.getPersonality = function() { return bucket; };
+        this.getPersonality = function() { return bucket; }; // memoize
 
         return bucket;
     }
