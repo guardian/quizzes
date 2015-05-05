@@ -6,6 +6,7 @@ import slice from 'lodash-node/modern/array/slice';
 import zip from 'lodash-node/modern/array/zip';
 import includes from 'lodash-node/modern/collection/includes';
 import find from 'lodash-node/modern/collection/find';
+import findIndex from 'lodash-node/modern/array/findIndex';
 import any from 'lodash-node/modern/collection/any';
 import map from 'lodash-node/modern/collection/map';
 import reduce from 'lodash-node/modern/collection/reduce';
@@ -211,9 +212,9 @@ export class EndMessageKnowledge extends React.Component {
         if (score > 0 && histogram) {
             let beat = Math.round((sum(slice(histogram, 0, score + 1)) * 100) / sum(histogram));
             comparison = <div>
-                            <div>How did you do?</div>
-                            <div>I beat <span className = "quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
-                        </div>
+                <div>How did you do?</div>
+                <div>You beat <span className = "quiz__end-message__beat">{isNaN(beat) ? 0 : beat}%</span> of others.</div>
+            </div>
         }
 
         return <div className = "quiz__end-message">
@@ -237,12 +238,12 @@ export class EndMessagePersonality extends React.Component {
                 {personality.href ?
                     <a href = {personality.href} className = "quiz__score">{personality.title}</a>
                     : <span className = "quiz__score">{personality.title}</span>}
-                {personality.youtubeId ? 
-                    <p><iframe width = "320" height = "180" src = {"https://www.youtube.com/embed/" + personality.youtubeId} frameBorder = "0"  allowfullscreen></iframe></p>
-                    : null}
                 <Share 
                     message = {personality.share}
                     key = "share" />                
+                {personality.youtubeId ?
+                    <p><iframe width = "320" height = "180" src = {"https://www.youtube.com/embed/" + personality.youtubeId} frameBorder = "0"  allowfullscreen></iframe></p>
+                    : null}
             </div>
         </div>
     }
@@ -268,8 +269,11 @@ export class Quiz extends React.Component {
     chooseAnswer(answer) {
         answer.isChosen = true;
 
-        if (this.isFinished()) {
-            saveResults(this.results());
+        if (this.isFinished() && this.isTypeKnowledge) {
+            saveResults(this.resultsKnowledge());
+        }
+        if (this.isFinished() && this.isTypePersonality) {
+            saveResults(this.resultsPersonality());
         }
         
         this.forceUpdate();
@@ -287,11 +291,7 @@ export class Quiz extends React.Component {
         return countWhere(this.state.questions, isAnswered);
     }
 
-    score() {
-        return countWhere(this.state.questions, isCorrect);
-    }
-
-    personality() {
+    getPersonality() {
         const tallies = pairs(reduce(map(this.state.questions, (question) => getChosenAnswer(question)), (acc, answer) => {
                 forEach(answer.buckets, (personality) => {
                      acc[personality] = (acc[personality] || 0) + 1;
@@ -300,15 +300,22 @@ export class Quiz extends React.Component {
             }, {})),
             highScore = last(sortBy(tallies, 1))[1],
             highScorers = map(filter(tallies, (t) => t[1] === highScore), (t) => t[0]),
-            highScorer = highScorers[random(0, highScorers.length - 1)];
+            highScorer = highScorers[random(0, highScorers.length - 1)],
+            bucket = find(this.resultBuckets, {id: highScorer}) || {};
 
-        return find(this.resultBuckets, {id: highScorer}) || {}; 
+        this.getPersonality = function() { return bucket; };
+
+        return bucket;
+    }
+
+    scoreKnowledge() {
+        return countWhere(this.state.questions, isCorrect);
     }
 
     endMessageKnowledge() {
         const minScore = (g) => g.minScore === undefined ? Number.NEGATIVE_INFINITY : g.minScore,
               maxScore = (g) => g.maxScore === undefined ? Number.POSITIVE_INFINITY : g.maxScore,
-              score = this.score(),
+              score = this.scoreKnowledge(),
               message = find(
                   this.props.resultGroups,
                   (group) => score >= minScore(group) && score <= maxScore(group)
@@ -320,13 +327,20 @@ export class Quiz extends React.Component {
         };
     }
 
-    results() {
-        let summary = map(this.state.questions, (question) => isCorrect(question) ? 1 : 0);
-
+    resultsKnowledge() {
         return {
             quizId: this.quizId,
-            results: summary,
-            score: this.score(),
+            results: map(this.state.questions, (question) => isCorrect(question) ? 1 : 0),
+            score: this.scoreKnowledge(),
+            timeTaken: 0
+        };
+    }
+
+    resultsPersonality() {
+        return {
+            quizId: this.quizId,
+            results: map(this.state.questions, (question) => findIndex(question.multiChoiceAnswers, (answer) => answer.isChosen)),
+            score: findIndex(this.resultBuckets, this.getPersonality()),
             timeTaken: 0
         };
     }
@@ -351,14 +365,14 @@ export class Quiz extends React.Component {
                 {this.isFinished() && this.isTypeKnowledge ?
                     <EndMessageKnowledge
                         message = {this.endMessageKnowledge()}
-                        score = {this.score()}
+                        score = {this.scoreKnowledge()}
                         length = {this.length()}
                         histogram = {this.aggregate ? this.aggregate.scoreHistogram : undefined}
                         key = "end_message" /> : null}
 
                 {this.isFinished() && this.isTypePersonality ?
                     <EndMessagePersonality
-                        personality = {this.isTypePersonality ? this.personality() : null}
+                        personality = {this.isTypePersonality ? this.getPersonality() : null}
                         key = "end_message" /> : null}
             </div>;
         } else {
