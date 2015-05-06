@@ -15,12 +15,12 @@ System.config({
     "classnames": "npm:classnames@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.6",
     "ded/qwery": "github:ded/qwery@4.0.0",
+    "json": "github:systemjs/plugin-json@0.1.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
     "lodash-node": "npm:lodash-node@3.5.0",
     "qwery": "github:ded/qwery@4.0.0",
     "react": "npm:react@0.13.1",
     "reqwest": "github:ded/reqwest@1.1.5",
-    "json": "github:systemjs/plugin-json@0.1.0",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.1"
     },
