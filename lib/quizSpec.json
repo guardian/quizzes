@@ -1,362 +1,362 @@
 {
-    "id": "bc6245e3-2ed1-476a-8752-8bcf6535568c",
-    "header": {
-      "titleText": "How well do you know your election week No 1s?"
+  "id": "bc6245e3-2ed1-476a-8752-8bcf6535568c",
+  "header": {
+    "titleText": "How well do you know your election week No 1s?"
+  },
+  "type": "list",
+  "defaultColumns": 1,
+  "questions": [
+    {
+      "question": "Sir Anthony Eden’s win in the 26 May 1955 election swept Britain into the post-Churchill era. Which crooner provided the soundtrack?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Stranger in Paradise - Tony Bennett ",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Unchained Melody - Jimmy Young",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Dickie Valentine feat. The Stargazers - The Finger Of Suspicion",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
     },
-    "type": "list",
-    "defaultColumns": 1,
-    "questions": [
-      {
-        "question": "Which pop crooner soundtracked the Conservative party’s second consecutive victory in the 1955 election?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Dickie Valentine Feat. The Stargazers - The Finger Of Suspicion",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Stranger in Paradise - Tony Bennett",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "Unchained Melody - Jimmy Young",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "8 October 1959 marked a third win for the Conservative party, now led by Harold Macmillan. But which teen-pleasing single topped the charts this week?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Dream Lover - Bobby Darrin",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Only Sixteen - Craig Douglas",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "Doesn’t Matter Anymore - Buddy Holly",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "October 1964 wasn’t just a triumph for the Labour party. Which very famous singer enjoyed one of five weeks at the top of the charts during this election week?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Anyone Who Had A Heart - Cilla Black",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Oh Pretty Woman - Roy Orbison",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "(There's) Always Something There To Remind Me - Sandie Shaw",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "This broken hearted ballad spent two weeks at the top of the UK charts - one of which saw in Harold Wilson’s second election win in 1966. Can you name that hit?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Strangers In the Night - Frank Sinatra",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "You Don't Have to Say You Love Me - Dusty Springfield",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "The Sun Ain’t Gonna Shine Anymore - Walker Brothers",
-            "imageUrl": "",
-            "correct": true
-          }
-        ]
-      },
-      {
-        "question": "It’s the summer of 1970. As the Conservative party regain power, what No 1 occupied the top spot for 7 weeks?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "In the Summertime - Mungo Jerry",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "Spirit In The Sky - Norman Greenbaum",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Bridge Over Troubled Water - Simon & Garfunkel",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "During the first of two elections in 1974 - which single stomped its way to the top of the UK charts during the week of 28 February?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Devil Gate Drive - Suzi Quatro",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "Jealous Mind - Alvin Stardust",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Always Yours - Gary Glitter",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "...The second of which took place on 10 October. Can you name the huge pop hit topping that week’s charts?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Waterloo - Abba",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "You're The First The Last My Everything - Barry White",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Kung Fu Fighting - Carl Douglas",
-            "imageUrl": "",
-            "correct": true
-          }
-        ]
-      },
-      {
-        "question": "It’s 3 May 1979 and as Margaret Thatcher begins her reign. Which single was in the midsts of its six weeks at No 1?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "I Will Survive - Gloria Gaynor",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Tragedy - Bee Gees",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Bright Eyes - Art Garfunkel",
-            "imageUrl": "",
-            "correct": true
-          }
-        ]
-      },
-      {
-        "question": "As Thatcher’s hold on the country continued, which band swept the nation with this timeless ballad?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Too Shy - Kajagoogoo",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "True - Spandau Ballet",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Every Breath You Take - Police",
-            "imageUrl": "",
-            "correct": true
-          }
-        ]
-      },
-      {
-        "question": "By 1987, Thatcher had lead the Conservative party into three successive election victories. But which other female(s) was soaring high this year?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "La Isla Bonita - Madonna",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Respectable - Mel & Kim",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "I Wanna Dance With Somebody (Who Loves Me) - Whitney Houston",
-            "imageUrl": "",
-            "correct": true
-          }
-        ]
-      },
-      {
-        "question": "It’s 1992 and John Major is now the Prime Minister of Britain. Which somber single spent eight weeks at the top of the charts during his inauguration?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "End of the Road - Boyz II Men",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Stay - Shakespear's Sister",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "I Will Always Love You - Whitney Houston",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "Tony Blair wins the 1997 election. But which R&B hit was winning hearts that May?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "I Believe I Can Fly - R Kelly",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "I'll Be Missing You - Puff Daddy & Faith Evans feat 112",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "You're Not Alone - Olive",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "The chart mood shifts from earnest to upbeat in 2001. Which single was at No 1 during Blair’s “quiet landslide\" in 2001?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Do You Really Like It - DJ Pied Piper & The Masters of Ceremonies",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "Can't Get You Out of My Head - Kylie Minogue",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Don't Stop Moving - S Club 7",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      },
-      {
-        "question": "Blair’s final victory was at the 2005 election and the charts were awash with novelty hits and tacky sentiment. Which of the following was at No 1 in May?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Axel F - Crazy Frog",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "You’re Beautiful - James Blunt",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "(Is This The Way To) Amarillo? - Tony Christie Feat Peter Kay",
-            "imageUrl": "",
-            "correct": true
-          }
-        ]
-      },
-      {
-        "question": "David Cameron wins the 2010 election and Simon Cowell has the UK charts in a chokehold. Which reality star single was at No 1 during the Conservative’s 6 May election win?",
-        "imageUrl": "",
-        "more": "",
-        "multiChoiceAnswers": [
-          {
-            "answer": "Please Don't Let Me Go - Olly Murs",
-            "imageUrl": "",
-            "correct": false
-          },
-          {
-            "answer": "Once - Diana Vickers",
-            "imageUrl": "",
-            "correct": true
-          },
-          {
-            "answer": "Promise This - Cheryl Cole",
-            "imageUrl": "",
-            "correct": false
-          }
-        ]
-      }
-    ],
-    "resultGroups": [
-      {
-        "title": "Very nice work indeed. You know you pop and politics as well as Farage knows his way around a pint of stout and a packet of Smiths Scampi Fries. Don’t get too ahead of yourself though - come back in four years and we’ll see how much you know about 2015’s current No 1, Omi’s Cheerleader (Felix Jaehn Remix).",
-        "share": "I got  _/_ in the Guardian's election chart toppers quiz and it was a landslide success",
-        "minScore": 13
-      },
-      {
-        "title": "You are almost great. But almost great is not great enough. Do you think Noel Gallagher would have shaken the hand of an almost great Tony Blair? No he wouldn’t. Do you think D:Ream would have affiliated themselves with the almost great New Labour? Probably. Try again for ultimate brilliance.",
-        "share": "I got  _/_ in the Guardian's election chart toppers quiz and did pretty well",
-        "minScore": 9
-      },
-      {
-        "title": "Low to average. Thatcher didn’t win votes through being low to average at politics, did she? Nor did Mungo Jerry secure 7 weeks at No 1 with his low to average summer smash In The Summertime. Scrub up on your pop and politics and try again.",
-        "share": "I got  _/_ in the Guardian's election chart toppers quiz and scraped through",
-        "minScore": 5
-      },
-      {
-        "title": "Oh dear. You need to scrub up on both your British politics and pop hits pronto. Go back to school. Or the library. Maybe take an evening course. Or just consult Wikipedia like a normal cheating modern day quizmaster.",
-        "share": "I got  _/_ in the Guardian's election chart toppers quiz and it was a landslide failure",
-        "minScore": 0
-      }
-    ]
-  }
+    {
+      "question": "8 October 1959 marked a third win in a row for the Conservative party, led this time by Harold Macmillan. But which teen-pleasing single topped the charts this week?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Dream Lover - Bobby Darin",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Only Sixteen - Craig Douglas",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Doesn’t Matter Anymore - Buddy Holly",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "15 October 1964 wasn’t just a triumph for the Labour party. Which famous singer was enjoying five weeks at the top of the charts?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Anyone Who Had A Heart - Cilla Black",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Oh, Pretty Woman - Roy Orbison",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "(There's) Always Something There To Remind Me - Sandie Shaw",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "This broken-hearted ballad spent two weeks at the top of the UK charts - one of which saw in Harold Wilson’s second election win on 31 March 1966. Can you name that hit?",
+      "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/5/7/1431000494421/Brokenloveheart.jpg",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Strangers In the Night - Frank Sinatra",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "You Don't Have to Say You Love Me - Dusty Springfield",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "The Sun Ain’t Gonna Shine Anymore - Walker Brothers",
+          "imageUrl": "",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "It’s the summer of 1970. As Ted Heath's Conservatives regain power on 18 June, what No 1 was in a seven-week run in top spot?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "In the Summertime - Mungo Jerry",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Spirit In The Sky - Norman Greenbaum",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Bridge Over Troubled Water - Simon and Garfunkel",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "The first of two elections in 1974, on 28 February, led to a hung parliament. Which single stomped its way decisively to the top of the UK charts?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Devil Gate Drive - Suzi Quatro",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Jealous Mind - Alvin Stardust",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Always Yours - Gary Glitter",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "The second 1974 vote, on 10 October, saw Labour gain a majority to the sound of which huge hit?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Waterloo - Abba",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "You're The First The Last My Everything - Barry White",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Annie’s Song - John Denver ",
+          "imageUrl": "",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "It’s 3 May 1979, and as Margaret Thatcher begins her reign, which single is in the midst of a six-week run at No 1?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "I Will Survive - Gloria Gaynor",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Tragedy - Bee Gees",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Bright Eyes - Art Garfunkel",
+          "imageUrl": "",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "Thatcher’s grip on the country strengthened mightily on 9 June 1983. Which band swept the nation with this timeless ballad?",
+      "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/5/7/1431001541929/MargaretThatcheronFarm23Jan.jpg",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Too Shy - Kajagoogoo",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "True - Spandau Ballet",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Every Breath You Take - Police",
+          "imageUrl": "",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "On 11 June 1987, Thatcher led the Tories to a third successive victory. But which other female(s) soared high this year?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "La Isla Bonita - Madonna",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Respectable - Mel & Kim",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "I Wanna Dance With Somebody (Who Loves Me) - Whitney Houston",
+          "imageUrl": "",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "It’s 9 April 1992, and John Major is surprisingly returned as prime minister of Britain. Which aptly named single spent eight weeks at No 1 then?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "End of the Road - Boyz II Men",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Stay - Shakespear's Sister",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "I Will Always Love You - Whitney Houston",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Tony Blair wins a new Labour landslide on 1 May 1997 election. Which R&B hit was winning hearts that spring?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Blood On The Dancefloor - Michael Jackson",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "I'll Be Missing You - Puff Daddy & Faith Evans feat 112",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "I Believe I Can Fly - R Kelly ",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "The chart mood shifts from earnest to upbeat on 7 June 2001. Which single was at No 1 during Blair’s “quiet landslide\" in 2001?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Angel - Shaggy",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Can't Get You Out of My Head - Kylie Minogue",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Don't Stop Moving - S Club 7",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Blair’s final victory in the 5 May 2005 election came as the charts were awash with novelty hits and tacky sentiment. Which of the following stood at No 1?",
+      "imageUrl": "",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Axel F - Crazy Frog",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "You’re Beautiful - James Blunt",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "(Is This The Way To) Amarillo? - Tony Christie Feat Peter Kay",
+          "imageUrl": "",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question": "David Cameron revives the Tories at the 6 May 2010 election, and Simon Cowell has the UK charts in a chokehold. But which single caught the mood for change? ",
+      "imageUrl": "http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/5/7/1431002064885/AmericanIdolSeason8Top11Eli.jpg",
+      "more": "",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Pass Out - Tinie Tempah",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Roll Deep - Good Times",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Once - Diana Vickers ",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "resultGroups": [
+    {
+      "title": "Rejoice! You've never had it so good. You know your election soundtracks as well as Nigel Farage knows his way around a pint of stout and a packet of scampi fries. Come back in five years and see how much you remember about 2015’s current No 1, Omi’s Cheerleader (Felix Jaehn Remix).",
+      "share": "I got  _/15 in the Guardian's election chart toppers quiz and it was a landslide success",
+      "minScore": 13
+    },
+    {
+      "title": "We can't go on like this. Almost great is not great enough. Do you think Noel Gallagher would have shaken the hand of an almost great Tony Blair? No he wouldn’t. Do you think D:Ream would have affiliated themselves with the almost great New Labour? Probably. Try again for ultimate brilliance.",
+      "share": "I got  _/15 in the Guardian's election chart toppers quiz and did pretty well",
+      "minScore": 9
+    },
+    {
+      "title": "Low to average – you are Mondeo Man, Worcester Woman... Margaret Thatcher didn’t win votes through being low-to-average at politics, did she? Nor did Mungo Jerry secure seven weeks at No 1 with smash hit In The Summertime by sounding average. Get on your bike and work harder.",
+      "share": "I got  _/15 in the Guardian's election chart toppers quiz and scraped through",
+      "minScore": 5
+    },
+    {
+      "title": "Oh dear. Your quiz labour isn't working. Scrub up on both your British politics and pop hits pronto. Go back to school. Or the library. Maybe take an evening class. Or just consult Wikipedia like a normal modern-day quiz cheat.",
+      "share": "I got  _/15 in the Guardian's election chart toppers quiz and it was a landslide fail",
+      "minScore": 0
+    }
+  ]
+}

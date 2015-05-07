@@ -111,11 +111,15 @@ function genSrcset(src) {
 }
 
 function genSrc620(src) {
-    return 'http://i.guim.co.uk/media/w-620/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
+    var type = (src.match('([a-z]+).guim.co.uk') || [])[1];
+
+    return type ? 'http://i.guim.co.uk/' + type + '/w-620/h--/q-95/' + src.replace(/^.*\/\/[a-z]+.guim.co.uk\//, '') : null;
 }
 
 function genSrc(src, width) {
-    return 'http://i.guim.co.uk/media/w-' + width + '/h--/q-95/' + src.replace(/^.*\/\/media.guim.co.uk\//, '');
+    var type = (src.match('([a-z]+).guim.co.uk') || [])[1];
+
+    return type ? 'http://i.guim.co.uk/' + type + '/w-' + width + '/h--/q-95/' + src.replace(/^.*\/\/[a-z]+.guim.co.uk\//, '') : null;
 }
 
 export class Question extends React.Component {
@@ -138,7 +142,7 @@ export class Question extends React.Component {
 
         return <div data-link-name={"question " + (this.props.index + 1)} className={classnames({'quiz__question': true, isAnswered: this.isAnswered()})}>
             {question.imageUrl ? <img className="quiz__question__img" src={genSrc620(question.imageUrl)} /> : null}
-        {question.imageCredit ? <figcaption className="caption caption--main caption--img quiz__image-caption" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
+            {question.imageCredit ? <figcaption className="caption caption--main caption--img quiz__image-caption" itemprop="description" dangerouslySetInnerHTML={{__html: question.imageCredit}} /> : null}
             <h4 className="quiz__question-header">
                 <span className="quiz__question-number">{this.props.index + 1}</span>
                 <span className="quiz__question-text">{question.question}</span>
