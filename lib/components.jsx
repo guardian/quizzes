@@ -272,7 +272,8 @@ export class Quiz extends React.Component {
     }
 
     render() {
-        let endMessage;
+        let endMessage,
+            elEmbed = document.getElementsByClassName('element-embed')[0];
 
         if (this.isFinished()) {
             endMessage = <EndMessage score={this.score()}
@@ -302,7 +303,9 @@ export class Quiz extends React.Component {
             }
         </div>;
 
-        document.getElementsByClassName('element-embed')[0].style.display = 'none';
+        if (elEmbed) {
+            elEmbed.style.display = 'none';            
+        }
 
         return html
     }
