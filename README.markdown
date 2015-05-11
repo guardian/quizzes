@@ -4,6 +4,8 @@
 >
 > --Wikipedia
 
+THIS HAS MOVED TO [quiz-builder](https://github.com/guardian/quiz-builder)
+
 Next-gen Guardian quizzes
 
 ## Set up
