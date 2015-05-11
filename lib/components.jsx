@@ -350,7 +350,11 @@ export class Quiz extends React.Component {
     }
 
     render() {
-        document.getElementsByClassName('element-embed')[0].style.display = 'none';
+        let elEmbed = document.getElementsByClassName('element-embed')[0];
+
+        if (elEmbed) {
+            elEmbed.style.display = 'none';
+        }
 
         if (this.isTypeKnowledge || this.isTypePersonality) {
             return <div data-link-name="quiz" className="quiz">
