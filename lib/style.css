@@ -64,16 +64,9 @@
     width: 100%
 }
 
-.quiz__answer--list {
-    width: 100%;
-}
-
-.quiz__answer--pairs {
-    width: 50%;
-}
-
 .quiz__answer--answered {
     cursor: default;
+    opacity: 0.5;
 }
 
 .quiz__answer--correct, .quiz__question__more {
@@ -85,9 +78,11 @@
     padding: 12px;
 }
 
+.quiz__answer--chosen,
 .quiz__answer--correct-chosen {
     background-color: #43B347; /* ??? */
     color: #ffffff;    
+    opacity: 1;
 }
 
 .quiz__answer--incorrect {
@@ -97,6 +92,7 @@
 .quiz__answer--incorrect-chosen {
     background-color: #BB001A; /* ??? */
     color: #ffffff;
+    opacity: 1;
 }
 
 .quiz__answer-icon {

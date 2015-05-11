@@ -1,0 +1,146 @@
+
+{
+    "quizIdentity": "football-quiz-1",
+    "quizType": "knowledge", 
+    "header": {
+        "titleText": "How well do you know football?"
+    },
+    "type": "pairs",
+    "defaultColumns": 2,
+    "questions": [
+        {
+            "question": "Which of these players' shirt numbers has not been retired?",
+            "more" : "Attilio Lombardo is one of the few players to have won the Serie A title with three different clubs but none of them have retired his shirt.",
+            "multiChoiceAnswers": [
+                {
+                    "imageUrl" : "http://media.guim.co.uk/4944e7767b021011317b2333653ef2a5509dfe3d/0_0_1516_1515/1000.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/539c70b3ab436ee3fbbee55197b273be544c11fd/0_0_1059_1059/1000.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/3deafcfe356cf09197c7047fb5566d629370fa5c/0_0_1816_1816/1000.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "https://media.guim.co.uk/8ed6d73f66eaec77750839499e0bc7f90d10ccd3/0_0_1109_1110/999.jpg",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "question": "Which of these Italians did not end their playing careers with a Premier League club?",
+            "more" : "Gianfranco Zola played for Chelsea for seven seasons but he returned to Italy to play for Cagliari for two season before retiring. His managerial career began in England with West Ham and then Watford but he went back to Italy to take charge of Cagliari last December. He was sacked earlier this month, after only 10 games.",
+            "multiChoiceAnswers": [
+                {
+                    "imageUrl" : "http://media.guim.co.uk/77d610c039c85da2c23088776a86afe7257ef352/0_0_2241_2241/1000.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/0479b5001a37c187278189189106df11aca02eb3/0_0_2133_2133/1000.jpg",
+                    "correct": true
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/69e0d536c0905b72b225165b3aadad632f707546/0_0_1257_1257/1000.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/8e1b45b29a629acfea756a822e1e5566fdb04099/0_0_2522_2522/1000.jpg",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Which car manufacturer sponsored AC Milan for 12 seasons between 1994 and 2006?",
+            "more" : "Ferrari, Alfa Romeo and Fiat are Italian brands but Milan went with Opel, who come from Germany.",
+            "multiChoiceAnswers": [
+                {
+                    "imageUrl" : "http://media.guim.co.uk/77d2ab5f282427367c7e4bbd1a275c5c87eed04f/0_0_657_657/500.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/6c1c6387cc5b5e19051fe7107a9ee558e871189d/0_0_3000_3000/1000.jpg",
+                    "correct": true
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/5929cf2666c770458a1a3daffd0a58561135eb8c/0_0_1023_1023/1000.jpg",
+                    "correct": false
+                },
+                {
+                    "imageUrl" : "http://media.guim.co.uk/8f7da1aaebb5af54cdfff55847c499d79d6fcf8a/0_0_1728_1728/1000.jpg",
+                    "correct": false
+                }
+            ]
+        }
+    ],
+    "resultGroups": [
+        {
+            "title": "A perfect 10. Gollllllaaaazzzooooooo!",
+            "share": "I scored a perfect _/_ on the Guardian football quiz.",
+            "minScore": 10,
+            "maxScore": 10
+        },
+        {
+            "title": "A near-perfect nine. Gollllllaaaazzzooooooo!",
+            "share": "I scored a near-perfect _/_ on the Guardian football quiz.",
+            "minScore": 9,
+            "maxScore": 9
+        },
+        {
+            "title": "An impressive eight Gollllllaaaazzzooooooo.",
+            "share": "I scored an impressive _/_ on the Guardian football quiz.",
+            "minScore": 8,
+            "maxScore": 8
+        },
+        {
+            "title": "A steady seven. Buona giornata.",
+            "share": "I scored a steady _/_ on the Guardian football quiz.",
+            "minScore": 7,
+            "maxScore": 7
+        },
+        {
+            "title": "A steady six. Buona giornata.",
+            "share": "I scored a steady _/_ on the Guardian football quiz.",
+            "minScore": 6,
+            "maxScore": 6
+        },
+        {
+            "title": "A disappointing five. More of a Bundesliga fan?",
+            "share": "I scored a disappointing _/_ on the Guardian football quiz.",
+            "minScore": 5,
+            "maxScore": 5
+        },
+        {
+            "title": "A disappointing four. More of a La Liga fan?",
+            "share": "I scored a disappointing _/_ on the Guardian football quiz.",
+            "minScore": 4,
+            "maxScore": 4
+        },
+        {
+            "title": "Three! Oh dear. You didn't watch enough Football Italia in your youth.",
+            "share": "I scored _/_ on the Guardian football quiz.",
+            "minScore": 3,
+            "maxScore": 3
+        },
+        {
+            "title": "Two! Oh dear. You didn't watch enough Football Italia in your youth.",
+            "share": "I scored _/_ on the Guardian football quiz.",
+            "minScore": 2,
+            "maxScore": 2
+        },
+        {
+            "title": "One out of 10. Oh dear.",
+            "share": "I scored _/_ on the Guardian football quiz.",
+            "minScore": 1,
+            "maxScore": 1
+        },
+        {
+            "title": "Zero. Nada. Zilch. Or, as the Italians say, niente.",
+            "share": "I scored niente (_/_) on the Guardian football quiz.",
+            "minScore": 0,
+            "maxScore": 0
+        }
+    ]
+}
