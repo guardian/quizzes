@@ -1,5 +1,9 @@
 # Guardian quizzes
 
+> A quiz is a form of game or mind sport in which the players (as individuals or in teams) attempt to answer questions correctly. In some countries, a quiz is also a brief assessment used in education and similar fields to measure growth in knowledge, abilities, and/or skills.
+>
+> --Wikipedia
+
 Next-gen Guardian quizzes
 
 ## Set up
