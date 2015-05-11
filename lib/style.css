@@ -78,6 +78,7 @@
     padding: 12px;
 }
 
+.quiz__answer--correct,
 .quiz__answer--chosen,
 .quiz__answer--correct-chosen {
     background-color: #43B347; /* ??? */

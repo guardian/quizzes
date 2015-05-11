@@ -1,130 +1,338 @@
 {
-    "quizIdentity": "personality-test-1",
-    "quizType": "personality",
-    "header": {
-        "titleText": "Which NG developer are you?"
+  "id": "86b950c8-d869-43b0-81b8-00b627e95a23",
+  "header": {
+    "titleText": "Football quiz: match the football club to the election results"
+  },
+  "quizType": "knowledge",
+  "type": "list",
+  "defaultColumns": 1,
+  "questions": [
+    {
+      "question": "Chelsea, Stamford Bridge",
+      "imageUrl": "",
+      "more": "Frank Lampard has moved to Manchester but the Tories still reign in Chelsea and Fulham",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Ukip",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
     },
-    "questions": [
+    {
+      "question": "Celtic, Celtic Park",
+      "imageUrl": "",
+      "more": "The SNP won 50% of the vote in Scotland, picking up all but three of the 59 seats available, including Glasgow East",
+      "multiChoiceAnswers": [
         {
-            "question": "How does Javascript make you feel?",
-            "multiChoiceAnswers": [
-                {
-                    "answer" : "Elated",
-                    "buckets": ["Fabio", "Patrick"]
-                },
-                {
-                    "answer" : "Benign",
-                    "buckets": ["Alex", "Stephan"]
-                },
-                {
-                    "answer" : "Furious",
-                    "buckets": ["Rob", "John"]
-                },
-                {
-                    "answer" : "Hysterical",
-                    "buckets": ["Francis", "Grant"]
-                }
-            ]
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": false
         },
         {
-            "question": "How mature do you think you are?",
-            "multiChoiceAnswers": [
-                {
-                    "answer" : "Reasonably high",
-                    "buckets": ["John", "Fabio", "Patrick"]
-                },
-                {
-                    "answer" : "Appropriate for my age",
-                    "buckets": ["Francis", "Alex"]
-                },
-                {
-                    "answer" : "Disappointingly low, given my age",
-                    "buckets": ["Stephan", "Grant"]
-                },
-                {
-                    "answer" : "Barely toddler-level",
-                    "buckets": ["Rob"]
-                }
-            ]
+          "answer": "Scottish National Party",
+          "imageUrl": "",
+          "correct": true
         },
         {
-            "question": "T-Shirts... how many conference freebie or \"hilarious\" ones do you own?",
-            "multiChoiceAnswers": [
-                {
-                    "answer" : "They're all I've got in life",
-                    "buckets": ["Patrick", "Grant"]
-                },
-                {
-                    "answer" : "A few",
-                    "buckets": ["Rob", "Fabio", "John"]
-                },
-                {
-                    "answer" : "None",
-                    "buckets": ["Francis", "Alex"]
-                },
-                {
-                    "answer" : "I disdain them utterly",
-                    "buckets": ["Stephan"]
-                }
-            ]
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Ukip",
+          "imageUrl": "",
+          "correct": false
         }
-    ],
-    "resultBuckets": [
+      ]
+    },
+    {
+      "question": "Swansea City, Liberty Stadium",
+      "imageUrl": "",
+      "more": "Labour won 25 of the 40 seats in Wales, including Swansea East",
+      "multiChoiceAnswers": [
         {
-            "id": "Alex",
-            "title": "You're an Alex",
-            "share": "I'm an Alex, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Alex",
-            "youtubeId": "xmhnNUotIaE"
+          "answer": "Plaid Cymru",
+          "imageUrl": "",
+          "correct": false
         },
         {
-            "id": "John",
-            "title": "You're a John",
-            "share": "I'm a John, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/John",
-            "youtubeId": "xmhnNUotIaE"
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": true
         },
         {
-            "id": "Francis",
-            "title": "You're a Francis",
-            "share": "I'm a Francis, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Francis",
-            "youtubeId": "xmhnNUotIaE"
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
         },
         {
-            "id": "Rob",
-            "title": "You're a Rob",
-            "share": "I'm a Rob, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Rob",
-            "youtubeId": "xmhnNUotIaE"
-        },
-        {
-            "id": "Stephan",
-            "title": "You're a Stephan",
-            "share": "I'm a Stephan, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Stephan",
-            "youtubeId": "xmhnNUotIaE"
-        },
-        {
-            "id": "Patrick",
-            "title": "You're a Patrick",
-            "share": "I'm a Patrick, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Patrick",
-            "youtubeId": "xmhnNUotIaE"
-        },
-        {
-            "id": "Grant",
-            "title": "You're a Grant",
-            "share": "I'm a Grant, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Grant",
-            "youtubeId": "xmhnNUotIaE"
-        },
-        {
-            "id": "Fabio",
-            "title": "You're a Fabio",
-            "share": "I'm a Fabio, according to the Which Guardian Developer Are You quiz",
-            "href": "http://www.behindthename.com/name/Fabio",
-            "youtubeId": "xmhnNUotIaE"
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": false
         }
-    ]
+      ]
+    },
+    {
+      "question": "Arsenal, The Emirates",
+      "imageUrl": "",
+      "more": "Labour won 45 of the 73 seats available in London, including Islington North. The Lib Dems only won one: Carshalton and Wallington",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Green",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Brighton & Hove Albion, Falmer Stadium",
+      "imageUrl": "",
+      "more": "The Green Party won Bright Pavillion, but the Conservatives won in Brighton Kemptown, where the Falmer Stadium is based",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Green",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Ukip",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Linfield, Windsor Park",
+      "imageUrl": "",
+      "more": "The Cannabis Is Safer Than Alcohol Party beat the Conservatives in West Tyrone, but the SDLP won in Belfast South, home of Linfield FC",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Sinn Féin",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Social Democratic and Labour Party",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Cannabis Is Safer Than Alcohol",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Democratic Unionist Party",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Manchester United, Old Trafford",
+      "imageUrl": "",
+      "more": "Labour won an impressive 53% share of the vote in Stretford & Urmston",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Ukip",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "AFC Wimbledon, Kingsmeadow",
+      "imageUrl": "",
+      "more": "Ed Davey of the Liberal Democrats had held the Kingston & Surbiton seat since 1997 but he was beaten by the Conservatives last Thursday",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Ukip",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Ipswich Town, Portman Road",
+      "imageUrl": "",
+      "more": "Ukip's only MP came from nearby Clacton but Ben Gummer of the Conservatives was victorious in Ipswich",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Ukip",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question": "Shetland Football Team, Gilbertson Park",
+      "imageUrl": "",
+      "more": "The Liberal Democrats won one seat in Scotland: Orkney & Shetland ",
+      "multiChoiceAnswers": [
+        {
+          "answer": "Scottish National Party ",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Labour",
+          "imageUrl": "",
+          "correct": false
+        },
+        {
+          "answer": "Liberal Democrats",
+          "imageUrl": "",
+          "correct": true
+        },
+        {
+          "answer": "Conservative",
+          "imageUrl": "",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "resultGroups": [
+    {
+      "title": "Are you David Cameron in disguise?",
+      "share": "I scored 10/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 10
+    },
+    {
+      "title": "Impressive. Jeremy Vine, is that you?",
+      "share": "I scored 9/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 9
+    },
+    {
+      "title": "Jeremy Vine, is that you?",
+      "share": "I scored 8/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 8
+    },
+    {
+      "title": "",
+      "share": "I scored 7/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 7
+    },
+    {
+      "title": "Jeremy Vine, is that you?",
+      "share": "I scored 6/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 6
+    },
+    {
+      "title": "More of a local elections fan?",
+      "share": "I scored 5/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 5
+    },
+    {
+      "title": "More of a local elections fan?",
+      "share": "I scored 4/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 4
+    },
+    {
+      "title": "More of an MEP fan?",
+      "share": "I scored 3/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 3
+    },
+    {
+      "title": "Oh dear",
+      "share": "I scored 2/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 2
+    },
+    {
+      "title": "Oh dear, oh dear",
+      "share": "I scored 1/10 in 'Football quiz: match the football club to the election results'",
+      "minScore": 1
+    },
+    {
+      "title": "Oh dear, oh dear, oh dear",
+      "share": "I scored a big, fat zero in 'Football quiz: match the football club to the election results'",
+      "minScore": 0
+    }
+  ]
 }
