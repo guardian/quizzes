@@ -231,7 +231,7 @@ export class EndMessageKnowledge extends React.Component {
                 score={score}
                 message={this.props.message.share}
                 length={this.props.length}
-                key="share" />;
+                key="share" />
         </div>
     }
 }
