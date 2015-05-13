@@ -263,7 +263,7 @@ export class Quiz extends React.Component {
             questions: props.questions
         };
         this.defaultColumns = props.defaultColumns ? props.defaultColumns : 1;
-        this.quizId = props.quizIdentity;
+        this.quizId = props.id;
         this.isTypeKnowledge = props.quizType === 'knowledge',
         this.isTypePersonality = props.quizType === 'personality',
         this.resultBuckets = props.resultBuckets,

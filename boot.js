@@ -19,7 +19,7 @@ define([], function () {
                 mediator: mediator
             };
             
-            addJS("http://interactive.guim.co.uk/2015/mar/football-quiz-1/app.js");
+            addJS("http://interactive.guim.co.uk/2015/may/football-quiz-2/app.js");
         }
     };
 });
